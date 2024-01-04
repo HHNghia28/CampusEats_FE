@@ -4,12 +4,12 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-const About = () => {
+const Admin = () => {
   const router = useRouter();
   return (
     <div>
       <div>
-        <h1>About page</h1>
+        <h1>Admin page</h1>
       </div>
       <ButtonBase
         title='Back to home'
@@ -20,4 +20,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Admin;

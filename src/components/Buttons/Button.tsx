@@ -1,45 +1,45 @@
-import Image from "next/image";
-import React from "react";
-import "@/styles/global.scss";
+import Image from 'next/image';
+import React from 'react';
+import '@/styles/global.scss';
 
 type ButtonProps = {
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
   title: string;
   icon?: string;
   variant: string;
-  size?: "sm" | "md" | "lg";
+  size?: 'sm' | 'md' | 'lg';
   styles?: React.CSSProperties;
   onClick?: () => void;
 };
 
-const Button = ({
-  type = "button",
+const ButtonBase = ({
+  type = 'button',
   title,
   icon,
   variant,
-  size = "md",
+  size = 'md',
   styles,
-  onClick,
+  onClick
 }: ButtonProps) => {
   // Define styles based on the size prop
-  let btnSize = "";
+  let btnSize = '';
   switch (size) {
-    case "sm":
-      btnSize = "sm";
+    case 'sm':
+      btnSize = 'sm';
       break;
-    case "md":
-      btnSize = "md";
+    case 'md':
+      btnSize = 'md';
       break;
-    case "lg":
-      btnSize = "lg";
+    case 'lg':
+      btnSize = 'lg';
       break;
     default:
-      btnSize = "md";
+      btnSize = 'md';
   }
 
   // Merge custom styles with default styles
   const mergedStyles: React.CSSProperties = {
-    ...styles,
+    ...styles
     // Add default styles here
   };
 
@@ -50,10 +50,17 @@ const Button = ({
       style={mergedStyles}
       onClick={onClick}
     >
-      {icon && <Image src={icon} alt={title} width={24} height={24} />}
-      <label className="bold-16 whitespace-nowrap">{title}</label>
+      {icon && (
+        <Image
+          src={icon}
+          alt={title}
+          width={24}
+          height={24}
+        />
+      )}
+      <label className='bold-16 whitespace-nowrap'>{title}</label>
     </button>
   );
 };
 
-export default Button;
+export default ButtonBase;

@@ -1,16 +1,14 @@
 'use client';
-import ButtonBase from '@/components/Buttons/Button';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { useRouter } from 'next/navigation';
+import ButtonBase from '@/components/Buttons/Button';
 
-const About = () => {
+const Login = () => {
   const router = useRouter();
   return (
     <div>
-      <div>
-        <h1>About page</h1>
-      </div>
+      <h1>Login page</h1>
       <ButtonBase
         title='Back to home'
         variant='success'
@@ -20,4 +18,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Login;
