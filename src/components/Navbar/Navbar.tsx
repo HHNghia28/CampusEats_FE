@@ -3,6 +3,9 @@ import Link from 'next/link';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import classNames from 'classnames/bind';
+import styles from './Navbar.module.scss';
+const cx = classNames.bind(styles);
 
 const Navigation = () => {
   return (
@@ -11,7 +14,7 @@ const Navigation = () => {
       className='bg-body-tertiary'
     >
       <Container>
-        <Navbar.Brand href='#home'>G1-Food</Navbar.Brand>
+        <Navbar.Brand href='/'>G1-Food</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='flex justify-between items'>
