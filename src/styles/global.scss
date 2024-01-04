@@ -1,0 +1,155 @@
+/*
+    ***PLEASE NO EDIT ANYTHING IN THIS FILE
+    ***KHOATD
+*/
+
+:root {
+    // my color
+    --main-color: rgb(241, 112, 95);
+    --primary-color: #3B71CA;
+    --secondary-color:#9FA6B2;
+
+    // bootstrap color
+    --primary: #3B71CA;
+    --secondary :#9FA6B2;
+    --success: #14A44D;
+    --danger: #DC4C64;
+    --warning:#E4A11B;
+    --info: #54B4D3;
+    --light: #FBFBFB;
+    --dark: #332D2D;
+
+    --text-color: 332D2D;
+    --bg-main-color: #FBFBFB;
+    --bg-primary-color: #FBFBFB;
+    --bg-inside-color: 332D2D; 
+
+    // Size text
+    --fs-xs: 8px;
+    --fs-sm: 12px;
+    --fs-md: 16px;
+    --fs-lg: 18px;
+    --fs-xl: 24px;
+    --fs-xxl: 36px;
+}
+
+* {
+    font-size: var(--fs-md);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.fs-xs {
+    font-size: var(--fs-xs);
+}
+.fs-sm{
+    font-size: var(--fs-sm);
+}
+.fs-md{
+    font-size: var(--fs-md);
+}
+.fs-lg{
+    font-size: var(--fs-lg);
+}
+.fs-xl{
+    font-size: var(--fs-xl);
+}
+.fs-xxl{
+    font-size: var(--fs-xxl);
+}
+
+.c-main {
+    color: var(--main-color);
+}
+
+.c-primary {
+    color: var(--primary-color);
+}
+
+.c-primary {
+    color: var(--secondary-color);
+}
+
+.c-text{
+    color: var(--text-color);
+}
+.c-bg-main {
+    background-color: var(--bg-main-color);
+}
+.c-bg-primary {
+    background-color: var(--bg-primary-color);
+}
+.c-bg-inside {
+    background-color: var(--bg-inside-color);
+}
+
+
+// Button styles
+.button {
+    font-size: var(--fs-md);
+    font-weight: 500;
+    padding: 8px 12px;
+    background-color: var(--main-color);
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.35s linear;
+}
+.button:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+// Button size
+.button.sm {
+    padding: 4px 12px;
+    font-size: var(--fs-sm);
+}
+.button.md {
+    padding: 8px 16px;
+}
+.button.lg {
+    padding: 16px 32px;
+}
+
+// Button color
+.button.dark {
+    background-color: var(--dark);
+}
+.button.main-color {
+    background-color: var(--main-color);
+}
+.button.primary-color {
+    background-color: var(--primary-color);
+}
+.button.secondary-color {
+    background-color: var(--secondary-color);
+}
+
+.button.success {
+    background-color: var(--success) !important;
+}
+.button.warning {
+    background-color: var(--warning) !important;
+}
+.button.danger {
+    background-color: var(--danger) !important;
+}
+.button.info {
+    background-color: var(--info) !important;
+}
+.button.light {
+    background-color: var(--light) !important; 
+    color: black;
+}
+.button + .button {
+    margin: 0px 12px;
+}
+
+
+
+
+
+
