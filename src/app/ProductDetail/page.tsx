@@ -20,6 +20,8 @@ const ProductDetail = () => {
     price: '30.000 Vnđ',
   };
 
+  const [quantity, setQuantity] = React.useState(1);
+
   const showToastSuccess = () => {
     toast.success('Success message!');
   };
@@ -34,7 +36,20 @@ const ProductDetail = () => {
     toast.success('Success message!');
   };
 
+  const handleIncreaseQuantity = () => {
+    if(quantity < 10){
+      setQuantity(quantity + 1);
+    }
+    else{
+      toast.error('Cannot add more than 10 products!');
+    } 
+  };
 
+  const handleDecreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
   return (
     <div>
      <div className={cx('productContainer')}>
@@ -42,24 +57,40 @@ const ProductDetail = () => {
           <div className={cx('productDetails')}>
             <h1 className={cx('productName')}>{product.name}</h1>
             <p className={cx('productInformation')}>{product.information}</p>
+            <div className={cx('quantityContainer')}>
+              <ButtonBase
+              type='button'
+              title='-'
+              variant='main'
+              size='sm'
+              onClick={handleDecreaseQuantity}
+              />
+              <span className={cx('quantityValue')}>{quantity}</span>
+              <ButtonBase
+              type='button'
+              title='+'
+              variant='main'
+              size='sm'
+              onClick={handleIncreaseQuantity}
+              />
+            </div>
             <p className={cx('productPrice')}>{product.price}</p>
-            
-            <ButtonBase
-            type='button'
-            title='Add to Cart'
-            variant='main'
-            size='md'
-            onClick={handleAddToCart}
-            />
-
-            <ButtonBase
-            type='button'
-            title='Buy Now'
-            variant='main'
-            size='md'
-            onClick={handleBuyNow}
-            />
-          
+            <div>
+              <ButtonBase
+              type='button'
+              title='Add to Cart'
+              variant='main'
+              size='md'
+              onClick={handleAddToCart}
+              />
+              <ButtonBase
+              type='button'
+              title='Buy Now'
+              variant='main'
+              size='md'
+              onClick={handleBuyNow}
+              />
+            </div>  
         </div>
       </div>
     </div>
