@@ -9,7 +9,7 @@
   height: 100%;
 }
 
-.productContainer {
+.product-Container {
   display: flex;
   position: relative;
   align-items: center;
@@ -22,37 +22,37 @@
   margin: 50px auto;
 }
 
-.productImage {
+.product-Image {
   border-radius: 8px;
 }
 
-.productDetails {
+.product-Details {
   margin-left: 80px;
 }
 
-.productName {
+.product-Name {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.productInformation {
+.product-Information {
   font-size: 16px;
   margin-bottom: 10px;
 }
 
-.productPrice {
+.product-Price {
   font-size: 18px;
   font-weight: bold;
   color: #ff0800; 
   margin-bottom: 10px;
 }
 
-.quantityContainer{
+.quantity-Container{
   margin: 10px 0px;
 }
 
-.quantityValue{
+.quantity-Value{
   padding: 10px;
 }
 
