@@ -7,7 +7,6 @@ import ButtonBase from '@/components/Buttons/Button';
 import ModalBase from '@/components/Modal/Modal';
 import ModalForm from '@/components/ModalForm/ModalForm';
 import { toast } from 'react-toastify';
-
 /*
   Page: Cart
   Author: QuyenNNM
@@ -16,11 +15,11 @@ interface CartItemProps {
     updateTotal: (quantity: number) => void;
 }
 
-const CartItem = ({ updateTotal }: CartItemProps) => {
-    const customStyle = {
+const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
+    const customStyle: React.CSSProperties = {
         width: '140px',
         height: '140px',
-        objectFit: 'cover'
+        objectFit: 'cover' as 'cover', // Use string literal type directly
     };
     const [counter, setCounter] = useState(1);
 
