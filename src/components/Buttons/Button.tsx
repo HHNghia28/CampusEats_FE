@@ -1,9 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
 import '@/styles/global.scss';
-import classNames from 'classnames/bind';
-import styles from './button.module.scss';
-const cx = classNames.bind(styles);
 
 type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';

@@ -1,16 +1,13 @@
-'use client';
-import { title } from 'process';
-import { Children, ReactNode, useState } from 'react';
-import { Form } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import classNames from 'classnames/bind';
-import styles from './modalForm.module.scss';
-const cx = classNames.bind(styles);
+"use client";
+import { title } from "process";
+import { Children, ReactNode, useState } from "react";
+import { Form } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 // for show toast message
-import { toast } from 'react-toastify';
-import { mutate } from 'swr';
+import { toast } from "react-toastify";
+import { mutate } from "swr";
 
 interface IProps {
   title: string;
@@ -36,25 +33,19 @@ function ModalForm(props: IProps) {
       <Modal
         show={showModal}
         onHide={() => handleCloseForm()}
-        backdrop='static'
+        backdrop="static"
         keyboard={false}
-        size='lg'
+        size="lg"
       >
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>{children}</Modal.Body>
         <Modal.Footer>
-          <Button
-            variant='secondary'
-            onClick={() => handleCloseForm()}
-          >
+          <Button variant="secondary" onClick={() => handleCloseForm()}>
             Cancel
           </Button>
-          <Button
-            variant='primary'
-            onClick={() => handleSubmitForm()}
-          >
+          <Button variant="primary" onClick={() => handleSubmitForm()}>
             Submit
           </Button>
         </Modal.Footer>

@@ -1,17 +1,14 @@
-'use client';
-import { useState } from 'react';
-import classNames from 'classnames/bind';
-import styles from './model.module.scss';
-const cx = classNames.bind(styles);
-import { Form } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+"use client";
+import { useState } from "react";
+import { Form } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 // for show toast message
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 interface IProps {
-  size?: 'sm' | 'lg' | 'xl';
+  size?: "sm" | "lg" | "xl";
   title: string;
   content: string;
   showModal: boolean;
@@ -21,11 +18,11 @@ interface IProps {
 function ModalBase(props: IProps) {
   // for show hide modal
   const {
-    size = 'sm',
-    title = 'Modal title',
-    content = 'Modal content',
+    size = "sm",
+    title = "Modal title",
+    content = "Modal content",
     showModal,
-    setShowModal
+    setShowModal,
   } = props;
 
   //   const handleSubmitForm = () => {
@@ -58,7 +55,7 @@ function ModalBase(props: IProps) {
       <Modal
         show={showModal}
         onHide={() => handleCloseForm()}
-        backdrop='static'
+        backdrop="static"
         keyboard={false}
         size={size}
       >
@@ -69,13 +66,10 @@ function ModalBase(props: IProps) {
           <p>{content}</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant='secondary'
-            onClick={() => handleCloseForm()}
-          >
+          <Button variant="secondary" onClick={() => handleCloseForm()}>
             Cancel
           </Button>
-          <Button variant='primary'>OK</Button>
+          <Button variant="primary">OK</Button>
         </Modal.Footer>
       </Modal>
     </>
