@@ -19,6 +19,11 @@ interface CartItemProps {
 }
 
 const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
+  const [isVisible, setIsVisible] = useState(true); // Thêm state mới
+  const handleDelete = () => {
+    setIsVisible(false);
+    // Hoặc bạn có thể thực hiện các xử lý khác tại đây
+  };
   const customStyle: React.CSSProperties = {
     width: '140px',
     height: '140px',
@@ -38,12 +43,12 @@ const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
     }
   };
 
-  return (
+  return isVisible ? (
     <div>
       <Container>
         <Row className={cx('d-flex', 'align-items-center')}>
           <Col
-            md={3}
+            md={4}
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
             <Image
@@ -53,7 +58,7 @@ const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
           </Col>
 
           <Col
-            md={6}
+            md={4}
             className={cx('d-flex', 'flex-column', 'align-items-start')}
           >
             <div className='py-2'>Name</div>
@@ -61,7 +66,7 @@ const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
           </Col>
 
           <Col
-            md={3}
+            md={4}
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
             <div
@@ -82,12 +87,20 @@ const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
               >
                 +
               </Button>
+
+              <ButtonBase
+                type='button'
+                title='Delete'
+                variant='main-color'
+                size='md'
+                onClick={handleDelete} // Gọi hàm handleDelete khi nhấn vào nút "Delete"
+              />
             </div>
           </Col>
         </Row>
       </Container>
     </div>
-  );
+  ) : null;
 };
 
 const CartTotal = () => {};
