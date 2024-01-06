@@ -1,0 +1,61 @@
+
+/*
+  Page: Product Detail
+  Author: UotLT
+*/
+
+.body{
+  width: 100%;
+  height: 100%;
+}
+
+.product-Container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  height: 400px;
+  padding: 50px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 50px auto;
+}
+
+.product-Image {
+  border-radius: 8px;
+}
+
+.product-Details {
+  margin-left: 80px;
+}
+
+.product-Name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-Information {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.product-Price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ff0800; 
+  margin-bottom: 10px;
+}
+
+.quantity-Container{
+  margin: 10px 0px;
+}
+
+.quantity-Value{
+  padding: 10px;
+}
+
+
+
+
