@@ -2,9 +2,6 @@
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { Button, Col, Form, Row, Table } from 'react-bootstrap';
-import classNames from 'classnames/bind';
-import styles from './wiki.module.scss';
-const cx = classNames.bind(styles);
 import ButtonBase from '@/components/Buttons/Button';
 import ModalBase from '@/components/Modal/Modal';
 import ModalForm from '@/components/ModalForm/ModalForm';
@@ -39,7 +36,7 @@ const Wiki = () => {
 
   return (
     <div className='mt-5 flex'>
-      <h1 className={cx('red', 'mt-5')}>Wiki page</h1>
+      <h1>Wiki page</h1>
       <ButtonBase
         title='Back to home'
         variant='success'
