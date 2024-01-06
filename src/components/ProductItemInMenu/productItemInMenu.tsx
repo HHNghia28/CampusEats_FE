@@ -47,6 +47,7 @@ const ProductItemInMenu: React.FC<ProductItemInMenuProps> = ({ updateTotal }) =>
                             <Button size='sm' onClick={handleDecrease} variant="outline-secondary">-</Button>
                             <h5 className="mb-0">{counter}</h5>
                             <Button size='sm' onClick={handleIncrease} variant="outline-secondary">+</Button>
+
                         </div>
                     </Col>
                 </Row>

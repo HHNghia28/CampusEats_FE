@@ -68,7 +68,7 @@ const App: React.FC = () => {
     }
 
     return (
-        <div className={cx('d-flex', 'col-md-12')}>
+        <div className={cx('d-flex', 'col-md-12', 'justify-content-center')}>
             <div className={cx('col-md-7', 'mt-4')}>
                 <div >
                     <Select
@@ -95,7 +95,7 @@ const App: React.FC = () => {
                 </div>
             </div>
             <div className={cx('col-md-1')}></div>
-            <div className={cx('col-md-4', 'mt-3')}>
+            <div className={cx('col-md-3', 'mt-3')}>
                 {productDetails.map((productDetail) => (
                     <ProductDetailInMenu
                         name={productDetail.name}
