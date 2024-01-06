@@ -9,6 +9,7 @@ import ModalForm from '@/components/ModalForm/ModalForm';
 import { toast } from 'react-toastify';
 import classNames from 'classnames/bind';
 import styles from './Cart.module.scss';
+import Modal from 'react-bootstrap/Modal';
 const cx = classNames.bind(styles);
 /*
   Page: Cart
@@ -20,9 +21,20 @@ interface CartItemProps {
 
 const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
   const [isVisible, setIsVisible] = useState(true); // Thêm state mới
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const handleDelete = () => {
-    setIsVisible(false);
+    // setIsVisible(false);
+    setShowConfirmModal(true);
     // Hoặc bạn có thể thực hiện các xử lý khác tại đây
+  };
+  const handleConfirmDelete = () => {
+    // Xử lý xóa CartItem ở đây
+    setIsVisible(false);
+    setShowConfirmModal(false);
+  };
+
+  const handleCloseModal = () => {
+    setShowConfirmModal(false);
   };
   const customStyle: React.CSSProperties = {
     width: '140px',
@@ -95,6 +107,29 @@ const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
                 size='md'
                 onClick={handleDelete} // Gọi hàm handleDelete khi nhấn vào nút "Delete"
               />
+              <Modal
+                show={showConfirmModal}
+                onHide={handleCloseModal}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Xác nhận</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Bạn có chắc chắn muốn xóa sản phẩm này không?</Modal.Body>
+                <Modal.Footer>
+                  <Button
+                    variant='secondary'
+                    onClick={handleCloseModal}
+                  >
+                    Không
+                  </Button>
+                  <Button
+                    variant='primary'
+                    onClick={handleConfirmDelete}
+                  >
+                    Có
+                  </Button>
+                </Modal.Footer>
+              </Modal>
             </div>
           </Col>
         </Row>
