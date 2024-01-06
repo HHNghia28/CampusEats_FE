@@ -1,25 +1,31 @@
 'use client';
 // import React from 'react';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
-import { Button, Col, Form, Row, Table, Container, Image } from 'react-bootstrap';
 import ButtonBase from '@/components/Buttons/Button';
-import ModalBase from '@/components/Modal/Modal';
-import ModalForm from '@/components/ModalForm/ModalForm';
-import { toast } from 'react-toastify';
 import classNames from 'classnames/bind';
-import styles from './Cart.module.scss';
+import React, { useState } from 'react';
+import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
+import styles from './CartItem.module.scss';
 const cx = classNames.bind(styles);
 /*
   Page: Cart
   Author: QuyenNNM
 */
 interface CartItemProps {
-  updateTotal: (quantity: number) => void;
+  imageUrl: string;
+  name: string;
+  price: number;
+  quantity: number;
+  productId: number;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
+const CartItem: React.FC<CartItemProps> = ({
+  imageUrl,
+  name,
+  price,
+  productId,
+  quantity
+}) => {
   const [isVisible, setIsVisible] = useState(true); // Thêm state mới
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const handleDelete = () => {
@@ -36,22 +42,41 @@ const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
   const handleCloseModal = () => {
     setShowConfirmModal(false);
   };
+
   const customStyle: React.CSSProperties = {
     width: '140px',
     height: '140px',
     objectFit: 'cover' as 'cover'
   };
-  const [counter, setCounter] = useState(1);
+
+  const updateQuantityCart = (count: number) => {
+    const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    const orderDetail = cart.find(
+      item => item.productId == productId
+    );
+
+    if (orderDetail != undefined) {
+      if (orderDetail.quantity != undefined) {
+        orderDetail.quantity += count;
+      }
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+};
+
+
+  const [counter, setCounter] = useState(quantity);
 
   const handleIncrease = () => {
     setCounter(prevState => prevState + 1);
-    updateTotal(1);
+    updateQuantityCart(1);
   };
 
   const handleDecrease = () => {
     if (counter > 1) {
-      setCounter(counter - 1);
-      updateTotal(-1); // Giảm tổng số lượng khi giảm số lượng trong CartItem
+      setCounter(counter - 1); 
+      updateQuantityCart(-1);
     }
   };
 
@@ -64,7 +89,7 @@ const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
             <Image
-              src='https://pizzapoco.vn/wp-content/uploads/2021/05/pizzamoza.png'
+              src={imageUrl}
               style={customStyle}
             />
           </Col>
@@ -73,8 +98,8 @@ const CartItem: React.FC<CartItemProps> = ({ updateTotal }) => {
             md={4}
             className={cx('d-flex', 'flex-column', 'align-items-start')}
           >
-            <div className='py-2'>Name</div>
-            <div className='py-2'>Price</div>
+            <div className='py-2'>{name}</div>
+            <div className='py-2'>{price}</div>
           </Col>
 
           <Col

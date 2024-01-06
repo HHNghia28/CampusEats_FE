@@ -41,6 +41,28 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
   };
 
   const handleAddToCart = () => {
+    if (product != undefined) {
+      const orderDetail : OrderDetailDTO = {
+        productId : product.id,
+        price : product.price ? product.price : 0,
+        quantity : quantity,
+        categogyName : product.categoryName,
+        description : product.description,
+        fullName : product.fullName,
+        images : product.images,
+        note : ''
+      }
+
+      if (typeof window !== 'undefined') {
+
+        const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
+
+        cart.push(orderDetail);
+  
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
+    }
+
     console.log('Product added to cart');
     toast.success('Success message!');
   };
@@ -66,7 +88,7 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
   return (
     <div>
       {isPending ? (
-        <Loading/>
+        <Loading />
       ) : (
         <div className={cx('product-Container')}>
           <img
@@ -103,13 +125,13 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
                 size='md'
                 onClick={handleAddToCart}
               />
-              <ButtonBase
+              {/* <ButtonBase
                 type='button'
                 title='Buy Now'
                 variant='main'
                 size='md'
                 onClick={handleBuyNow}
-              />
+              /> */}
             </div>
           </div>
         </div>
