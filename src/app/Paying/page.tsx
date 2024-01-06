@@ -2,7 +2,7 @@
 import React from 'react';
 
 import classNames from 'classnames/bind';
-import styles from './paying.module.scss';
+import styles from './Paying.module.scss';
 const cx = classNames.bind(styles);
 const Paying = () => {
   return (
