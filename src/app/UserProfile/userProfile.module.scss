@@ -1,3 +1,37 @@
-.red {
-    color: red;
+.user-Info {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  h2 {
+    text-align: center;
+  }
+  p {
+    padding-left: 30%;
+  }
+}
+
+.order-History {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  h2 {
+    text-align: center;
+  }
+}
+
+.order-frame,
+.info-frame {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  background-color: #ffffff;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
 }
