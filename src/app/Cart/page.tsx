@@ -1,13 +1,9 @@
 'use client';
 // import React from 'react';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
-import { Button, Col, Form, Row, Table, Container, Image } from 'react-bootstrap';
 import ButtonBase from '@/components/Buttons/Button';
-import ModalBase from '@/components/Modal/Modal';
-import ModalForm from '@/components/ModalForm/ModalForm';
 import CartItem from '@/components/CartItem/CartItem';
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
+import { Col, Row } from 'react-bootstrap';
 
 /*
   Page: Cart
@@ -18,6 +14,9 @@ const Cart = () => {
   const updateTotal = (quantity: number) => {
     setTotal((prevTotal) => prevTotal + quantity);
   };
+
+  const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
+
   return (
     <Fragment>
       <h1 className="d-flex align-items-center justify-content-center">Cart</h1>
