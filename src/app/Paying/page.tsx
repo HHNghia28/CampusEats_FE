@@ -1,10 +1,13 @@
 'use client';
 import React from 'react';
-import styles from './Paying.module.scss';
+
+import classNames from 'classnames/bind';
+import styles from './paying.module.scss';
+const cx = classNames.bind(styles);
 const Paying = () => {
   return (
     <div>
-      <h1>Paying page</h1>
+      <h1 className={cx('red', 'mt-5')}>Paying page</h1>
     </div>
   );
 };
