@@ -53,11 +53,14 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
         note : ''
       }
 
-      const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
+      if (typeof window !== 'undefined') {
 
-      cart.push(orderDetail);
+        const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
 
-      localStorage.setItem('cart', JSON.stringify(cart));
+        cart.push(orderDetail);
+  
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
     }
 
     console.log('Product added to cart');
@@ -122,13 +125,13 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
                 size='md'
                 onClick={handleAddToCart}
               />
-              <ButtonBase
+              {/* <ButtonBase
                 type='button'
                 title='Buy Now'
                 variant='main'
                 size='md'
                 onClick={handleBuyNow}
-              />
+              /> */}
             </div>
           </div>
         </div>
