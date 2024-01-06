@@ -1,11 +1,10 @@
-'use client';
-import Image from 'next/image';
-import { Button, Navbar } from 'react-bootstrap';
-import classNames from 'classnames/bind';
-import styles from './home.module.scss';
+'use client'
 import ProductItem from '@/components/ProductItem/productItem';
 import VoucherItem from '@/components/VoucherItem/voucherItem';
+import classNames from 'classnames/bind';
 import Link from 'next/link';
+import { Navbar } from 'react-bootstrap';
+import styles from './home.module.scss';
 const cx = classNames.bind(styles);
 
 /*
