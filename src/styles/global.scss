@@ -2,6 +2,9 @@
     ***PLEASE NO EDIT ANYTHING IN THIS FILE
     ***KHOATD
 */
+// @import 'tailwindcss/base';
+// @import 'tailwindcss/components';
+// @import 'tailwindcss/utilities';
 
 :root {
     // my color
@@ -19,8 +22,8 @@
     --light: #FBFBFB;
     --dark: #332D2D;
 
-    --text-color: 332D2D;
-    --bg-main-color: #FBFBFB;
+    --text-color: #332D2D;
+    --bg-main-color: #DC4C64;
     --bg-primary-color: #FBFBFB;
     --bg-inside-color: 332D2D; 
 
