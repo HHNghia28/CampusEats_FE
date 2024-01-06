@@ -4,7 +4,7 @@ import ButtonBase from '@/components/Buttons/Button';
 import CartItem from '@/components/CartItem/CartItem';
 import { Fragment, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import styles from './Cart.module.scss';
+import styles from '@/components/CartItem/Cart.module.scss';
 import Modal from 'react-bootstrap/Modal';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
