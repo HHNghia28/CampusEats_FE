@@ -1,10 +1,9 @@
-'use client';
-import Image from 'next/image';
-import { Button, Card } from 'react-bootstrap';
+'use client'
 import classNames from 'classnames/bind';
-import styles from './productItem.module.scss';
-import ButtonBase from '../Buttons/Button';
 import { Metadata } from 'next';
+import { Card } from 'react-bootstrap';
+import ButtonBase from '../Buttons/Button';
+import styles from './productItem.module.scss';
 const cx = classNames.bind(styles);
 
 /*
