@@ -1,15 +1,14 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-const inter = Inter({ subsets: ['latin'] });
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import { Container } from 'react-bootstrap';
+import 'react-toastify/dist/ReactToastify.css';
+const inter = Inter({ subsets: ['latin'] });
 
-import '../styles/global.scss';
 import Footer from '@/components/Footer/Footer';
-import Home from './page';
 import Navigation from '@/components/Navbar/Navbar';
+import '../styles/global.scss';
+import Providers from './providers';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang='en'>
       <body className={inter.className}>
         <Navigation />
-        <Container>{children}</Container>
+        <Providers>{children}</Providers>
         <Footer />
         <ToastContainer />
       </body>
