@@ -1,21 +1,50 @@
 'use client';
-import React from 'react';
-import classNames from 'classnames/bind';
-import styles from './cart.module.scss';
-const cx = classNames.bind(styles);
+// import React from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { Button, Col, Form, Row, Table, Container, Image } from 'react-bootstrap';
+import ButtonBase from '@/components/Buttons/Button';
+import ModalBase from '@/components/Modal/Modal';
+import ModalForm from '@/components/ModalForm/ModalForm';
+import CartItem from '@/components/CartItem/CartItem';
+import { Fragment } from 'react';
 
 /*
   Page: Cart
   Author: QuyenNNM
 */
-
 const Cart = () => {
+  const [total, setTotal] = useState(3);
+  const updateTotal = (quantity: number) => {
+    setTotal((prevTotal) => prevTotal + quantity);
+  };
   return (
-    <div>
-      {/* Code here */}
-      <h1 className={cx('red', 'mt-5')}>Cart page</h1>
-    </div>
-  );
+    <Fragment>
+      <h1 className="d-flex align-items-center justify-content-center">Cart</h1>
+      <CartItem updateTotal={updateTotal} />
+      {<br />}
+      <CartItem updateTotal={updateTotal} />
+      {<br />}
+      <CartItem updateTotal={updateTotal} />
+      <Row>
+        <Col md={3}></Col>
+        <Col md={6} className="d-flex justify-content-center"><h4>Total: </h4></Col>
+        <Col md={3} className="d-flex align-items-center justify-content-center">
+          <div className="d-flex justify-content-end"><h4>{total}</h4></div>
+        </Col>
+      </Row>
+      <Row className="justify-content-center">
+        <Col xs="auto" className='m-4'>
+          <ButtonBase
+            type='button'
+            title='Order'
+            variant='main-color'
+            size='md'
+          />
+        </Col>
+      </Row>
+    </Fragment>
+  )
 };
 
 export default Cart;
