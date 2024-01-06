@@ -2,7 +2,7 @@ import axios from 'axios';
 import QueryString from 'qs';
 
 const instance = axios.create({
-  baseURL: 'http://campuseats-001-site1.atempurl.com/api',
+  baseURL: 'https://campuseats-001-site1.atempurl.com/api',
   headers: {
     'content-type': 'application/json'
   },
