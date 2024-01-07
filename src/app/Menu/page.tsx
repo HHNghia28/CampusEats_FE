@@ -75,18 +75,13 @@ const App: React.FC = () => {
                         className="basic-single"
                         classNamePrefix="select"
                         value={products[0]}
-                        // isDisabled={isDisabled}
-                        // isLoading={isLoading}
-                        // isClearable={isClearable}
-                        // isRtl={isRtl}
-                        // isSearchable={isSearchable}
                         name="color"
                         options={products}
                     />
                 </div>
                 <div>
                     <Fragment>
-                        <h3 className={cx('d-flex', 'align-items-center', 'justify-content-center', 'mt-3')}>Sản phẩm</h3>
+                        <h3 className={cx('d-flex', 'align-items-center', 'justify-content-center', 'mt-5')}>Sản phẩm</h3>
                         <ProductItemInMenu updateTotal={updateTotal} />
                         <Row>
                             <Col md={3}></Col>

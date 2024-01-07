@@ -1,10 +1,10 @@
 // Trong ProductDetail.tsx
-import React from 'react';
+import styles from '@/components/ProductDetailInMenu/productDetailInMenu.module.scss';
 import classNames from 'classnames/bind';
 import { Metadata } from 'next';
-import ButtonBase from '../Buttons/Button';
+import React from 'react';
 import { Card } from 'react-bootstrap';
-import styles from '@/components/ProductDetailInMenu/productDetailInMenu.module.scss';
+import ButtonBase from '../Buttons/Button';
 const cx = classNames.bind(styles);
 
 export const metadata: Metadata = {
@@ -28,10 +28,10 @@ const productDetailInMenu: React.FC<ProductDetailProps> = ({ name, image, type, 
         <div>
             <Card className={cx('mb-3')}>
                 <Card.Body className={cx('mt-1')}>
-                    <Card.Title className={cx('mb-2')}> Tên: {name}</Card.Title>
-                    <Card.Text className={cx('font-bold')}>Giá: {price} vnd</Card.Text>
-                    <Card.Text className={cx('font-bold')}>Loại: {type}</Card.Text>
-                    <Card.Text className={cx('font-bold')}>Số lượng còn: {quantityInStock}</Card.Text>
+                    <Card.Text className={cx('font-bold', 'mb-2')}> Tên: {name}</Card.Text>
+                    <Card.Text className={cx('font-bold', 'mb-2')}>Giá: {price} vnd</Card.Text>
+                    <Card.Text className={cx('font-bold', 'mb-2')}>Loại: {type}</Card.Text>
+                    <Card.Text className={cx('font-bold', 'mb-2')}>Số lượng còn: {quantityInStock}</Card.Text>
                     <Card.Img className={cx()} variant="top" src={image} alt={name} />
                     <div className={cx('text-center', 'mb-3', 'mt-1')}>
                         <ButtonBase
