@@ -2,37 +2,27 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import styles from './orderItem.module.scss';
 
-interface OrderItems {
-  order: {
-    orderId: string;
-    total: string;
-    address: string;
-    date: string;
-    status: string;
-  };
-}
-
-const OrderItem: React.FC<OrderItems> = ({ order }) => {
+const OrderItem: React.FC<OrderDTO> = ({ id, address, totalPrice, status }) => {
   return (
     <Container className={styles.orderItemContainer}>
       <Row className='d-flex align-items-center'>
         <Col md={6}>
           <p>
-            <strong>Order ID:</strong> #{order.orderId}
+            <strong>Order ID:</strong> #{id}
           </p>
           <p>
-            <strong>Address:</strong> {order.address}
+            <strong>Address:</strong> {address}
           </p>
           <p>
-            <strong>Date:</strong> {order.date}
+            <strong>Date:</strong> {"HI"}
           </p>
         </Col>
         <Col md={6}>
           <p>
-            <strong>Total:</strong> {order.total}
+            <strong>Total:</strong> {totalPrice}
           </p>
           <p>
-            <strong>Status:</strong> {order.status}
+            <strong>Status:</strong> {status}
           </p>
         </Col>
       </Row>

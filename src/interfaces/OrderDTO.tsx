@@ -10,4 +10,5 @@ interface OrderDTO {
     locationName: string;
     status?: string;
     details?: OrderDetailDTO[];
+    totalPrice?: number;
 }

@@ -2,55 +2,52 @@
 import ButtonBase from '@/components/Buttons/Button';
 import OrderItem from '@/components/OrderItem/OrderItem';
 import classNames from 'classnames/bind';
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import styles from './userProfile.module.scss';
+import { useQuery } from '@tanstack/react-query';
+import { getOrderByCustomerId } from '@/api/OrderAPI';
+import Loading from '@/components/Loading/loading';
+import Link from 'next/link';
 const cx = classNames.bind(styles);
 
 const UserProfile = () => {
-  const user = {
-    name: 'Le Van User1',
-    address: 'Ninh Kieu, Can Tho',
-    phone: '0123456789',
-    email: 'user1@gmail.com'
-  };
+  const [orders, setOrders] = useState<OrderDTO[]>();
 
-  const orders = [
-    {
-      orderId: 'ce00001',
-      total: '50.000 Vnđ',
-      address: 'Thoi Binh, Ca Mau',
-      date: '06-01-2024',
-      status: 'Delivered'
-    },
-    {
-      orderId: 'ce00002',
-      total: '60.000 Vnđ',
-      address: 'Thoi Binh, Ca Mau',
-      date: '01-01-2024',
-      status: 'Cancel'
-    },
-    {
-      orderId: 'ce00003',
-      total: '70.000 Vnđ',
-      address: 'Thoi Binh, Ca Mau',
-      date: '02-01-2024',
-      status: 'Delivered'
-    },
-    {
-      orderId: 'ce00004',
-      total: '80.000 Vnđ',
-      address: 'Thoi Binh, Ca Mau',
-      date: '05-01-2024',
-      status: 'Complete'
+  const {
+    isPending,
+    isError,
+    data: results,
+    error
+  } = useQuery({
+    queryKey: ['userProfile', '420292'],
+    queryFn: async () => {
+      const data = await getOrderByCustomerId('420292');
+      return data;
     }
-  ];
+  });
 
-  const [allOrders, setAllOrders] = React.useState(false);
+  if (!isPending && results?.data !== undefined && results?.data !== orders) {
+    let temp: OrderDTO[] = results.data;
 
-  const handleToggleOrders = () => {
-    setAllOrders(!allOrders);
-  };
+    temp.forEach(item => {
+      let totalPrice = 0;
+
+      if (item.details && item.details.length > 0) {
+        totalPrice = item.details.reduce((accumulator, currentItem) => {
+          return accumulator + currentItem.price * currentItem.quantity;
+        }, 0);
+      }
+
+      item.totalPrice = totalPrice;
+    });
+
+    setOrders(temp);
+  }
+
+  // const handleToggleOrders = () => {
+  //   setOrders(!orders);
+  // };
 
   return (
     <Container>
@@ -65,10 +62,10 @@ const UserProfile = () => {
               className='left-details'
             >
               <p>
-                <strong>Name:</strong> {user.name}
+                <strong>Name:</strong> {orders ? orders[0].receiver : ''}
               </p>
               <p>
-                <strong>Address:</strong> {user.address}
+                <strong>Address:</strong> {orders ? orders[0].address : ''}
               </p>
             </Col>
             <Col
@@ -76,26 +73,34 @@ const UserProfile = () => {
               className='right-details text-right'
             >
               <p>
-                <strong>Phone Number:</strong> {user.phone}
+                <strong>Phone Number:</strong> {orders ? orders[0].contactNumber : ''}
               </p>
-              <p>
+              {/* <p>
                 <strong>Email:</strong> {user.email}
-              </p>
+              </p> */}
             </Col>
           </Row>
         </div>
       </div>
       <div className={cx('order-History')}>
         <h2 className='title '>Order History</h2>
-        {orders.slice(0, allOrders ? orders.length : 2).map(order => (
-          <div
-            key={order.orderId}
-            className={cx('order-frame')}
-          >
-            <OrderItem order={order} />
-          </div>
-        ))}
-        {orders.length > 2 && (
+        {isPending ? (
+          <Loading />
+        ) : orders && orders.length > 0 ? (
+          orders.map(item => (
+            <div
+              key={item.orderId}
+              className={cx('order-frame')}
+            >
+              <Link href={`/OrderHistory/${item.id}`}>
+                <OrderItem {...item} />
+              </Link>
+            </div>
+          ))
+        ) : (
+          <p>Bạn không có đơn hàng nào</p>
+        )}
+        {/* {orders.length > 2 && (
           <div className={cx('button-group')}>
             <ButtonBase
               type='button'
@@ -105,7 +110,7 @@ const UserProfile = () => {
               onClick={handleToggleOrders}
             />
           </div>
-        )}
+        )} */}
       </div>
     </Container>
   );

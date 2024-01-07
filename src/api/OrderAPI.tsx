@@ -21,9 +21,19 @@ const addOrder = async (order : OrderDTO): Promise<APIResponse<PaymentLinkDTO>> 
       const response = await instance.get(`/Orders/getOrderByOrderID?id=${id}`);
       return response.data;
     } catch (error) {
-      console.error(`Error fetching product with ID ${id}:`, error);
+      console.error(`Error fetching order with ID ${id}:`, error);
       throw error;
     }
   };
 
-export { addOrder, getOrderByOrderId };
+  const getOrderByCustomerId = async (id: string): Promise<APIResponse<OrderDTO[]>> => {
+    try {
+      const response = await instance.get(`/Orders/getOrders?id=${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching order with ID ${id}:`, error);
+      throw error;
+    }
+  };
+
+export { addOrder, getOrderByOrderId, getOrderByCustomerId };
