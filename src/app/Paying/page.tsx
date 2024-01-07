@@ -1,11 +1,15 @@
 'use client';
 import classNames from 'classnames/bind';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import styles from './Paying.module.scss';
 
 import ButtonBase from '@/components/Buttons/Button';
 import PayingItem from '@/components/PayingItem/PayingItem';
+import { loginAPI } from '@/api/AuthAPI';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { addOrder } from '@/api/OrderAPI';
+import { toast } from 'react-toastify';
 
 const divStyle = {
   backgroundColor: '#DCDCDC',
@@ -15,10 +19,85 @@ const divStyle = {
 };
 const cx = classNames.bind(styles);
 const Paying = () => {
-  const [total, setTotal] = useState(60000);
+  const [total, setTotal] = useState(0);
+  const [cart, setCart] = useState<OrderDetailDTO[]>();
+  const [customer, setCustomer] = useState<CustomerDTO | null>(null);
+
+  const login: LoginDTO = {
+    phone: '0987654321',
+    password: '123'
+  };
+
+  const {
+    isPending,
+    isError,
+    data: results,
+    error
+  } = useQuery({
+    queryKey: ['account', login],
+    queryFn: async () => {
+      const data = await loginAPI(login);
+      return data;
+    }
+  });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
+
+      let totalPrice = 0;
+
+      if (cart && cart.length > 0) {
+        totalPrice = cart.reduce((accumulator, currentItem) => {
+          return accumulator + currentItem.price * currentItem.quantity;
+        }, 0);
+      }
+
+      setTotal(totalPrice);
+      setCart(cart);
+
+      const storedCustomer = localStorage.getItem('account');
+      if (storedCustomer) {
+        setCustomer(JSON.parse(storedCustomer));
+      }
+    }
+  }, []);
+
+  const mutationAddOrder = useMutation({
+    mutationFn: (order: OrderDTO) => {
+      return addOrder(order);
+    },
+    onSuccess: (data, variables, context) => {
+      if (data?.data?.paymentUrl) {
+        window.location.href = data.data.paymentUrl;
+      } else {
+        toast.error(data.message);
+      }
+    }
+  });
+
+  const handlePayingClick = () => {
+    if (customer != null) {
+      const order: OrderDTO = {
+        branchId: 6183,
+        customerId: customer?.id,
+        receiver: customer?.name,
+        contactNumber: customer?.contactNumber,
+        address: customer?.address,
+        locationName: customer?.locationName
+          ? customer.locationName
+          : 'An Bình, Ninh Kiều, Cần Thơ',
+        details: cart
+      };
+
+      mutationAddOrder.mutate(order);
+    }
+  };
+
   const updateTotal = (quantity: number) => {
     setTotal(prevTotal => prevTotal + quantity);
   };
+
   const handleBackClick = () => {
     console.log('Button Clicked!');
     window.location.href = 'http://localhost:3000/Cart';
@@ -26,9 +105,9 @@ const Paying = () => {
   return (
     <Fragment>
       <div style={divStyle}>
-        <p>Name: Nguyen Van A</p>
-        <p>Sdt: 0123456789</p>
-        <p>D/c: Nhu con mua hoang qua trong mot giac mo</p>
+        <p>Name: {customer?.name}</p>
+        <p>Sdt: {customer?.contactNumber}</p>
+        <p>D/c: {customer?.address}</p>
       </div>
       <div>
         <h1 className={cx('d-flex', 'align-items-center', 'justify-content-center')}>
@@ -62,11 +141,18 @@ const Paying = () => {
           </Col>
         </Row>
       </div>
-      <PayingItem updateTotal={updateTotal} />
-      <br />
-      <PayingItem updateTotal={updateTotal} />
-      <br />
-      <PayingItem updateTotal={updateTotal} />
+      {cart?.map((item, index) => (
+        <Fragment key={index}>
+          <PayingItem
+            imageUrl={item.images ? item.images[0] : ''}
+            name={item.fullName ? item.fullName : ''}
+            price={item.price}
+            productId={item.productId}
+            quantity={item.quantity}
+          />
+          <br />
+        </Fragment>
+      ))}
       <Col className={cx('text-start', 'p-t-22')}>
         <h4>Note order</h4>
       </Col>
@@ -111,6 +197,7 @@ const Paying = () => {
             title='Paying'
             variant='main-color'
             size='md'
+            onClick={handlePayingClick}
           />
         </Col>
       </Row>

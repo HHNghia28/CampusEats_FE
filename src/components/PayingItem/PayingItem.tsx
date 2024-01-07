@@ -10,42 +10,37 @@ const cx = classNames.bind(styles);
   Author: QuyenNNM
 */
 interface PayingItemProps {
-  updateTotal: (quantity: number) => void;
+  // updateTotal: (quantity: number) => void;
+  imageUrl: string;
+  name: string;
+  price: number;
+  quantity: number;
+  productId: number;
 }
-const product = [
-  {
-    name: 'Banh My',
-    price: 20000
-  },
-  {
-    name: 'Pizza',
-    price: 50000
-  },
-  {
-    name: 'Com tam',
-    price: 25000
-  }
-];
-const PayingItem: React.FC<PayingItemProps> = ({ updateTotal }) => {
+const PayingItem: React.FC<PayingItemProps> = ({ imageUrl,
+  name,
+  price,
+  productId,
+  quantity }) => {
   const customStyle: React.CSSProperties = {
     width: '140px',
     height: '140px',
     objectFit: 'cover' as 'cover'
   };
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(quantity);
 
-  const [price, setPrice] = useState(20000);
+  // const [price, setPrice] = useState(20000);
   const handleIncrease = () => {
     setCounter(prevState => prevState + 1);
-    setPrice(price + 20000);
-    updateTotal(20000);
+    // setPrice(price + 20000);
+    // updateTotal(20000);
   };
 
   const handleDecrease = () => {
     if (counter > 1) {
       setCounter(counter - 1);
-      setPrice(price - 20000);
-      updateTotal(-20000);
+      // setPrice(price - 20000);
+      // updateTotal(-20000);
     }
   };
 
@@ -58,7 +53,7 @@ const PayingItem: React.FC<PayingItemProps> = ({ updateTotal }) => {
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
             <Image
-              src='https://pizzapoco.vn/wp-content/uploads/2021/05/pizzamoza.png'
+              src={imageUrl}
               style={customStyle}
             />
           </Col>
@@ -67,25 +62,25 @@ const PayingItem: React.FC<PayingItemProps> = ({ updateTotal }) => {
             md={6}
             className={cx('d-flex', 'flex-column', 'align-items-start')}
           >
-            <div className={cx('py-2')}>Pizza</div>
+            <div className={cx('py-2')}>{name}</div>
             <div
               className={cx('d-flex', 'align-items-center', 'justify-center', 'gap-2')}
             >
-              <Button
+              {/* <Button
                 size='sm'
                 onClick={handleDecrease}
                 variant='outline-secondary'
               >
                 -
-              </Button>
+              </Button> */}
               <h5 className={cx('mb-0')}>{counter}</h5>
-              <Button
+              {/* <Button
                 size='sm'
                 onClick={handleIncrease}
                 variant='outline-secondary'
               >
                 +
-              </Button>
+              </Button> */}
             </div>
           </Col>
 
