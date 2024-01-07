@@ -54,10 +54,15 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
       }
 
       if (typeof window !== 'undefined') {
-
         const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
-
-        cart.push(orderDetail);
+  
+        const existingItemIndex = cart.findIndex(item => item.productId === orderDetail.productId);
+  
+        if (existingItemIndex !== -1) {
+          cart[existingItemIndex].quantity += orderDetail.quantity;
+        } else {
+          cart.push(orderDetail);
+        }
   
         localStorage.setItem('cart', JSON.stringify(cart));
       }

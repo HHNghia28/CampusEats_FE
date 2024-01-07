@@ -11,7 +11,14 @@ const Navigation = () => {
       className='bg-body-tertiary'
     >
       <Container>
-        <Navbar.Brand href='#home'>G1-Food</Navbar.Brand>
+        <Navbar.Brand>
+          <Link
+            href={'/'}
+            className='nav-link'
+          >
+            G1-Food
+          </Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='flex justify-between items'>
@@ -26,6 +33,12 @@ const Navigation = () => {
               className='nav-link'
             >
               About
+            </Link>
+            <Link
+              href={'/Cart'}
+              className='nav-link'
+            >
+              Cart
             </Link>
             <Link
               href={'/Login'}

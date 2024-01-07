@@ -31,7 +31,7 @@ const CartItem: React.FC<CartItemProps> = ({
   const handleDelete = () => {
     // setIsVisible(false);
     setShowConfirmModal(true);
-    // Hoặc bạn có thể thực hiện các xử lý khác tại đây
+    deleteCart(productId);
   };
   const handleConfirmDelete = () => {
     // Xử lý xóa CartItem ở đây
@@ -52,9 +52,7 @@ const CartItem: React.FC<CartItemProps> = ({
   const updateQuantityCart = (count: number) => {
     const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
 
-    const orderDetail = cart.find(
-      item => item.productId == productId
-    );
+    const orderDetail = cart.find(item => item.productId == productId);
 
     if (orderDetail != undefined) {
       if (orderDetail.quantity != undefined) {
@@ -63,8 +61,15 @@ const CartItem: React.FC<CartItemProps> = ({
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
-};
+  };
 
+  const deleteCart = (productId: number) => {
+    const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    const updatedCart = cart.filter(item => item.productId !== productId);
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
 
   const [counter, setCounter] = useState(quantity);
 
@@ -75,7 +80,7 @@ const CartItem: React.FC<CartItemProps> = ({
 
   const handleDecrease = () => {
     if (counter > 1) {
-      setCounter(counter - 1); 
+      setCounter(counter - 1);
       updateQuantityCart(-1);
     }
   };
