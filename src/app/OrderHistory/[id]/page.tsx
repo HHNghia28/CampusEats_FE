@@ -34,23 +34,22 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
 
   if (!isPending && results?.data !== undefined && results?.data !== order) {
     setOrder(results?.data);
-  }
 
-  useEffect(() => {
     let totalPrice = 0;
 
-    if (order?.details && order?.details.length > 0) {
-      totalPrice = order?.details.reduce((accumulator, currentItem) => {
+    if (results?.data?.details && results?.data?.details.length > 0) {
+      totalPrice = results?.data?.details.reduce((accumulator, currentItem) => {
         return accumulator + currentItem.price * currentItem.quantity;
       }, 0);
     }
 
     setTotal(totalPrice);
-  }, []);
+  }
 
   return (
     <Fragment>
       <div style={divStyle}>
+        <p>Mã đơn: {order?.id}</p>
         <p>Name: {order?.receiver}</p>
         <p>Sdt: {order?.contactNumber}</p>
         <p>D/c: {order?.address}</p>
