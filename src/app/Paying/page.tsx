@@ -77,21 +77,33 @@ const Paying = () => {
   });
 
   const handlePayingClick = () => {
-    if (customer != null) {
-      const order: OrderDTO = {
-        branchId: 6183,
-        customerId: customer?.id,
-        receiver: customer?.name,
-        contactNumber: customer?.contactNumber,
-        address: customer?.address,
-        locationName: customer?.locationName
-          ? customer.locationName
-          : 'An Bình, Ninh Kiều, Cần Thơ',
-        details: cart
-      };
+    // if (customer != null) {
+    //   const order: OrderDTO = {
+    //     branchId: 6183,
+    //     customerId: customer?.id,
+    //     receiver: customer?.name,
+    //     contactNumber: customer?.contactNumber,
+    //     address: customer?.address,
+    //     locationName: customer?.locationName
+    //       ? customer.locationName
+    //       : 'An Bình, Ninh Kiều, Cần Thơ',
+    //     details: cart
+    //   };
 
-      mutationAddOrder.mutate(order);
-    }
+    //   mutationAddOrder.mutate(order);
+    // }
+
+    const order: OrderDTO = {
+      branchId: 6183,
+      customerId: 420292,
+      receiver: 'Lê Văn CampusEats',
+      contactNumber: '0832474699',
+      address: '600 Nguyễn Văn Cừ Nối Dài',
+      locationName: 'An Bình, Ninh Kiều, Cần Thơ',
+      details: cart
+    };
+
+    mutationAddOrder.mutate(order);
   };
 
   const updateTotal = (quantity: number) => {
