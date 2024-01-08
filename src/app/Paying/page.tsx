@@ -22,6 +22,11 @@ const Paying = () => {
   const [total, setTotal] = useState(0);
   const [cart, setCart] = useState<OrderDetailDTO[]>();
   const [customer, setCustomer] = useState<CustomerDTO | null>(null);
+  const [isPay, setIsPay] = useState(false);
+
+  const handleCheckboxPayChange = () => {
+    setIsPay(!isPay);
+  };
 
   const login: LoginDTO = {
     phone: '0987654321',
@@ -100,6 +105,7 @@ const Paying = () => {
       contactNumber: '0832474699',
       address: '600 Nguyễn Văn Cừ Nối Dài',
       locationName: 'An Bình, Ninh Kiều, Cần Thơ',
+      isPay: isPay,
       details: cart
     };
 
@@ -186,6 +192,17 @@ const Paying = () => {
           </div>
         </Col>
       </Row>
+      <div>
+      <label>
+        <input 
+          type="checkbox" 
+          checked={isPay} 
+          onChange={handleCheckboxPayChange} 
+        />
+        Thanh toán online
+      </label>
+      {isPay && <p>Bạn đã chọn thanh toán online.</p>}
+    </div>
       <Row
         className={cx(
           'd-flex',

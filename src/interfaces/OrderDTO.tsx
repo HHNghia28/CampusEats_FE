@@ -11,4 +11,5 @@ interface OrderDTO {
     status?: string;
     details?: OrderDetailDTO[];
     totalPrice?: number;
+    isPay?: boolean;
 }
