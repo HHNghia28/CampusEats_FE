@@ -5,7 +5,9 @@ import CartItem from '@/components/CartItem/CartItem';
 import Link from 'next/link';
 import { Fragment, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-
+import classNames from 'classnames/bind';
+import styles from './Cart.module.scss';
+const cx = classNames.bind(styles);
 /*
   Page: Cart
   Author: QuyenNNM
@@ -20,8 +22,46 @@ const Cart = () => {
   }
 
   return (
-    <Fragment>
-      <h1 className='d-flex align-items-center justify-content-center'>Cart</h1>
+    <div className='container'>
+      <h1 className='d-flex text-start'>GIỎ HÀNG CỦA TÔI</h1>
+      <Row className='d-flex align-items-center'>
+        <Col
+          md='2'
+          className='d-flex align-items-center justify-content-center'
+        >
+          Ảnh sản phẩm
+        </Col>
+        <Col
+          md='2'
+          className='d-flex align-items-center justify-content-center'
+        >
+          Tên sản phẩm
+        </Col>
+        <Col
+          md='2'
+          className='d-flex align-items-center justify-content-center'
+        >
+          Đơn giá
+        </Col>
+        <Col
+          md='2'
+          className='d-flex align-items-center justify-content-center'
+        >
+          Số lượng
+        </Col>
+        <Col
+          md='2'
+          className='d-flex align-items-center justify-content-center'
+        >
+          Thành tiền
+        </Col>
+        <Col
+          md='2'
+          className='d-flex align-items-center justify-content-center'
+        >
+          Xóa
+        </Col>
+      </Row>
       {cart.map((item, index) => (
         <Fragment key={index}>
           <CartItem
@@ -66,7 +106,10 @@ const Cart = () => {
           </Link>
         </Col>
       </Row>
-    </Fragment>
+    </div>
+    // <Fragment>
+
+    // </Fragment>
   );
 };
 

@@ -1,10 +1,10 @@
 'use client';
 // import React from 'react';
 import ButtonBase from '@/components/Buttons/Button';
-import classNames from 'classnames/bind';
 import React, { useState } from 'react';
 import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
+import classNames from 'classnames/bind';
 import styles from './CartItem.module.scss';
 const cx = classNames.bind(styles);
 /*
@@ -89,8 +89,9 @@ const CartItem: React.FC<CartItemProps> = ({
     <div>
       <Container>
         <Row className={cx('d-flex', 'align-items-center')}>
+          {/* Hình ảnh sản phẩm */}
           <Col
-            md={4}
+            md={2}
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
             <Image
@@ -98,17 +99,23 @@ const CartItem: React.FC<CartItemProps> = ({
               style={customStyle}
             />
           </Col>
-
+          {/* Tên sản phẩm */}
           <Col
-            md={4}
-            className={cx('d-flex', 'flex-column', 'align-items-start')}
+            md={2}
+            className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
             <div className='py-2'>{name}</div>
+          </Col>
+          {/* Giá sản phẩm */}
+          <Col
+            md={2}
+            className={cx('d-flex', 'align-items-center', 'justify-content-center')}
+          >
             <div className='py-2'>{price}</div>
           </Col>
-
+          {/* Số lượng sản phẩm */}
           <Col
-            md={4}
+            md={2}
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
             <div
@@ -129,7 +136,21 @@ const CartItem: React.FC<CartItemProps> = ({
               >
                 +
               </Button>
-
+            </div>
+          </Col>
+          {/* Thành tiền */}
+          <Col
+            md={2}
+            className={cx('d-flex', 'align-items-center', 'justify-content-center')}
+          >
+            <div className='py-2'>Thành tiền</div>
+          </Col>
+          {/* Xóa sản phẩm */}
+          <Col
+            md={2}
+            className={cx('d-flex', 'flex-column', 'align-items-start')}
+          >
+            <div className='py-2'>
               <ButtonBase
                 type='button'
                 title='Delete'
