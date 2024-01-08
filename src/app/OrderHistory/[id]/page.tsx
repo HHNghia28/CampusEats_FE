@@ -53,6 +53,7 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
         <p>Name: {order?.receiver}</p>
         <p>Sdt: {order?.contactNumber}</p>
         <p>D/c: {order?.address}</p>
+        <p>Thanh Toán: {order?.status == "Paid" ? "Đã thanh toán" : "Chưa thanh toán"}</p>
       </div>
       <div>
         <h1 className={cx('d-flex', 'align-items-center', 'justify-content-center')}>
