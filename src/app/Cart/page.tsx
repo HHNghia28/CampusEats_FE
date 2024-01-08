@@ -3,7 +3,7 @@
 import ButtonBase from '@/components/Buttons/Button';
 import CartItem from '@/components/CartItem/CartItem';
 import Link from 'next/link';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import classNames from 'classnames/bind';
 import styles from './Cart.module.scss';
@@ -14,13 +14,22 @@ const cx = classNames.bind(styles);
 */
 const Cart = () => {
   const [total, setTotal] = useState(3);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   let cart: OrderDetailDTO[] = [];
 
   if (typeof window !== 'undefined') {
     cart = JSON.parse(localStorage.getItem('cart') || '[]');
   }
+  useEffect(() => {
+    // Calculate total price based on items in the cart
+    const totalPrice = cart.reduce((acc, item) => {
+      return acc + item.price * item.quantity;
+    }, 0);
 
+    // Update the state with the calculated total price
+    setTotalPrice(totalPrice);
+  }, [cart]);
   return (
     <div className='container'>
       <h1 className='d-flex text-start'>GIỎ HÀNG CỦA TÔI</h1>
@@ -74,8 +83,18 @@ const Cart = () => {
           <br />
         </Fragment>
       ))}
-      {/* <Row>
-        <Col md={3}></Col>
+
+      <Row>
+        <Col md={3}>
+          <Link href={'/'}>
+            <ButtonBase
+              type='button'
+              title='Tiếp tục mua sắm'
+              variant='main-color'
+              size='md'
+            />
+          </Link>
+        </Col>
         <Col
           md={6}
           className='d-flex justify-content-center'
@@ -87,10 +106,10 @@ const Cart = () => {
           className='d-flex align-items-center justify-content-center'
         >
           <div className='d-flex justify-content-end'>
-            <h4>{total}</h4>
+            <h4>Total: ${totalPrice.toFixed(2)}</h4>
           </div>
         </Col>
-      </Row> */}
+      </Row>
       <Row className='justify-content-center'>
         <Col
           xs='auto'

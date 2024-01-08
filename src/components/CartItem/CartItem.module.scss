@@ -1,0 +1,11 @@
+.icon-delete {
+    &.cursor-pointer {
+      // Default styles
+      color: gray;
+      cursor: pointer;
+      // Hover styles
+      &:hover {
+        color: orange; // Change this to your desired hover color
+      }
+    }
+  }

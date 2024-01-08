@@ -6,6 +6,8 @@ import { Button, Col, Container, Image, Row } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
 import classNames from 'classnames/bind';
 import styles from './CartItem.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 const cx = classNames.bind(styles);
 /*
   Page: Cart
@@ -143,20 +145,25 @@ const CartItem: React.FC<CartItemProps> = ({
             md={2}
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
-            <div className='py-2'>Thành tiền</div>
+            <div className='py-2'>{price * counter}</div>
           </Col>
           {/* Xóa sản phẩm */}
           <Col
             md={2}
-            className={cx('d-flex', 'flex-column', 'align-items-start')}
+            className={cx('d-flex', 'flex-column', 'align-items-center')}
           >
             <div className='py-2'>
-              <ButtonBase
+              {/* <ButtonBase
                 type='button'
                 title='Delete'
                 variant='main-color'
                 size='md'
                 onClick={handleDelete} // Gọi hàm handleDelete khi nhấn vào nút "Delete"
+              /> */}
+              <FontAwesomeIcon
+                icon={faTrashAlt}
+                onClick={handleDelete}
+                className={cx('cursor-pointer', 'icon-delete', 'cursor-pointer')} // Thêm className để tạo hiệu ứng con trỏ khi di chuyển qua nút
               />
               <Modal
                 show={showConfirmModal}
