@@ -49,7 +49,7 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
   return (
     <Fragment>
       <div style={divStyle}>
-        <p>Mã đơn: {order?.id}</p>
+        <p>Mã đơn: {order?.code}</p>
         <p>Name: {order?.receiver}</p>
         <p>Sdt: {order?.contactNumber}</p>
         <p>D/c: {order?.address}</p>
