@@ -2,7 +2,7 @@
 import ButtonBase from '@/components/Buttons/Button';
 import OrderItem from '@/components/OrderItem/OrderItem';
 import classNames from 'classnames/bind';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import styles from './userProfile.module.scss';
 import { useQuery } from '@tanstack/react-query';
@@ -13,6 +13,17 @@ const cx = classNames.bind(styles);
 
 const UserProfile = () => {
   const [orders, setOrders] = useState<OrderDTO[]>();
+  const [customer, setCustomer] = useState<CustomerDTO | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+
+      const storedCustomer = localStorage.getItem('account');
+      if (storedCustomer) {
+        setCustomer(JSON.parse(storedCustomer));
+      }
+    }
+  }, []);
 
   const {
     isPending,
@@ -62,10 +73,10 @@ const UserProfile = () => {
               className='left-details'
             >
               <p>
-                <strong>Name:</strong> {orders ? orders[0].receiver : ''}
+                <strong>Name:</strong> {customer?.name}
               </p>
               <p>
-                <strong>Address:</strong> {orders ? orders[0].address : ''}
+                <strong>Address:</strong> {customer?.address}
               </p>
             </Col>
             <Col
@@ -73,7 +84,7 @@ const UserProfile = () => {
               className='right-details text-right'
             >
               <p>
-                <strong>Phone Number:</strong> {orders ? orders[0].contactNumber : ''}
+                <strong>Phone Number:</strong> {customer?.contactNumber}
               </p>
               {/* <p>
                 <strong>Email:</strong> {user.email}
