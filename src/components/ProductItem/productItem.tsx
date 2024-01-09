@@ -35,17 +35,19 @@ const ProductItem: React.FC<ProductItemProps> = ({
   }
 
   return (
-    <Link href={`/Product/${productId}`}  className={cx('productItem', 'col-md-2', 'm-2', 'mb-3')}>
-      <Card>
-        <Card.Img
-          className={cx('card-img-top')}
-          variant='top'
-          src={imageSrc}
-          alt={name}
-        />
+    <Link href={`/Product/${productId}`} className={cx('productItem', 'col-md-3', 'm-2', 'mb-3', 'navbar-brand')}>
+      <Card className={cx('card-item')}>
+        <div className={cx('div-card')}>
+          <Card.Img
+            className={cx('card-img-top', 'p-2')}
+            variant='top'
+            src={imageSrc}
+            alt={name}
+          />
+        </div>
         <Card.Body className={cx('flex', 'flex-col', 'text-center')}>
-          <Card.Title className={cx('mb-2')}>{name}</Card.Title>
-          <Card.Text className={cx('font-bold')}>${price}</Card.Text>
+          <Card.Title className={cx('mb-2', 'font-arial', 'fw-600')}>{name}</Card.Title>
+          <Card.Text className={cx('font-bold', 'font-arial')}>{price} VND</Card.Text>
           <ButtonBase
             type='button'
             title='Mua ngay'
