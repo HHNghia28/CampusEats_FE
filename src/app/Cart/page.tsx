@@ -7,6 +7,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import classNames from 'classnames/bind';
 import styles from './Cart.module.scss';
+
 const cx = classNames.bind(styles);
 /*
   Page: Cart
@@ -36,8 +37,8 @@ const Cart = () => {
   };
   return (
     <div className='container'>
-      <h1 className='d-flex text-start'>GIỎ HÀNG CỦA TÔI</h1>
-      <Row className='d-flex align-items-center'>
+      <h2 className='d-flex text-start py-4 '>GIỎ HÀNG CỦA TÔI</h2>
+      <Row className='d-flex align-items-center py-4 bg-gray-400'>
         <Col
           md='2'
           className='d-flex align-items-center justify-content-center'
