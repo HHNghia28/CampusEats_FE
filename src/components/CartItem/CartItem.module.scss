@@ -1,11 +1,25 @@
 .icon-delete {
-    &.cursor-pointer {
-      // Default styles
-      color: gray;
-      cursor: pointer;
-      // Hover styles
-      &:hover {
-        color: orange; // Change this to your desired hover color
-      }
+  &.cursor-pointer {
+    // Default styles
+    color: gray;
+    cursor: pointer;
+    // Hover styles
+    &:hover {
+      color: orange; // Change this to your desired hover color
     }
   }
+}
+.hoverText {
+  font-family: 'Arial, sans-serif';
+  color: #333333;
+  cursor: pointer;
+  &:hover {
+    color: #fdb217; // Sử dụng mã màu cam mà bạn muốn
+  }
+}
+.text-main-color {
+  color: #f7a100;
+}
+.hr-color {
+  color: #9fa6b2;
+}

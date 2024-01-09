@@ -48,8 +48,8 @@ const CartItem: React.FC<CartItemProps> = ({
   };
 
   const customStyle: React.CSSProperties = {
-    width: '140px',
-    height: '140px',
+    width: '110px',
+    height: '110px',
     objectFit: 'cover' as 'cover'
   };
 
@@ -95,7 +95,8 @@ const CartItem: React.FC<CartItemProps> = ({
 
   return isVisible ? (
     <div>
-      <Container>
+      <hr className={cx('hr-color')} />
+      <div>
         <Row className={cx('d-flex', 'align-items-center')}>
           {/* Hình ảnh sản phẩm */}
           <Col
@@ -105,6 +106,7 @@ const CartItem: React.FC<CartItemProps> = ({
             <Image
               src={imageUrl}
               style={customStyle}
+              thumbnail
             />
           </Col>
           {/* Tên sản phẩm */}
@@ -112,14 +114,24 @@ const CartItem: React.FC<CartItemProps> = ({
             md={2}
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
-            <div className='py-2'>{name}</div>
+            <div
+              className={cx('hoverText', 'py-2')}
+              style={{ fontFamily: 'Arial, sans-serif' }}
+            >
+              {name}
+            </div>
           </Col>
           {/* Giá sản phẩm */}
           <Col
             md={2}
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
-            <div className='py-2'>{price}</div>
+            <div
+              className={cx('text-main-color', 'py-2')}
+              style={{ fontFamily: 'Arial, sans-serif' }}
+            >
+              {price}₫
+            </div>
           </Col>
           {/* Số lượng sản phẩm */}
           <Col
@@ -136,7 +148,12 @@ const CartItem: React.FC<CartItemProps> = ({
               >
                 -
               </Button>
-              <h5 className={cx('mb-0')}>{counter}</h5>
+              <p
+                className={cx('mb-0')}
+                style={{ fontFamily: 'Arial, sans-serif' }}
+              >
+                {counter}
+              </p>
               <Button
                 size='sm'
                 onClick={handleIncrease}
@@ -151,7 +168,12 @@ const CartItem: React.FC<CartItemProps> = ({
             md={2}
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
-            <div className='py-2'>{price * counter}</div>
+            <div
+              className={cx('text-main-color', 'py-2')}
+              style={{ fontFamily: 'Arial, sans-serif' }}
+            >
+              {price * counter}₫
+            </div>
           </Col>
           {/* Xóa sản phẩm */}
           <Col
@@ -169,7 +191,7 @@ const CartItem: React.FC<CartItemProps> = ({
               <FontAwesomeIcon
                 icon={faTrashAlt}
                 onClick={handleDelete}
-                className={cx('cursor-pointer', 'icon-delete', 'cursor-pointer')} // Thêm className để tạo hiệu ứng con trỏ khi di chuyển qua nút
+                className={cx('cursor-pointer', 'icon-delete')} // Thêm className để tạo hiệu ứng con trỏ khi di chuyển qua nút
               />
               <Modal
                 show={showConfirmModal}
@@ -197,7 +219,7 @@ const CartItem: React.FC<CartItemProps> = ({
             </div>
           </Col>
         </Row>
-      </Container>
+      </div>
     </div>
   ) : null;
 };
