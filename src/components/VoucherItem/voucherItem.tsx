@@ -20,21 +20,30 @@ export const metadata: Metadata = {
 interface VoucherItemProps {
     code: string;
     description: string;
+    imageSrc: string;
 }
 
-const VoucherItem: React.FC<VoucherItemProps> = ({ code, description }) => {
+const VoucherItem: React.FC<VoucherItemProps> = ({ code, description, imageSrc }) => {
     function handleClickButton(): void {
         throw new Error('Function not implemented.');
     }
 
     return (
-        <Card className={cx('col-md-2', 'm-2', 'mb-3')}>
-            <Card.Img className={cx('card-img-top')} variant="top" />
-            <Card.Body className={cx('flex', 'flex-col', 'text-center')}>
-                <Card.Title className={cx('mb-2')}>{code}</Card.Title>
-                <Card.Text className={cx('font-bold')}>{description}</Card.Text>
-            </Card.Body>
-        </Card>
+        <div>
+            <Card className={cx('m-2', 'mb-3', 'card-item')}>
+                <div className={cx('div-card')}>
+                    <Card.Img
+                        className={cx('card-img-top', 'mt-3')}
+                        variant='top'
+                        src={imageSrc}
+                        alt={code} />
+                </div>
+                <Card.Body className={cx('flex', 'flex-col', 'text-center')}>
+                    <Card.Title className={cx('mb-0', 'font-arial', 'fw-600')}>{code}</Card.Title>
+                    <Card.Text className={cx('font-bold', 'font-arial')}>{description}</Card.Text>
+                </Card.Body>
+            </Card>
+        </div>
     );
 };
 
