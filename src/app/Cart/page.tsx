@@ -41,15 +41,22 @@ const Cart = () => {
       <div className='container'>
         <div>
           <h2
-            className={cx('d-flex', 'text-start', 'py-4')}
+            className={cx('d-flex', 'text-start', 'py-4', 'ld-mt-250')}
             style={{ fontFamily: 'Arial, sans-serif', fontSize: 'var(--fs-xl)' }}
           >
             GIỎ HÀNG CỦA TÔI
           </h2>
         </div>
 
-        <div className={cx('table-bg-cart')}>
-          <Row className={cx('d-flex', 'align-items-center', 'pt-4')}>
+        <div className={cx('table-bg-cart', 'border', 'rounded')}>
+          <Row
+            className={cx(
+              'd-flex',
+              'align-items-center',
+              'justify-content-center',
+              'pt-4'
+            )}
+          >
             <Col
               md='2'
               className='d-flex align-items-center justify-content-center'
@@ -108,13 +115,30 @@ const Cart = () => {
             md='3'
             className='d-flex align-items-center justify-content-start'
           >
-            <Link href={'/'}>
-              <ButtonBase
-                type='button'
-                title='Tiếp tục mua sắm'
-                variant='main-color'
-                size='md'
-              />
+            <Link
+              href={'/'}
+              legacyBehavior
+            >
+              <a
+                style={{
+                  width: '100%',
+                  display: 'block',
+                  fontFamily: 'Arial, sans-serif'
+                }}
+              >
+                <ButtonBase
+                  type='button'
+                  title='Tiếp tục mua sắm'
+                  variant='main-color'
+                  size='md'
+                  styles={{
+                    width: '100%',
+                    borderRadius: '10px',
+                    backgroundColor: ' var(--white-color)',
+                    color: 'var(--dark)'
+                  }}
+                />
+              </a>
             </Link>
           </Col>
           <Col
@@ -152,16 +176,25 @@ const Cart = () => {
           ></Col>
           <Col
             md='4'
-            className='d-flex align-items-center justify-content-center'
-            style={{ backgroundColor: ' var(--btn-color)' }}
+            className='d-flex align-items-center justify-content-center mb-4'
           >
-            <Link href={'/Paying'}>
-              <ButtonBase
-                type='button'
-                title='Order'
-                variant='main-color'
-                size='md'
-              />
+            <Link
+              href={'/Paying'}
+              legacyBehavior
+            >
+              <a style={{ width: '100%', display: 'block' }}>
+                <ButtonBase
+                  type='button'
+                  title='Order'
+                  variant='main-color'
+                  size='md'
+                  styles={{
+                    width: '100%',
+                    borderRadius: '10px',
+                    backgroundColor: ' var(--btn-color)'
+                  }}
+                />
+              </a>
             </Link>
           </Col>
         </Row>
