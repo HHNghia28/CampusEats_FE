@@ -1,25 +1,36 @@
-@import '../../styles/variable';
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 .infoLogin {
   text-align: center;
+
   img {
     width: 20%;
-    height: 20%;
+    height: auto; 
   }
 
   h2 {
     margin-bottom: 10px;
-    color: $primary-color;
+    color: var(--title-color);
+  }
+
+  p {
+    margin: 10px 0;
   }
 }
 
 .loginForm {
   padding: 20px;
-  max-width: 100%;
-
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto; 
   form {
     margin-bottom: 20px;
-    padding: 0px 50px;
+
     p {
       margin-top: 10px;
     }
@@ -32,5 +43,28 @@
 
 .btnBack {
   text-align: right;
-  margin-right: 10%;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .loginForm form {
+    padding: 0 20px; 
+  }
+}
+
+@media (max-width: 375px) {
+  .infoLogin img {
+    width: 50%;
+  }
+
+  .loginForm {
+    form {
+      padding: 0 10px;
+    }
+  }
+
+  .btnBack {
+    text-align: right;
+    margin-right: 5%;
+  }
 }

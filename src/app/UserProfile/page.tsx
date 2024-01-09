@@ -17,7 +17,6 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-
       const storedCustomer = localStorage.getItem('account');
       if (storedCustomer) {
         setCustomer(JSON.parse(storedCustomer));
@@ -64,37 +63,32 @@ const UserProfile = () => {
     <Container>
       <div className={cx('user-Info')}>
         <div>
-          <h2 className='title'>User Information</h2>
+          <h2>Thông tin khách hàng</h2>
         </div>
         <div className={cx('info-frame')}>
-          <Row className='d-flex align-items-center'>
+          <Row className='d-flex '>
             <Col
               md={6}
-              className='left-details'
             >
               <p>
-                <strong>Name:</strong> {customer?.name}
+                <strong>Họ và Tên:</strong> {customer?.name}
               </p>
               <p>
-                <strong>Address:</strong> {customer?.address}
+                <strong>Địa chỉ:</strong> {customer?.address}
               </p>
             </Col>
             <Col
-              md={6}
-              className='right-details text-right'
+              md={6} 
             >
               <p>
-                <strong>Phone Number:</strong> {customer?.contactNumber}
+                <strong>Số điện thoại:</strong> {customer?.contactNumber}
               </p>
-              {/* <p>
-                <strong>Email:</strong> {user.email}
-              </p> */}
             </Col>
           </Row>
         </div>
       </div>
       <div className={cx('order-History')}>
-        <h2 className='title '>Order History</h2>
+        <h2 className='title '>Lịch sử mua hàng</h2>
         {isPending ? (
           <Loading />
         ) : orders && orders.length > 0 ? (

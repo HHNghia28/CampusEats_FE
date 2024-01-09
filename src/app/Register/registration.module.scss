@@ -1,19 +1,33 @@
+.d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .infoRegistration {
   text-align: center;
 
   img {
     width: 20%;
-    height: 20%;
+    height: auto;
   }
 
   h2 {
     margin-bottom: 10px;
+    color: var(--title-color);
+  }
+
+  p {
+    margin: 10px 0;
   }
 }
 
 .registrationForm {
   padding: 20px;
-  max-width: 100%;
+  margin-left: 36%; 
+  max-width: 400px;
+  width: 100%;
 
   form {
     margin-bottom: 20px;
@@ -30,5 +44,11 @@
 
 .btnBack {
   text-align: right;
-  padding-right: 4%;
+}
+
+
+@media (max-width: 768px) {
+  .registrationForm {
+    margin-left: 0; 
+  }
 }

@@ -8,21 +8,18 @@ const OrderItem: React.FC<OrderDTO> = ({ id, address, totalPrice, status }) => {
       <Row className='d-flex align-items-center'>
         <Col md={6}>
           <p>
-            <strong>Order ID:</strong> #{id}
+            <strong>Mã đơn:</strong> #{id}
           </p>
           <p>
-            <strong>Address:</strong> {address}
-          </p>
-          <p>
-            <strong>Date:</strong> {"HI"}
+            <strong>Ngày đặt hàng:</strong> {"HI"}
           </p>
         </Col>
         <Col md={6}>
           <p>
-            <strong>Total:</strong> {totalPrice}
+            <strong>Tổng giá:</strong> {totalPrice}
           </p>
           <p>
-            <strong>Status:</strong> {status}
+            <strong>Trạng thái:</strong> {status}
           </p>
         </Col>
       </Row>
