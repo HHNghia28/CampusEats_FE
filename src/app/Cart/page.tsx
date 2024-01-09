@@ -13,23 +13,27 @@ const cx = classNames.bind(styles);
   Author: QuyenNNM
 */
 const Cart = () => {
-  const [total, setTotal] = useState(3);
+  const [cart, setCart] = useState<OrderDetailDTO[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  let cart: OrderDetailDTO[] = [];
-
-  if (typeof window !== 'undefined') {
-    cart = JSON.parse(localStorage.getItem('cart') || '[]');
-  }
   useEffect(() => {
-    // Calculate total price based on items in the cart
-    const totalPrice = cart.reduce((acc, item) => {
-      return acc + item.price * item.quantity;
-    }, 0);
+    if (typeof window !== 'undefined') {
+      const loadedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+      setCart(loadedCart);
+    }
+  }, []);
 
-    // Update the state with the calculated total price
-    setTotalPrice(totalPrice);
+  useEffect(() => {
+    const newTotalPrice = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    setTotalPrice(newTotalPrice);
   }, [cart]);
+
+  const handleCartChange = () => {
+    if (typeof window !== 'undefined') {
+      const updatedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+      setCart(updatedCart);
+    }
+  };
   return (
     <div className='container'>
       <h1 className='d-flex text-start'>GIỎ HÀNG CỦA TÔI</h1>
@@ -79,6 +83,8 @@ const Cart = () => {
             price={item.price}
             productId={item.productId}
             quantity={item.quantity}
+            onCartChange={handleCartChange}
+            // onQuantityChange={handleQuantityChange}
           />
           <br />
         </Fragment>

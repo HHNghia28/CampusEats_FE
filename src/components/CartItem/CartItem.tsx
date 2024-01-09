@@ -19,6 +19,7 @@ interface CartItemProps {
   price: number;
   quantity: number;
   productId: number;
+  onCartChange: () => void;
 }
 
 const CartItem: React.FC<CartItemProps> = ({
@@ -26,7 +27,8 @@ const CartItem: React.FC<CartItemProps> = ({
   name,
   price,
   productId,
-  quantity
+  quantity,
+  onCartChange
 }) => {
   const [isVisible, setIsVisible] = useState(true); // Thêm state mới
   const [showConfirmModal, setShowConfirmModal] = useState(false);
@@ -63,6 +65,7 @@ const CartItem: React.FC<CartItemProps> = ({
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
+    onCartChange();
   };
 
   const deleteCart = (productId: number) => {
@@ -71,6 +74,7 @@ const CartItem: React.FC<CartItemProps> = ({
     const updatedCart = cart.filter(item => item.productId !== productId);
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
+    onCartChange();
   };
 
   const [counter, setCounter] = useState(quantity);
@@ -78,12 +82,14 @@ const CartItem: React.FC<CartItemProps> = ({
   const handleIncrease = () => {
     setCounter(prevState => prevState + 1);
     updateQuantityCart(1);
+    // onQuantityChange();
   };
 
   const handleDecrease = () => {
     if (counter > 1) {
       setCounter(counter - 1);
       updateQuantityCart(-1);
+      // onQuantityChange();
     }
   };
 
