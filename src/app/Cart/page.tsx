@@ -42,7 +42,7 @@ const Cart = () => {
         <div>
           <h2
             className={cx('d-flex', 'text-start', 'py-4')}
-            style={{ fontFamily: 'Arial, sans-serif', fontSize: 'fs-xxl' }}
+            style={{ fontFamily: 'Arial, sans-serif', fontSize: 'var(--fs-xl)' }}
           >
             GIỎ HÀNG CỦA TÔI
           </h2>
@@ -98,53 +98,62 @@ const Cart = () => {
                 onCartChange={handleCartChange}
                 // onQuantityChange={handleQuantityChange}
               />
-              <br />
+              {/* <br /> */}
             </Fragment>
           ))}
+          {<br />}
         </div>
-        <div>
-          <Row className={cx('d-flex', 'align-items-center', 'pt-4')}>
-            <Col
-              md='3'
-              className='d-flex align-items-center justify-content-center'
-            >
-              <Link href={'/'}>
-                <ButtonBase
-                  type='button'
-                  title='Tiếp tục mua sắm'
-                  variant='main-color'
-                  size='md'
-                />
-              </Link>
-            </Col>
-            <Col
-              md='5'
-              className='d-flex align-items-center justify-content-center'
-            ></Col>
-            <Col
-              md='4'
-              className='d-flex align-items-center justify-content-center'
-              style={{
-                fontFamily: 'Arial, sans-serif',
-                backgroundColor: 'var(--white-color)'
-              }}
-            >
-              {/* <div className='d-flex'> */}
-              <p
-                className='pt-3 pb-0'
-                style={{ fontFamily: 'Arial, sans-serif', color: 'var(--main-color)' }}
-              >
-                {`Tổng tiền thanh toán:\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0${totalPrice.toFixed()}₫`}
-              </p>
-              {/* </div> */}
-            </Col>
-          </Row>
-        </div>
-
-        <Row className='justify-content-end'>
+        <Row className={cx('d-flex', 'align-items-center', 'pt-4')}>
           <Col
-            xs='auto'
-            className='m-4'
+            md='3'
+            className='d-flex align-items-center justify-content-start'
+          >
+            <Link href={'/'}>
+              <ButtonBase
+                type='button'
+                title='Tiếp tục mua sắm'
+                variant='main-color'
+                size='md'
+              />
+            </Link>
+          </Col>
+          <Col
+            md='5'
+            className='d-flex align-items-center justify-content-center'
+          ></Col>
+          <Col
+            md='4'
+            className='d-flex align-items-center justify-content-center'
+            style={{ backgroundColor: 'var(--white-color)' }}
+          >
+            <p
+              className='pt-3 pb-0'
+              style={{ fontFamily: 'Arial, sans-serif' }}
+            >
+              <span style={{ color: 'black', fontFamily: 'Arial, sans-serif' }}>
+                Tổng tiền thanh toán:
+              </span>
+              <span style={{ color: 'var(--main-color)' }}>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {totalPrice.toFixed()}₫
+              </span>
+            </p>
+          </Col>
+        </Row>
+
+        <Row className={cx('d-flex', 'justify-content-end', 'mt-2')}>
+          <Col
+            md='3'
+            className='d-flex align-items-center justify-content-center'
+          ></Col>
+          <Col
+            md='5'
+            className='d-flex align-items-center justify-content-center'
+          ></Col>
+          <Col
+            md='4'
+            className='d-flex align-items-center justify-content-center'
+            style={{ backgroundColor: ' var(--btn-color)' }}
           >
             <Link href={'/Paying'}>
               <ButtonBase
