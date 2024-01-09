@@ -66,10 +66,8 @@ const UserProfile = () => {
           <h2>Thông tin khách hàng</h2>
         </div>
         <div className={cx('info-frame')}>
-          <Row className='d-flex '>
-            <Col
-              md={6}
-            >
+          <Row className='d-flex navbar-brand'>
+            <Col md={6}>
               <p>
                 <strong>Họ và Tên:</strong> {customer?.name}
               </p>
@@ -77,9 +75,7 @@ const UserProfile = () => {
                 <strong>Địa chỉ:</strong> {customer?.address}
               </p>
             </Col>
-            <Col
-              md={6} 
-            >
+            <Col md={6}>
               <p>
                 <strong>Số điện thoại:</strong> {customer?.contactNumber}
               </p>
@@ -97,7 +93,10 @@ const UserProfile = () => {
               key={item.orderId}
               className={cx('order-frame')}
             >
-              <Link href={`/OrderHistory/${item.id}`}>
+              <Link
+                className='navbar-brand'
+                href={`/OrderHistory/${item.id}`}
+              >
                 <OrderItem {...item} />
               </Link>
             </div>
