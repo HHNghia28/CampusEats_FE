@@ -40,12 +40,12 @@ const Cart = () => {
     <div className={cx('containerBackground')}>
       <div className='container'>
         <div>
-          <h2
-            className={cx('d-flex', 'text-start', 'py-4', 'ld-mt-250')}
-            style={{ fontFamily: 'Arial, sans-serif', fontSize: 'var(--fs-xl)' }}
+          <p
+            className={cx('d-flex', 'text-start', 'py-4', 'fs-xl-title', 'fw-600')}
+            style={{ fontFamily: 'Arial, sans-serif' }}
           >
             GIỎ HÀNG CỦA TÔI
-          </h2>
+          </p>
         </div>
 
         <div className={cx('table-bg-cart', 'border', 'rounded')}>
@@ -59,7 +59,7 @@ const Cart = () => {
           >
             <Col
               md='2'
-              className='d-flex align-items-center justify-content-center'
+              className={cx('d-flex', 'align-items-center', 'justify-content-center')}
             >
               <p style={{ fontFamily: 'Arial, sans-serif' }}>Ảnh sản phẩm</p>
             </Col>
@@ -159,7 +159,7 @@ const Cart = () => {
               </span>
               <span style={{ color: 'var(--main-color)' }}>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {totalPrice.toFixed()}₫
+                {totalPrice.toFixed(2)}₫
               </span>
             </p>
           </Col>

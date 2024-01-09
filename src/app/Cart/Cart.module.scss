@@ -8,9 +8,15 @@
 .text-total-color {
   color: var(--main-color);
 }
+.fs-xl-title {
+  font-size: var(--fs-xl);
+}
+.fw-600 {
+  font-weight: 600;
+}
 @media (max-width: 1024px) {
-  .containerBackground {
-    background-color: red;
+  .fs-xl-title {
+    font-size: var(--fs-md);
   }
   .col-ld-0 {
     display: none;
