@@ -44,3 +44,15 @@
     object-fit: cover;
   }
 }
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
+  .row {
+    display: flex;
+  }
+
+  .col {
+    width: 100%;
+  }
+}

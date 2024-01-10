@@ -95,6 +95,119 @@ const CartItem: React.FC<CartItemProps> = ({
   return isVisible ? (
     <div>
       <hr className={cx('hr-color')} />
+      <div className={cx('row', 'd-flex', 'align-items-center')}>
+        <div className='col-md-2 col-sm-4 col-xs-4'>
+          <div className={cx('d-flex', 'align-items-center', 'justify-content-center')}>
+            <Image
+              src={imageUrl}
+              className={cx('custom-image-style')}
+              // style={customStyle}
+              thumbnail
+            />
+          </div>
+        </div>
+        <div className='col-md-4 col-sm-4 col-xs-4'>
+          <div className={cx('d-flex', 'align-items-center', 'justify-content-center')}>
+            <div className='row'>
+              <div className='col-md-6 col-sm-12 col-xs-12'>
+                <div
+                  className={cx('hoverText', 'py-2', 'fs-sm-title')}
+                  style={{ fontFamily: 'Arial, sans-serif' }}
+                >
+                  {name}
+                </div>
+              </div>
+              <div className='col-md-6 col-sm-12 col-xs-12'>
+                <div
+                  className={cx('text-main-color', 'py-2', 'fs-sm-title')}
+                  style={{ fontFamily: 'Arial, sans-serif' }}
+                >
+                  {price}₫
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className='col-md-6 col-sm-4 col-xs-4'>
+          <div className={cx('d-flex', 'align-items-center', 'justify-center', 'gap-2')}>
+            <div className='row'>
+              <div className='col-md-4 col-sm-12 col-xs-12'>
+                <div
+                  className={cx(
+                    'd-flex',
+                    'align-items-center',
+                    'justify-center',
+                    'gap-2'
+                  )}
+                >
+                  <Button
+                    size='sm'
+                    onClick={handleDecrease}
+                    variant='outline-secondary'
+                    className={cx('custom-button')}
+                  >
+                    -
+                  </Button>
+                  <p
+                    className={cx('mb-0', 'fs-sm-title')}
+                    style={{ fontFamily: 'Arial, sans-serif' }}
+                  >
+                    {counter}
+                  </p>
+                  <Button
+                    size='sm'
+                    onClick={handleIncrease}
+                    variant='outline-secondary'
+                    className={cx('custom-button')}
+                  >
+                    +
+                  </Button>
+                </div>
+              </div>
+              <div className='col-md-4 col-sm-12 col-xs-12'>{price * counter}₫</div>
+              <div className='col-md-4 col-sm-12 col-xs-12'>
+                <div className='py-2'>
+                  {/* <ButtonBase
+                type='button'
+                title='Delete'
+                variant='main-color'
+                size='md'
+                onClick={handleDelete} // Gọi hàm handleDelete khi nhấn vào nút "Delete"
+              /> */}
+                  <FontAwesomeIcon
+                    icon={faTrashAlt}
+                    onClick={handleDelete}
+                    className={cx('cursor-pointer', 'icon-delete')} // Thêm className để tạo hiệu ứng con trỏ khi di chuyển qua nút
+                  />
+                  <Modal
+                    show={showConfirmModal}
+                    onHide={handleCloseModal}
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title>Xác nhận</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Bạn có chắc chắn muốn xóa sản phẩm này không?</Modal.Body>
+                    <Modal.Footer>
+                      <Button
+                        variant='secondary'
+                        onClick={handleCloseModal}
+                      >
+                        Không
+                      </Button>
+                      <Button
+                        variant='primary'
+                        onClick={() => handleConfirmDelete(productId)}
+                      >
+                        Có
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div>
         <Row className={cx('d-flex', 'align-items-center')}>
           {/* Hình ảnh sản phẩm */}
