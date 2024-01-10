@@ -33,25 +33,23 @@ const CartItem: React.FC<CartItemProps> = ({
   const [isVisible, setIsVisible] = useState(true); // Thêm state mới
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const handleDelete = () => {
-    // setIsVisible(false);
     setShowConfirmModal(true);
-    deleteCart(productId);
   };
-  const handleConfirmDelete = () => {
-    // Xử lý xóa CartItem ở đây
-    setIsVisible(false);
+  const handleConfirmDelete = (productId: number) => {
+    deleteCart(productId);
     setShowConfirmModal(false);
+    setIsVisible(false); // Ẩn luôn item sau khi xóa
   };
 
   const handleCloseModal = () => {
     setShowConfirmModal(false);
   };
 
-  const customStyle: React.CSSProperties = {
-    width: '110px',
-    height: '110px',
-    objectFit: 'cover' as 'cover'
-  };
+  // const customStyle: React.CSSProperties = {
+  //   width: '110px',
+  //   height: '110px',
+  //   objectFit: 'cover' as 'cover'
+  // };
 
   const updateQuantityCart = (count: number) => {
     const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -70,13 +68,14 @@ const CartItem: React.FC<CartItemProps> = ({
 
   const deleteCart = (productId: number) => {
     const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
+    const index = cart.findIndex(item => item.productId === productId);
 
-    const updatedCart = cart.filter(item => item.productId !== productId);
-
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
-    onCartChange();
+    if (index !== -1) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      onCartChange();
+    }
   };
-
   const [counter, setCounter] = useState(quantity);
 
   const handleIncrease = () => {
@@ -105,7 +104,8 @@ const CartItem: React.FC<CartItemProps> = ({
           >
             <Image
               src={imageUrl}
-              style={customStyle}
+              className={cx('custom-image-style')}
+              // style={customStyle}
               thumbnail
             />
           </Col>
@@ -115,7 +115,7 @@ const CartItem: React.FC<CartItemProps> = ({
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
             <div
-              className={cx('hoverText', 'py-2')}
+              className={cx('hoverText', 'py-2', 'fs-sm-title')}
               style={{ fontFamily: 'Arial, sans-serif' }}
             >
               {name}
@@ -127,7 +127,7 @@ const CartItem: React.FC<CartItemProps> = ({
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
             <div
-              className={cx('text-main-color', 'py-2')}
+              className={cx('text-main-color', 'py-2', 'fs-sm-title')}
               style={{ fontFamily: 'Arial, sans-serif' }}
             >
               {price}₫
@@ -145,11 +145,12 @@ const CartItem: React.FC<CartItemProps> = ({
                 size='sm'
                 onClick={handleDecrease}
                 variant='outline-secondary'
+                className={cx('custom-button')}
               >
                 -
               </Button>
               <p
-                className={cx('mb-0')}
+                className={cx('mb-0', 'fs-sm-title')}
                 style={{ fontFamily: 'Arial, sans-serif' }}
               >
                 {counter}
@@ -158,6 +159,7 @@ const CartItem: React.FC<CartItemProps> = ({
                 size='sm'
                 onClick={handleIncrease}
                 variant='outline-secondary'
+                className={cx('custom-button')}
               >
                 +
               </Button>
@@ -169,7 +171,7 @@ const CartItem: React.FC<CartItemProps> = ({
             className={cx('d-flex', 'align-items-center', 'justify-content-center')}
           >
             <div
-              className={cx('text-main-color', 'py-2')}
+              className={cx('text-main-color', 'py-2', 'fs-sm-title')}
               style={{ fontFamily: 'Arial, sans-serif' }}
             >
               {price * counter}₫
@@ -210,7 +212,7 @@ const CartItem: React.FC<CartItemProps> = ({
                   </Button>
                   <Button
                     variant='primary'
-                    onClick={handleConfirmDelete}
+                    onClick={() => handleConfirmDelete(productId)}
                   >
                     Có
                   </Button>

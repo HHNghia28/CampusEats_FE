@@ -41,7 +41,7 @@ const Cart = () => {
       <div className='container'>
         <div>
           <p
-            className={cx('d-flex', 'text-start', 'py-4', 'fs-xl-title', 'fw-600')}
+            className={cx('d-flex', 'text-start', 'pt-4', 'fs-xl-title', 'fw-600')}
             style={{ fontFamily: 'Arial, sans-serif' }}
           >
             GIỎ HÀNG CỦA TÔI
@@ -49,51 +49,90 @@ const Cart = () => {
         </div>
 
         <div className={cx('table-bg-cart', 'border', 'rounded')}>
+          {/* <div className={cx('hideOnMobile')}> */}
           <Row
             className={cx(
-              'd-flex',
               'align-items-center',
               'justify-content-center',
-              'pt-4'
+              'pt-4',
+              'hideOnMobile'
             )}
           >
             <Col
               md='2'
-              className={cx('d-flex', 'align-items-center', 'justify-content-center')}
+              className={cx(
+                'd-flex',
+                'align-items-center',
+                'justify-content-center',
+                'rounded',
+                'fs-xs-title',
+                'hideOnMobile'
+              )}
             >
-              <p style={{ fontFamily: 'Arial, sans-serif' }}>Ảnh sản phẩm</p>
+              <p
+                className={cx('fs-sm-title')}
+                style={{ fontFamily: 'Arial, sans-serif' }}
+              >
+                Ảnh sản phẩm
+              </p>
             </Col>
             <Col
               md='2'
               className='d-flex align-items-center justify-content-center'
             >
-              <p style={{ fontFamily: 'Arial, sans-serif' }}>Tên sản phẩm</p>
+              <p
+                className={cx('fs-sm-title')}
+                style={{ fontFamily: 'Arial, sans-serif' }}
+              >
+                Tên sản phẩm
+              </p>
             </Col>
             <Col
               md='2'
               className='d-flex align-items-center justify-content-center'
             >
-              <p style={{ fontFamily: 'Arial, sans-serif' }}>Đơn giá</p>
+              <p
+                className={cx('fs-sm-title')}
+                style={{ fontFamily: 'Arial, sans-serif' }}
+              >
+                Đơn giá
+              </p>
             </Col>
             <Col
               md='2'
               className='d-flex align-items-center justify-content-center'
             >
-              <p style={{ fontFamily: 'Arial, sans-serif' }}>Số lượng</p>
+              <p
+                className={cx('fs-sm-title')}
+                style={{ fontFamily: 'Arial, sans-serif' }}
+              >
+                Số lượng
+              </p>
             </Col>
             <Col
               md='2'
               className='d-flex align-items-center justify-content-center'
             >
-              <p style={{ fontFamily: 'Arial, sans-serif' }}>Thành tiền</p>
+              <p
+                className={cx('fs-sm-title')}
+                style={{ fontFamily: 'Arial, sans-serif' }}
+              >
+                Thành tiền
+              </p>
             </Col>
             <Col
               md='2'
               className='d-flex align-items-center justify-content-center'
             >
-              <p style={{ fontFamily: 'Arial, sans-serif' }}>Xóa</p>
+              <p
+                className={cx('fs-sm-title')}
+                style={{ fontFamily: 'Arial, sans-serif' }}
+              >
+                Xóa
+              </p>
             </Col>
           </Row>
+          {/* </div>s */}
           {cart.map((item, index) => (
             <Fragment key={index}>
               <CartItem
@@ -110,7 +149,7 @@ const Cart = () => {
           ))}
           {<br />}
         </div>
-        <Row className={cx('d-flex', 'align-items-center', 'pt-4')}>
+        <Row className={cx('d-flex', 'align-items-center', 'pt-4', 'm-0', 'fs-sm-title')}>
           <Col
             md='3'
             className='d-flex align-items-center justify-content-start'
@@ -135,7 +174,9 @@ const Cart = () => {
                     width: '100%',
                     borderRadius: '10px',
                     backgroundColor: ' var(--white-color)',
-                    color: 'var(--dark)'
+                    color: 'var(--dark)',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
                   }}
                 />
               </a>
@@ -147,19 +188,34 @@ const Cart = () => {
           ></Col>
           <Col
             md='4'
-            className='d-flex align-items-center justify-content-center'
+            className={cx(
+              'd-flex',
+              'align-items-center',
+              'justify-content-center',
+              'border',
+              'rounded'
+            )}
             style={{ backgroundColor: 'var(--white-color)' }}
           >
             <p
-              className='pt-3 pb-0'
+              className={cx('p-0', 'pt-3', 'fs-sm-title')}
               style={{ fontFamily: 'Arial, sans-serif' }}
             >
-              <span style={{ color: 'black', fontFamily: 'Arial, sans-serif' }}>
+              <span
+                style={{
+                  color: 'black',
+                  fontFamily: 'Arial, sans-serif'
+                }}
+                className={cx('fs-sm-title')}
+              >
                 Tổng tiền thanh toán:
               </span>
-              <span style={{ color: 'var(--main-color)' }}>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {totalPrice.toFixed(2)}₫
+              <span
+                className={cx('fs-sm-title')}
+                style={{ color: 'var(--main-color)' }}
+              >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {totalPrice.toFixed()}₫
               </span>
             </p>
           </Col>

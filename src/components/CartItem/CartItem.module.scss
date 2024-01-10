@@ -23,3 +23,24 @@
 .hr-color {
   color: #9fa6b2;
 }
+.custom-image-style {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+}
+
+@media (max-width: 992px) {
+  .fs-sm-title {
+    font-size: var(--fs-sm);
+  }
+  .custom-button {
+    font-size: var(--fs-sm);
+    margin: 0;
+    padding: 4px;
+  }
+  .custom-image-style {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+}
