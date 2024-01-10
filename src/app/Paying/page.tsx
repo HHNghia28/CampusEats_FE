@@ -11,12 +11,11 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { addOrder } from '@/api/OrderAPI';
 import { toast } from 'react-toastify';
 
-const divStyle = {
-  backgroundColor: '#DCDCDC',
-  borderRadius: '8px',
-  padding: '20px',
-  margin: '20px'
-};
+// const divStyle = {
+//   backgroundColor: '#DCDCDC',
+//   borderRadius: '8px',
+//   padding: '10px',
+// };
 const cx = classNames.bind(styles);
 const Paying = () => {
   const [total, setTotal] = useState(0);
@@ -103,116 +102,93 @@ const Paying = () => {
     window.location.href = 'http://localhost:3000/Cart';
   };
   return (
-    <Fragment>
-      <div style={divStyle}>
-        <p>Name: {customer?.name}</p>
-        <p>Sdt: {customer?.contactNumber}</p>
-        <p>D/c: {customer?.address}</p>
-      </div>
-      <div>
-        <h1 className={cx('d-flex', 'align-items-center', 'justify-content-center')}>
-          Paying
-        </h1>
-        <Row
-          className={cx('d-flex', 'align-items-center', 'justify-content-between', 'm-3')}
-        >
-          <Col
-            md={3}
-            className={cx(
-              'text-start',
-              'd-flex',
-              'align-items-center',
-              'justify-content-center'
-            )}
-          >
-            <h4>Order Information</h4>
-          </Col>
-          <Col md={6}></Col>
-          <Col
-            md={3}
-            className={cx(
-              'text-end',
-              'd-flex',
-              'align-items-center',
-              'justify-content-center'
-            )}
-          >
-            <h4>Add more</h4>
-          </Col>
-        </Row>
-      </div>
-      {cart?.map((item, index) => (
-        <Fragment key={index}>
-          <PayingItem
-            imageUrl={item.images ? item.images[0] : ''}
-            name={item.fullName ? item.fullName : ''}
-            price={item.price}
-            productId={item.productId}
-            quantity={item.quantity}
-          />
-          <br />
-        </Fragment>
-      ))}
-      <Col className={cx('text-start', 'p-t-22')}>
-        <h4>Note order</h4>
-      </Col>
-      <hr />
-      <Row className={cx('p-t-22')}>
-        <Col md={3}></Col>
-        <Col
-          md={6}
-          className={cx('d-flex', 'justify-content-center')}
-        >
-          <h4>Total: </h4>
-        </Col>
-        <Col
-          md={3}
-          className={cx('d-flex', 'justify-content-center', 'align-items-center')}
-        >
-          <div className={cx('d-flex', 'justify-content-end')}>
-            <h4>{total}</h4>
+    <div className={cx('background-color')}>
+      <div className={cx('container')}>
+        <div className={cx('h-30')}></div>
+        <Fragment>
+          <div className={cx('col-md-12', 'card-info', 'border', 'rounded')}>
+            <p className={cx('font-arial', 'f-bold')}>Họ và tên: {customer?.name}</p>
+            <p className={cx('font-arial', 'f-bold')}>Số điện thoại: {customer?.contactNumber}</p>
+            <p className={cx('font-arial', 'f-bold')}>Địa chỉ: {customer?.address}</p>
           </div>
-        </Col>
-      </Row>
-      <div>
-      <label>
-        <input 
-          type="checkbox" 
-          checked={isPay} 
-          onChange={handleCheckboxPayChange} 
-        />
-        Thanh toán online
-      </label>
-      {isPay && <p>Bạn đã chọn thanh toán online.</p>}
+          <div>
+            <h1 className={cx('d-flex', 'align-items-center', 'justify-content-center', 'font-arial', 'mt-4', 'fs-xxl', 'f-bold', 'mb-3', 'text-title-color')}>
+              Paying
+            </h1>
+          </div>
+          {cart?.map((item, index) => (
+            <Fragment key={index}>
+              <PayingItem
+                imageUrl={item.images ? item.images[0] : ''}
+                name={item.fullName ? item.fullName : ''}
+                price={item.price}
+                productId={item.productId}
+                quantity={item.quantity}
+              />
+              <br />
+            </Fragment>
+          ))}
+          <Col className={cx('text-start', 'p-t-22')}>
+            <h4>Note order</h4>
+          </Col>
+          <hr />
+          <Row className={cx('p-t-22')}>
+            <Col md={3}></Col>
+            <Col
+              md={6}
+              className={cx('d-flex', 'justify-content-center')}
+            >
+              <h4>Total: </h4>
+            </Col>
+            <Col
+              md={3}
+              className={cx('d-flex', 'justify-content-center', 'align-items-center')}
+            >
+              <div className={cx('d-flex', 'justify-content-end')}>
+                <h4>{total}</h4>
+              </div>
+            </Col>
+          </Row>
+          <div>
+            <label>
+              <input
+                type="checkbox"
+                checked={isPay}
+                onChange={handleCheckboxPayChange}
+              />
+              Thanh toán online
+            </label>
+            {isPay && <p>Bạn đã chọn thanh toán online.</p>}
+          </div>
+          <Row
+            className={cx(
+              'd-flex',
+              'align-items-center',
+              'justify-content-between',
+              'p-t-22'
+            )}
+          >
+            <Col className={cx('text-start')}>
+              <ButtonBase
+                type='button'
+                title='Back'
+                variant='main-color'
+                size='md'
+                onClick={handleBackClick}
+              />
+            </Col>
+            <Col className={cx('text-end')}>
+              <ButtonBase
+                type='button'
+                title='Paying'
+                variant='main-color'
+                size='md'
+                onClick={handlePayingClick}
+              />
+            </Col>
+          </Row>
+        </Fragment></div>
     </div>
-      <Row
-        className={cx(
-          'd-flex',
-          'align-items-center',
-          'justify-content-between',
-          'p-t-22'
-        )}
-      >
-        <Col className={cx('text-start')}>
-          <ButtonBase
-            type='button'
-            title='Back'
-            variant='main-color'
-            size='md'
-            onClick={handleBackClick}
-          />
-        </Col>
-        <Col className={cx('text-end')}>
-          <ButtonBase
-            type='button'
-            title='Paying'
-            variant='main-color'
-            size='md'
-            onClick={handlePayingClick}
-          />
-        </Col>
-      </Row>
-    </Fragment>
   );
 };
 

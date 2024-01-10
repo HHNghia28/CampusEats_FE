@@ -1,6 +1,17 @@
-.colorBg{
-    background-color: #DCDCDC;
+.colorBg {
+    background-color: var(--white-color);
 }
+
 .br-8 {
     border-radius: 8px;
+}
+
+.item-box-shadow {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 770px) {
+    .sd-title {
+        align-items: center;
+    }
 }

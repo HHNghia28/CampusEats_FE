@@ -60,9 +60,9 @@ const PayingItem: React.FC<PayingItemProps> = ({ imageUrl,
 
           <Col
             md={6}
-            className={cx('d-flex', 'flex-column', 'align-items-start')}
+            className={cx('d-flex', 'flex-column', 'align-items-start', 'sd-title')}
           >
-            <div className={cx('py-2')}>{name}</div>
+            <div className={cx('py-2', 'sd-title')}>{name}</div>
             <div
               className={cx('d-flex', 'align-items-center', 'justify-center', 'gap-2')}
             >
@@ -92,7 +92,7 @@ const PayingItem: React.FC<PayingItemProps> = ({ imageUrl,
           </Col>
         </Row>
       </Container>
-    </div>
+    </div >
   );
 };
 
