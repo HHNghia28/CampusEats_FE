@@ -193,7 +193,8 @@ const Cart = () => {
               'align-items-center',
               'justify-content-center',
               'border',
-              'rounded'
+              'rounded',
+              'margin-button'
             )}
             style={{ backgroundColor: 'var(--white-color)' }}
           >
