@@ -10,8 +10,658 @@
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-@media (min-width: 770px) {
-    .sd-title {
+.d-flex {
+    display: flex;
+}
+
+.d-none {
+    display: none;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 20px;
+}
+
+.price {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 20px;
+}
+
+// @media (max-width: 770px) {
+//     .sd-title {
+//         align-items: center;
+//     }
+
+//     .sd-price {
+//         justify-content: flex-end;
+//     }
+// }
+
+/* XX-Large devices (large desktops, less than 1596px) */
+// @media (max-width: 1596px) {
+//     .col-xxl-0 {
+//         display: none;
+//     }
+
+//     .col-xxl-1 {
+//         width: 8.33333333%;
+//     }
+
+//     .col-xxl-2 {
+//         width: 16.66666667%;
+//     }
+
+//     .col-xxl-3 {
+//         width: 25%;
+//     }
+
+//     .col-xxl-4 {
+//         width: 33.33333333%;
+//     }
+
+//     .col-xxl-5 {
+//         width: 41.66666667%;
+//     }
+
+//     .col-xxl-6 {
+//         width: 50%;
+//     }
+
+//     .col-xxl-7 {
+//         width: 58.33333333%;
+//     }
+
+//     .col-xxl-8 {
+//         width: 66.66666667%;
+//     }
+
+//     .col-xxl-9 {
+//         width: 75%;
+//     }
+
+//     .col-xxl-10 {
+//         width: 83.33333333%;
+//     }
+
+//     .col-xxl-11 {
+//         width: 91.66666667%;
+//     }
+
+//     .col-xxl-12 {
+//         width: 100%;
+//     }
+
+//     .xxl-fz-75 {
+//         font-size: 75px;
+//     }
+
+//     .xxl-lh-100 {
+//         line-height: 100px;
+//     }
+
+//     .xxl-flex-wrap {
+//         flex-wrap: wrap;
+//     }
+
+//     .xxl-display-block {
+//         display: block;
+//     }
+
+//     .xxl-w-260 {
+//         width: 260px;
+//     }
+// }
+
+// /* X-Large devices (large desktops, less than 1400px) */
+// @media (max-width: 1399.98px) {
+//     .col-xl-0 {
+//         display: none;
+//     }
+
+//     .col-xl-1 {
+//         width: 8.33333333%;
+//     }
+
+//     .col-xl-2 {
+//         width: 16.66666667%;
+//     }
+
+//     .col-xl-3 {
+//         width: 25%;
+//     }
+
+//     .col-xl-4 {
+//         width: 33.33333333%;
+//     }
+
+//     .col-xl-5 {
+//         width: 41.66666667%;
+//     }
+
+//     .col-xl-6 {
+//         width: 50%;
+//     }
+
+//     .col-xl-7 {
+//         width: 58.33333333%;
+//     }
+
+//     .col-xl-8 {
+//         width: 66.66666667%;
+//     }
+
+//     .col-xl-9 {
+//         width: 75%;
+//     }
+
+//     .col-xl-10 {
+//         width: 83.33333333%;
+//     }
+
+//     .col-xl-11 {
+//         width: 91.66666667%;
+//     }
+
+//     .col-xl-12 {
+//         width: 100%;
+//     }
+
+//     .xl-pr-20 {
+//         padding-right: 20px;
+//     }
+
+//     .xl-pl-20 {
+//         padding-left: 20px;
+//     }
+
+//     .xl-ml-20 {
+//         margin-left: 20px;
+//     }
+
+//     .xl-lh-90 {
+//         line-height: 90px;
+//     }
+
+//     .xl-mt-110 {
+//         margin-top: 150px;
+//     }
+
+//     .xl-display-block {
+//         display: block;
+//     }
+
+//     .xl-w-53 {
+//         width: 53px;
+//     }
+
+//     .xl-h-43 {
+//         height: 43px;
+//     }
+
+//     .xl-mt-40 {
+//         margin-top: 40px;
+//     }
+
+//     .xl-mt-60 {
+//         margin-top: 60px;
+//     }
+
+//     .xl-mt-90 {
+//         margin-top: 90px;
+//     }
+
+//     .xl-mt-70 {
+//         margin-top: 70px;
+//     }
+
+//     .xl-ml-21 {
+//         margin-left: 21px;
+//     }
+
+//     .xl-mr-21 {
+//         margin-right: 21px;
+//     }
+
+//     .xl-flex-wrap {
+//         flex-wrap: wrap;
+//     }
+
+//     .xl-h-600 {
+//         height: 600px;
+//     }
+// }
+
+// /* Large devices (desktops, less than 1200px) */
+// @media (max-width: 1199.98px) {
+//     .col-ld-0 {
+//         display: none;
+//     }
+
+//     .col-ld-1 {
+//         width: 8.33333333%;
+//     }
+
+//     .col-ld-2 {
+//         width: 16.66666667%;
+//     }
+
+//     .col-ld-3 {
+//         width: 25%;
+//     }
+
+//     .col-ld-4 {
+//         width: 33.33333333%;
+//     }
+
+//     .col-ld-5 {
+//         width: 41.66666667%;
+//     }
+
+//     .col-ld-6 {
+//         width: 50%;
+//     }
+
+//     .col-ld-7 {
+//         width: 58.33333333%;
+//     }
+
+//     .col-ld-8 {
+//         width: 66.66666667%;
+//     }
+
+//     .col-ld-9 {
+//         width: 75%;
+//     }
+
+//     .col-ld-10 {
+//         width: 83.33333333%;
+//     }
+
+//     .col-ld-11 {
+//         width: 91.66666667%;
+//     }
+
+//     .col-ld-12 {
+//         width: 100%;
+//     }
+
+//     .ld-fz-18 {
+//         font-size: 18px;
+//     }
+
+//     .ld-lh-24 {
+//         line-height: 24px;
+//     }
+
+//     .ld-pt-15 {
+//         padding-top: 15px;
+//     }
+
+//     .ld-pr-20 {
+//         padding-right: 20px;
+//     }
+
+//     .ld-pb-15 {
+//         padding-bottom: 15px;
+//     }
+
+//     .ld-pl-20 {
+//         padding-left: 20px;
+//     }
+
+//     .ld-pr-13 {
+//         padding-right: 13px;
+//     }
+
+//     .ld-pl-13 {
+//         padding-left: 13px;
+//     }
+
+//     .ld-ml-13 {
+//         margin-left: 13px;
+//     }
+
+//     .ld-fz-60 {
+//         font-size: 60px;
+//     }
+
+//     .ld-lh-80 {
+//         line-height: 80px;
+//     }
+
+//     .ld-fz-36 {
+//         font-size: 36px;
+//     }
+
+//     .ld-mt-250 {
+//         font-size: 750px;
+//     }
+
+//     .ld-display-block {
+//         display: block;
+//     }
+
+//     .ld-ml-0 {
+//         margin-left: 0px;
+//     }
+
+//     .ld-mt-55 {
+//         margin-top: 55px;
+//     }
+
+//     .ld-mt-70 {
+//         margin-top: 70px;
+//     }
+
+//     .ld-mt-0 {
+//         margin-top: 0px;
+//     }
+// }
+
+// /* Medium devices (tablets, less than 992px) */
+// @media (max-width: 991.98px) {
+//     .col-md-0 {
+//         display: none;
+//     }
+
+//     .col-md-1 {
+//         width: 8.33333333%;
+//     }
+
+//     .col-md-2 {
+//         width: 16.66666667%;
+//     }
+
+//     .col-md-3 {
+//         width: 25%;
+//     }
+
+//     .col-md-4 {
+//         width: 33.33333333%;
+//     }
+
+//     .col-md-5 {
+//         width: 41.66666667%;
+//     }
+
+//     .col-md-6 {
+//         width: 50%;
+//     }
+
+//     .col-md-7 {
+//         width: 58.33333333%;
+//     }
+
+//     .col-md-8 {
+//         width: 66.66666667%;
+//     }
+
+//     .col-md-9 {
+//         width: 75%;
+//     }
+
+//     .col-md-10 {
+//         width: 83.33333333%;
+//     }
+
+//     .col-md-11 {
+//         width: 91.66666667%;
+//     }
+
+//     .col-md-12 {
+//         width: 100%;
+//     }
+
+//     .md-d-block {
+//         display: block;
+//     }
+
+//     .md-w-160 {
+//         width: 160px;
+//     }
+
+//     .md-h-58 {
+//         height: 58px;
+//     }
+
+//     .md-fz-48 {
+//         font-size: 48px;
+//     }
+
+//     .md-lh-70 {
+//         line-height: 70px;
+//     }
+
+//     .md-fz-20 {
+//         font-size: 20px;
+//     }
+
+//     .md-ml-0 {
+//         margin-left: 0px;
+//     }
+
+//     .md-mt-40 {
+//         margin-top: 40px;
+//     }
+
+//     .md-mt-20 {
+//         margin-top: 20px;
+//     }
+
+//     .md-d-flex {
+//         display: flex;
+//     }
+
+//     .md-justify-content-center {
+//         justify-content: center;
+//     }
+
+//     .md-text-align-center {
+//         text-align: center;
+//     }
+
+//     .md-h-469 {
+//         height: 469px;
+//     }
+
+//     .md-w-343 {
+//         width: 343px;
+//     }
+
+//     .md-h-240 {
+//         height: 240px;
+//     }
+
+//     .md-w-357 {
+//         width: 357px;
+//     }
+
+//     .md-ml-20 {
+//         margin-left: 20px;
+//     }
+
+//     .md-mr-20 {
+//         margin-right: 20px;
+//     }
+
+//     .md-h-80 {
+//         height: 80px;
+//     }
+// }
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .col-sd-0 {
+        display: none;
+    }
+
+    .col-sd-1 {
+        width: 8.33333333%;
+    }
+
+    .col-sd-2 {
+        width: 16.66666667%;
+    }
+
+    .col-sd-3 {
+        width: 25%;
+    }
+
+    .col-sd-4 {
+        width: 33.33333333%;
+    }
+
+    .col-sd-5 {
+        width: 41.66666667%;
+    }
+
+    .col-sd-6 {
+        width: 50%;
+    }
+
+    .col-sd-7 {
+        width: 58.33333333%;
+    }
+
+    .col-sd-8 {
+        width: 66.66666667%;
+    }
+
+    .col-sd-9 {
+        width: 75%;
+    }
+
+    .col-sd-10 {
+        width: 83.33333333%;
+    }
+
+    .col-sd-11 {
+        width: 91.66666667%;
+    }
+
+    .col-sd-12 {
+        width: 100%;
+    }
+
+    .sd-item {
+        display: flex;
+        justify-content: center;
         align-items: center;
+    }
+
+    .sd-d-flex {
+        display: flex;
+    }
+
+    .sd-d-block {
+        display: block;
+    }
+
+    .sd-name {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-left: 20px;
+    }
+
+    .sd-price {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+}
+
+/* X-Small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    .col-xm-0 {
+        display: none;
+    }
+
+    .col-xm-1 {
+        width: 8.33333333%;
+    }
+
+    .col-xm-2 {
+        width: 16.66666667%;
+    }
+
+    .col-xm-3 {
+        width: 25%;
+    }
+
+    .col-xm-4 {
+        width: 33.33333333%;
+    }
+
+    .col-xm-5 {
+        width: 41.66666667%;
+    }
+
+    .col-xm-6 {
+        width: 50%;
+    }
+
+    .col-xm-7 {
+        width: 58.33333333%;
+    }
+
+    .col-xm-8 {
+        width: 66.66666667%;
+    }
+
+    .col-xm-9 {
+        width: 75%;
+    }
+
+    .col-xm-10 {
+        width: 83.33333333%;
+    }
+
+    .col-xm-11 {
+        width: 91.66666667%;
+    }
+
+    .col-xm-12 {
+        width: 100%;
+    }
+
+    .xm-fz-32 {
+        font-size: 32px;
+    }
+
+    .xm-lh-52 {
+        line-height: 52px;
+    }
+
+    .xm-h-800 {
+        height: 800px;
+    }
+
+    .xm-mt-50 {
+        margin-top: 50px;
+    }
+
+    .xm-mt-80 {
+        margin-top: 80px;
+    }
+
+    .xm-mt-0 {
+        margin-top: 0px;
+    }
+
+    .xm-fz-32 {
+        font-size: 32px;
     }
 }

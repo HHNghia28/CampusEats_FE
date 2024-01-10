@@ -26,6 +26,10 @@
     width: 100%;
 }
 
+.background-color {
+    background-color: var(--background-color);
+}
+
 /* Thêm đoạn CSS này vào file SCSS của bạn */
 .slick-slide img {
     width: 100%;

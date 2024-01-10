@@ -45,82 +45,65 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
 
     setTotal(totalPrice);
   }
-
+  const formatPrice = (number: number) => {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    }).format(number);
+  }
   return (
-    <Fragment>
-      <div style={divStyle}>
-        <p>Mã đơn: {order?.code}</p>
-        <p>Name: {order?.receiver}</p>
-        <p>Sdt: {order?.contactNumber}</p>
-        <p>D/c: {order?.address}</p>
-        <p>Thanh Toán: {order?.status === "PAID" ? "Đã thanh toán" : "Chưa thanh toán"}</p>
-      </div>
-      <div>
-        <h1 className={cx('d-flex', 'align-items-center', 'justify-content-center')}>
-          Paying
-        </h1>
-        <Row
-          className={cx('d-flex', 'align-items-center', 'justify-content-between', 'm-3')}
-        >
-          <Col
-            md={3}
-            className={cx(
-              'text-start',
-              'd-flex',
-              'align-items-center',
-              'justify-content-center'
-            )}
-          >
-            <h4>Order Information</h4>
-          </Col>
-          <Col md={6}></Col>
-          <Col
-            md={3}
-            className={cx(
-              'text-end',
-              'd-flex',
-              'align-items-center',
-              'justify-content-center'
-            )}
-          >
-            <h4>Add more</h4>
-          </Col>
-        </Row>
-      </div>
-      {order?.details?.map((item, index) => (
-        <Fragment key={index}>
-          <PayingItem
-            imageUrl={item.images ? item.images[0] : ''}
-            name={item.fullName ? item.fullName : ''}
-            price={item.price}
-            productId={item.productId}
-            quantity={item.quantity}
-          />
-          <br />
-        </Fragment>
-      ))}
-      <Col className={cx('text-start', 'p-t-22')}>
-        <h4>Note order</h4>
-      </Col>
-      <hr />
-      <Row className={cx('p-t-22')}>
-        <Col md={3}></Col>
-        <Col
-          md={6}
-          className={cx('d-flex', 'justify-content-center')}
-        >
-          <h4>Total: </h4>
-        </Col>
-        <Col
-          md={3}
-          className={cx('d-flex', 'justify-content-center', 'align-items-center')}
-        >
-          <div className={cx('d-flex', 'justify-content-end')}>
-            <h4>{total}</h4>
+    <div className={cx('background-color')}>
+      <div className={cx('container')}>
+        <div className={cx('h-30')}></div>
+        <Fragment>
+          <div className={cx('col-md-12', 'card-info', 'border', 'rounded')}>
+            <p className={cx('font-arial', 'f-bold')}>Họ và tên: {order?.receiver}</p>
+            <p className={cx('font-arial', 'f-bold')}>Số điện thoại: {order?.contactNumber}</p>
+            <p className={cx('font-arial', 'f-bold')}>Địa chỉ: {order?.address}</p>
+            <p className={cx('font-arial', 'f-bold')}>Địa chỉ: {order?.status === "PAID" ? "Đã thanh toán" : "Chưa thanh toán"}</p>
           </div>
-        </Col>
-      </Row>
-    </Fragment>
+          <div>
+            <h1 className={cx('d-flex', 'align-items-center', 'justify-content-center', 'font-arial', 'mt-4', 'fs-xxl', 'f-bold', 'mb-3', 'text-title-color')}>
+              Paying
+            </h1>
+          </div>
+          {order?.details?.map((item, index) => (
+            <Fragment key={index}>
+              <PayingItem
+                imageUrl={item.images ? item.images[0] : ''}
+                name={item.fullName ? item.fullName : ''}
+                price={item.price}
+                productId={item.productId}
+                quantity={item.quantity}
+              />
+              <br />
+            </Fragment>
+          ))}
+          <Col className={cx('text-start', 'p-t-22')}>
+            <h4 className={cx('font-arial', 'f-bold')}>Note:</h4>
+          </Col>
+          <hr />
+          <Row className={cx('p-t-22')}>
+            <Col md={6}></Col>
+            <Col
+              md={6}
+              className={cx('d-flex', 'justify-content-center')}
+            >
+              <h4 className={cx('text-end', 'col-12', 'font-arial', 'f-bold')}>Total: {formatPrice(total)}</h4>
+            </Col>
+          </Row>
+          <Row
+            className={cx(
+              'd-flex',
+              'align-items-center',
+              'justify-content-between',
+              'p-t-22',
+              'p-2'
+            )}
+          >
+          </Row>
+        </Fragment></div>
+    </div >
   );
 };
 

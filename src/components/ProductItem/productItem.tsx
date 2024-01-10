@@ -30,10 +30,14 @@ const ProductItem: React.FC<ProductItemProps> = ({
   price,
   productId
 }) => {
-  function handleClickButton(): void {
-    throw new Error('Function not implemented.');
-  }
 
+
+  const formatPrice = (number: number) => {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    }).format(number);
+  }
   return (
     <Link href={`/Product/${productId}`} className={cx('productItem', 'col-md-3', 'm-2', 'mb-3', 'navbar-brand')}>
       <Card className={cx('card-item')}>
@@ -47,13 +51,12 @@ const ProductItem: React.FC<ProductItemProps> = ({
         </div>
         <Card.Body className={cx('flex', 'flex-col', 'text-center')}>
           <Card.Title className={cx('mb-2', 'font-arial', 'fw-600')}>{name}</Card.Title>
-          <Card.Text className={cx('font-bold', 'font-arial')}>{price} VND</Card.Text>
+          <Card.Text className={cx('font-bold', 'font-arial')}>{formatPrice(price)}</Card.Text>
           <ButtonBase
             type='button'
             title='Mua ngay'
             variant='main'
             size='md'
-            onClick={handleClickButton}
           />
         </Card.Body>
       </Card>

@@ -10,6 +10,7 @@ import { loginAPI } from '@/api/AuthAPI';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { addOrder } from '@/api/OrderAPI';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 // const divStyle = {
 //   backgroundColor: '#DCDCDC',
@@ -22,6 +23,8 @@ const Paying = () => {
   const [cart, setCart] = useState<OrderDetailDTO[]>();
   const [customer, setCustomer] = useState<CustomerDTO | null>(null);
   const [isPay, setIsPay] = useState(false);
+
+  const router = useRouter();
 
   const handleCheckboxPayChange = () => {
     setIsPay(!isPay);
@@ -99,8 +102,15 @@ const Paying = () => {
 
   const handleBackClick = () => {
     console.log('Button Clicked!');
-    window.location.href = 'http://localhost:3000/Cart';
+    router.push('/Cart');
   };
+
+  const formatPrice = (number: number) => {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    }).format(number);
+  }
   return (
     <div className={cx('background-color')}>
       <div className={cx('container')}>
@@ -129,24 +139,16 @@ const Paying = () => {
             </Fragment>
           ))}
           <Col className={cx('text-start', 'p-t-22')}>
-            <h4>Note order</h4>
+            <h4 className={cx('font-arial', 'f-bold')}>Note:</h4>
           </Col>
           <hr />
           <Row className={cx('p-t-22')}>
-            <Col md={3}></Col>
+            <Col md={6}></Col>
             <Col
               md={6}
               className={cx('d-flex', 'justify-content-center')}
             >
-              <h4>Total: </h4>
-            </Col>
-            <Col
-              md={3}
-              className={cx('d-flex', 'justify-content-center', 'align-items-center')}
-            >
-              <div className={cx('d-flex', 'justify-content-end')}>
-                <h4>{total}</h4>
-              </div>
+              <h4 className={cx('text-end', 'col-12', 'font-arial', 'f-bold')}>Total: {formatPrice(total)}</h4>
             </Col>
           </Row>
           <div>
@@ -155,17 +157,19 @@ const Paying = () => {
                 type="checkbox"
                 checked={isPay}
                 onChange={handleCheckboxPayChange}
+                className={cx('mr-10', 'font-arial')}
               />
               Thanh toán online
             </label>
-            {isPay && <p>Bạn đã chọn thanh toán online.</p>}
+            {isPay && <p className={cx('font-arial')}>Bạn đã chọn thanh toán online.</p>}
           </div>
           <Row
             className={cx(
               'd-flex',
               'align-items-center',
               'justify-content-between',
-              'p-t-22'
+              'p-t-22',
+              'p-2'
             )}
           >
             <Col className={cx('text-start')}>
@@ -188,7 +192,7 @@ const Paying = () => {
             </Col>
           </Row>
         </Fragment></div>
-    </div>
+    </div >
   );
 };
 
