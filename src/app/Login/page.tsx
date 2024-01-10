@@ -2,9 +2,65 @@
 import ButtonBase from '@/components/Buttons/Button';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import styles from './login.module.scss';
+import { useState } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { loginAPI } from '@/api/AuthAPI';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
-  const handleLogin = () => {};
+  const router = useRouter();
+  const [login, setLogin] = useState<LoginDTO>();
+
+  const mutationLogin = useMutation({
+    mutationFn: (login: LoginDTO) => {
+      return loginAPI(login);
+    },
+    onSuccess: (data, variables, context) => {
+      if (data.success) {
+        localStorage.setItem('account', JSON.stringify(data.data));
+        toast.success('Đăng nhập thành công');
+        router.push('/');
+      } else {
+        toast.error(data.message);
+      }
+    },
+    onError: () => {
+      toast.error('Đăng nhập không thành công');
+    }
+  });
+
+  const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    const temp: LoginDTO = {
+      phone: value,
+      password: login?.password ? login.password : ''
+    };
+
+    setLogin(temp);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    const temp: LoginDTO = {
+      phone: login?.phone ? login.phone : '',
+      password: value
+    };
+
+    setLogin(temp);
+  };
+
+  const handleLogin = () => {
+    console.dir(login);
+    if (login) {
+      mutationLogin.mutate(login);
+    } else {
+      toast.error('Sai SĐT hoặc Mật Khấu');
+    }
+  };
+
   return (
     <Row>
       <Col md={6}>
@@ -33,8 +89,10 @@ const Login = () => {
             >
               <Col>
                 <Form.Control
-                  type='email'
-                  placeholder='Email'
+                  type='phone'
+                  placeholder='Phone'
+                  value={login?.phone}
+                  onChange={handlePhoneChange}
                 />
               </Col>
             </Form.Group>
@@ -47,6 +105,8 @@ const Login = () => {
                 <Form.Control
                   type='password'
                   placeholder='Password'
+                  value={login?.password}
+                  onChange={handlePasswordChange}
                 />
               </Col>
             </Form.Group>

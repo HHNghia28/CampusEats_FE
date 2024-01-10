@@ -28,24 +28,6 @@ const Paying = () => {
     setIsPay(!isPay);
   };
 
-  const login: LoginDTO = {
-    phone: '0987654321',
-    password: '123'
-  };
-
-  const {
-    isPending,
-    isError,
-    data: results,
-    error
-  } = useQuery({
-    queryKey: ['account', login],
-    queryFn: async () => {
-      const data = await loginAPI(login);
-      return data;
-    }
-  });
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -82,34 +64,34 @@ const Paying = () => {
   });
 
   const handlePayingClick = () => {
-    // if (customer != null) {
-    //   const order: OrderDTO = {
-    //     branchId: 6183,
-    //     customerId: customer?.id,
-    //     receiver: customer?.name,
-    //     contactNumber: customer?.contactNumber,
-    //     address: customer?.address,
-    //     locationName: customer?.locationName
-    //       ? customer.locationName
-    //       : 'An Bình, Ninh Kiều, Cần Thơ',
-    //     details: cart
-    //   };
+    if (customer != null) {
+      const order: OrderDTO = {
+        branchId: 6183,
+        customerId: customer?.id,
+        receiver: customer?.name,
+        contactNumber: customer?.contactNumber,
+        address: customer?.address,
+        locationName: customer?.locationName
+          ? customer.locationName
+          : 'An Bình, Ninh Kiều, Cần Thơ',
+        details: cart
+      };
 
-    //   mutationAddOrder.mutate(order);
-    // }
+      mutationAddOrder.mutate(order);
+    }
 
-    const order: OrderDTO = {
-      branchId: 6183,
-      customerId: 420292,
-      receiver: 'Lê Văn CampusEats',
-      contactNumber: '0832474699',
-      address: '600 Nguyễn Văn Cừ Nối Dài',
-      locationName: 'An Bình, Ninh Kiều, Cần Thơ',
-      isPay: isPay,
-      details: cart
-    };
+    // const order: OrderDTO = {
+    //   branchId: 6183,
+    //   customerId: 420292,
+    //   receiver: 'Lê Văn CampusEats',
+    //   contactNumber: '0832474699',
+    //   address: '600 Nguyễn Văn Cừ Nối Dài',
+    //   locationName: 'An Bình, Ninh Kiều, Cần Thơ',
+    //   isPay: isPay,
+    //   details: cart
+    // };
 
-    mutationAddOrder.mutate(order);
+    // mutationAddOrder.mutate(order);
   };
 
   const updateTotal = (quantity: number) => {
