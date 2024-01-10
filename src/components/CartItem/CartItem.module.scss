@@ -55,4 +55,40 @@
   .col {
     width: 100%;
   }
+  .pt-tab {
+    padding-top: 20px;
+  }
+}
+@media (max-width: 576px) {
+  .mobile {
+    .hideOnMobile {
+      display: none;
+    }
+    .w-100-mb {
+      width: 100%;
+      padding-left: 5px;
+    }
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-top: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .mobile {
+    display: table-header-group;
+    justify-content: center;
+    align-content: center;
+    padding-top: 10px;
+  }
+  .img-m {
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 308px) {
+  .pl-name {
+    padding-left: 5px;
+  }
 }

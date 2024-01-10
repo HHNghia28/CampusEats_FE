@@ -176,7 +176,8 @@ const Cart = () => {
                     backgroundColor: ' var(--white-color)',
                     color: 'var(--dark)',
                     overflow: 'hidden',
-                    textOverflow: 'ellipsis'
+                    textOverflow: 'ellipsis',
+                    fontFamily: ''
                   }}
                 />
               </a>
@@ -215,8 +216,9 @@ const Cart = () => {
                 className={cx('fs-sm-title')}
                 style={{ color: 'var(--main-color)' }}
               >
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                {totalPrice.toFixed()}₫
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {/* {totalPrice.toFixed()}₫ */}
+                {totalPrice.toLocaleString('vi-VN')}₫
               </span>
             </p>
           </Col>
