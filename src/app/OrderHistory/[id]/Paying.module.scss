@@ -1,9 +1,67 @@
 .red {
     color: red;
 }
+
 .DCDCDC {
     color: #DCDCDC;
 }
+
 .p-t-22 {
     padding-top: 22px;
+}
+
+.background-color {
+    background-color: var(--background-color);
+}
+
+.red {
+    color: red;
+}
+
+.DCDCDC {
+    color: #DCDCDC;
+}
+
+.p-t-22 {
+    padding-top: 22px;
+}
+
+.fs-xxl {
+    font-size: var(--fs-xxl);
+}
+
+.text-title-color {
+    color: var(--text-title-color);
+}
+
+.font-arial {
+    font-family: 'Arial';
+}
+
+.f-bold {
+    font-weight: bold;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.h-70p {
+    height: 60px;
+}
+
+.card-info {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px 10px 0px 15px;
+    //   border: 1px solid #333333;
+    //  margin-top: 30px;
+}
+
+.h-30 {
+    height: 30px;
+}
+
+.mr-10 {
+    margin-right: 10px;
 }
