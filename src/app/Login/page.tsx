@@ -6,8 +6,10 @@ import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { loginAPI } from '@/api/AuthAPI';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const Login = () => {
+  const router = useRouter();
   const [login, setLogin] = useState<LoginDTO>();
 
   const mutationLogin = useMutation({
@@ -15,7 +17,20 @@ const Login = () => {
       return loginAPI(login);
     },
     onSuccess: (data, variables, context) => {
+
       localStorage.setItem('account', JSON.stringify(data.data));
+
+      if (data.success) {
+        localStorage.setItem('account', JSON.stringify(data.data));
+        toast.success('Đăng nhập thành công');
+        router.push('/');
+      } else {
+        toast.error(data.message);
+      }
+    },
+    onError: () => {
+      toast.error('Đăng nhập không thành công');
+
     }
   });
 
@@ -28,6 +43,7 @@ const Login = () => {
     };
 
     console.log(value);
+
 
     setLogin(temp);
   };

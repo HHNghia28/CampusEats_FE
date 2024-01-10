@@ -2,8 +2,122 @@
 import ButtonBase from '@/components/Buttons/Button';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import styles from './registration.module.scss';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { useMutation } from '@tanstack/react-query';
+import { addCustomer } from '@/api/CustomerAPI';
+import { useRouter } from 'next/navigation';
+
+const fakeRegister: CustomerRequest = {
+  address: 'Test',
+  comment: '',
+  contactNumber: 'test1',
+  email: 'test1@gmail.com',
+  gender: true,
+  name: 'Test 1',
+  password: '123',
+  birthDate: new Date(),
+  code: ''
+};
+
 const Register = () => {
-  const handleRegister = () => {};
+  const router = useRouter();
+  const [register, setRegister] = useState<CustomerRequest>(fakeRegister);
+  const [password, setPassword] = useState<string>(fakeRegister.password);
+  const [isValid, setIsValid] = useState<boolean>(false);
+
+  const mutationRegister = useMutation({
+    mutationFn: (register: CustomerRequest) => {
+      return addCustomer(register);
+    },
+    onSuccess: (data, variables, context) => {
+      if(data.success) {
+        toast.success("Đăng ký thành công");
+        router.push('/Login');
+      } else {
+        toast.error(data.message);
+      }
+    },
+    onError: () => {
+      toast.error("Đăng ký không thành công");
+    }
+  });
+
+  const handleRegister = () => {
+    if(isValid) {
+      console.dir(register);
+      mutationRegister.mutate(register);
+    } else {
+      toast.error('Mật khẩu không khớp');
+    }
+  };
+
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+  
+    setRegister(prevRegister => ({
+      ...prevRegister,
+      name: value
+    }));
+  };  
+
+  const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    setRegister(prevRegister => ({
+      ...prevRegister,
+      contactNumber: value
+    }));
+  };
+
+  const handleAddressChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    setRegister(prevRegister => ({
+      ...prevRegister,
+      address: value
+    }));
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    setPassword(value);
+  };
+
+  const handleRePasswordBlur = (event: React.FocusEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+  
+    if (value !== password) {
+      toast.error('Mật khẩu không khớp');
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+      setRegister(prevRegister => ({
+        ...prevRegister,
+        password: value
+      }));
+    }
+  };
+
+  const handleRePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    setRegister(prevRegister => ({
+      ...prevRegister,
+      password: value
+    }));
+  };
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+
+    setRegister(prevRegister => ({
+      ...prevRegister,
+      email: value
+    }));
+  };
+
   return (
     <Row>
       <Col>
@@ -23,12 +137,16 @@ const Register = () => {
                   <Form.Control
                     type='text'
                     placeholder='Họ và tên'
+                    value={register?.name}
+                    onChange={handleNameChange}
                   />
                 </Col>
                 <Col>
                   <Form.Control
                     type='tel'
                     placeholder='Số điện thoại'
+                    value={register?.contactNumber}
+                    onChange={handlePhoneChange}
                   />
                 </Col>
               </Row>
@@ -37,6 +155,8 @@ const Register = () => {
                   <Form.Control
                     type='email'
                     placeholder='Email'
+                    value={register.email}
+                    onChange={handleEmailChange}
                   />
                 </Col>
               </Row>
@@ -45,12 +165,17 @@ const Register = () => {
                   <Form.Control
                     type='password'
                     placeholder='Mật khẩu'
+                    value={password}
+                    onChange={handlePasswordChange}
                   />
                 </Col>
                 <Col>
                   <Form.Control
                     type='password'
                     placeholder='Nhập lại mật khẩu'
+                    value={register?.password}
+                    onChange={handleRePasswordChange}
+                    onBlur={handleRePasswordBlur}
                   />
                 </Col>
               </Row>
@@ -59,6 +184,8 @@ const Register = () => {
                   <Form.Control
                     type='text'
                     placeholder='Địa chỉ'
+                    value={register?.address}
+                    onChange={handleAddressChange}
                   />
                 </Col>
               </Row>

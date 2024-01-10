@@ -23,34 +23,40 @@ const Navigation = () => {
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='flex justify-between items'>
             <Link
-              href={'/Wiki'}
+              href={'/'}
               className='nav-link'
             >
-              Wiki
-            </Link>
-            <Link
-              href={'/About'}
-              className='nav-link'
-            >
-              About
+              Trang chủ
             </Link>
             <Link
               href={'/Cart'}
               className='nav-link'
             >
-              Cart
+              Giỏ hàng
+            </Link>
+            <Link
+              href={'/UserProfile'}
+              className='nav-link'
+            >
+              Tài khoản
             </Link>
             <Link
               href={'/Login'}
               className='nav-link'
             >
-              Login
+              Đăng nhập
+            </Link>
+            <Link
+              href={'/Login'}
+              className='nav-link'
+            >
+              Đăng xuất
             </Link>
             <Link
               href={'/Register'}
               className='nav-link'
             >
-              Register
+              Đăng Ký
             </Link>
           </Nav>
         </Navbar.Collapse>
