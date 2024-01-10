@@ -42,28 +42,30 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
 
   const handleAddToCart = () => {
     if (product != undefined) {
-      const orderDetail : OrderDetailDTO = {
-        productId : product.id,
-        price : product.price ? product.price : 0,
-        quantity : quantity,
-        categogyName : product.categoryName,
-        description : product.description,
-        fullName : product.fullName,
-        images : product.images,
-        note : ''
-      }
+      const orderDetail: OrderDetailDTO = {
+        productId: product.id,
+        price: product.price ? product.price : 0,
+        quantity: quantity,
+        categogyName: product.categoryName,
+        description: product.description,
+        fullName: product.fullName,
+        images: product.images,
+        note: ''
+      };
 
       if (typeof window !== 'undefined') {
         const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
-  
-        const existingItemIndex = cart.findIndex(item => item.productId === orderDetail.productId);
-  
+
+        const existingItemIndex = cart.findIndex(
+          item => item.productId === orderDetail.productId
+        );
+
         if (existingItemIndex !== -1) {
           cart[existingItemIndex].quantity += orderDetail.quantity;
         } else {
           cart.push(orderDetail);
         }
-  
+
         localStorage.setItem('cart', JSON.stringify(cart));
       }
     }
@@ -96,15 +98,18 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
         <Loading />
       ) : (
         <div className={cx('product-Container')}>
-          <img
-            className={cx('product-Image')}
-            src={product?.images[0]}
-            alt={product?.fullName}
-          />
+          <div>
+            <img
+              className={cx('product-Image')}
+              src={product?.images[0]}
+              alt={product?.fullName}
+            />
+          </div>
+
           <div className={cx('product-Details')}>
             <h1 className={cx('product-Name')}>{product?.fullName}</h1>
-            <p className={cx('productI-nformation')}>{product?.description}</p>
-            <div className={cx('quantity-Container')}>
+            <p className={cx('product-Information')}>{product?.description}</p>
+<div className={cx('quantity-Container')}>
               <ButtonBase
                 type='button'
                 title='-'
