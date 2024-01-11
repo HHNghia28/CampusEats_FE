@@ -92,6 +92,12 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
       setQuantity(quantity - 1);
     }
   };
+  const formatPrice = (number: number) => {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    }).format(number);
+  }
   return (
     <div className={cx('container', 'body')}>
       <div className={cx('col-12')}>
@@ -118,11 +124,11 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
             <div className={cx('col-5', 'd-flex', 'flex-wrap', 'pl-20', 'product-image')}>
               <div className={cx('product-Details', 'col-12', 'product-item')}>
                 <h1 className={cx('product-Name', 'col-12', 'product-title')}>{product?.fullName}</h1>
-                <p className={cx('product-Price', 'col-12', 'product-title')}>{product?.price}</p>
-                <p className={cx('product-Information', 'col-12', 'product-title', 'px-10')}>Hsacbv sbuvbu bcuedv  vdv fvsv sfvs srfefv sfefv sefvdev zefv  cc heudcfhb ejsb dcvbs</p>
+                <p className={cx('product-Price', 'col-12', 'product-title')}>{formatPrice(product?.price ? product.price : 0)}</p>
+                <p className={cx('product-Information', 'col-12', 'product-title', 'px-10')}>{product?.description}</p>
               </div>
               <div className={cx('quantity-Container', 'col-12', 'body', 'product-title')}>
-                <div className={cx('quantity-Container', 'col-6', 'body', 'product-title', 'mb-3')}>
+                <div className={cx('quantity-Container', 'col-5', 'body', 'product-title', 'mb-3')}>
                   <div className={cx('me-3')}>
                     <ButtonBase
                       type='button'
@@ -144,10 +150,10 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
                   </div>
                 </div>
 
-                <div className={cx('col-6', 'mb-3')}>
+                <div className={cx('col-7', 'mb-3')}>
                   <ButtonBase
                     type='button'
-                    title='Add to Cart'
+                    title='Thêm vào giỏ hàng'
                     variant='main'
                     size='md'
                     onClick={handleAddToCart}
