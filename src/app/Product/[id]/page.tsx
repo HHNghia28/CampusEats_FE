@@ -93,7 +93,15 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
     }
   };
   return (
-    <div>
+    <div className={cx('container')}>
+      <div>
+        <p
+          className={cx('d-flex', 'text-start', 'pt-4', 'fs-xl-title', 'fw-600')}
+          style={{ fontFamily: 'Arial, sans-serif' }}
+        >
+          Chi tiết sản phẩm
+        </p>
+      </div>
       {isPending ? (
         <Loading />
       ) : (
@@ -109,7 +117,7 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
           <div className={cx('product-Details')}>
             <h1 className={cx('product-Name')}>{product?.fullName}</h1>
             <p className={cx('product-Information')}>{product?.description}</p>
-<div className={cx('quantity-Container')}>
+            <div className={cx('quantity-Container')}>
               <ButtonBase
                 type='button'
                 title='-'

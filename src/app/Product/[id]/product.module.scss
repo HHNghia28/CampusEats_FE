@@ -7,6 +7,18 @@
   padding: 0;
 }
 
+.fs-xl-title {
+  font-size: var(--fs-xl);
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
 .product-Container {
   display: flex;
   flex-wrap: wrap;
@@ -17,6 +29,7 @@
   border: 2px solid #ddd;
   border-radius: 8px;
   margin: 20px auto;
+
   button {
     margin: 10px;
   }
@@ -48,7 +61,8 @@
 .product-Price {
   font-size: 18px;
   font-weight: bold;
-  color: #ff0800;
+  font-family: 'Arial';
+  color: #333333;
   margin-bottom: 10px;
 }
 

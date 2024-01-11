@@ -38,6 +38,30 @@
     height: 60px;
 }
 
+.fs-lg {
+    font-size: var(--fs-lg);
+}
+
+.f-bold {
+    font-weight: bold;
+
+    button {
+        font-weight: bold;
+    }
+}
+
+.fs-xl-title {
+    font-size: var(--fs-xl);
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
 .card-info {
     background-color: #ffffff;
     border-radius: 8px;

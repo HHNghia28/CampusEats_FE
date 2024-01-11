@@ -257,6 +257,6 @@ const CartItem: React.FC<CartItemProps> = ({
   ) : null;
 };
 
-const CartTotal = () => {};
+const CartTotal = () => { };
 
 export default CartItem;

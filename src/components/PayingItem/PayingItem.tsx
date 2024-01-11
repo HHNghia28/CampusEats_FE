@@ -68,7 +68,7 @@ const PayingItem: React.FC<PayingItemProps> = ({ imageUrl,
             md={6}
             className={cx('d-flex', 'flex-column', 'align-items-start')}
           >
-            <div className={cx('py-2', 'font-arial')}>{name}</div>
+            <div className={cx('py-2', 'font-arial', 'f-bold', 'fs-lg')}>{name}</div>
             <div
               className={cx('d-flex', 'align-items-center', 'justify-center', 'gap-2')}
             >
@@ -79,7 +79,7 @@ const PayingItem: React.FC<PayingItemProps> = ({ imageUrl,
               >
                 -
               </Button> */}
-              <h5 className={cx('mb-0', 'font-arial')}>{counter}</h5>
+              <h5 className={cx('mb-0', 'font-arial', 'f-bold')}>{counter}</h5>
               {/* <Button
                 size='sm'
                 onClick={handleIncrease}
