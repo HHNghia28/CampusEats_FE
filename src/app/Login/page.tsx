@@ -123,9 +123,9 @@ const Login = () => {
                 />
               </Col>
             </Form.Group>
-            <p>
+            {/* <p>
               Bạn quên mật khẩu? <a href='#'>Nhấn vào đây</a>
-            </p>
+            </p> */}
             <Button
               size='lg'
               variant=''

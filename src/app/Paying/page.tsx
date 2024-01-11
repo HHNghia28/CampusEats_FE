@@ -74,6 +74,7 @@ const Paying = () => {
         receiver: customer?.name,
         contactNumber: customer?.contactNumber,
         address: customer?.address,
+        isPay: isPay,
         locationName: customer?.locationName
           ? customer.locationName
           : 'An Bình, Ninh Kiều, Cần Thơ',
