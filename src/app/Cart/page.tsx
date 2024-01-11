@@ -8,12 +8,14 @@ import { Col, Row } from 'react-bootstrap';
 import classNames from 'classnames/bind';
 import '../../styles/global.scss';
 import styles from './Cart.module.scss';
+import { Metadata } from 'next';
 
 const cx = classNames.bind(styles);
 /*
   Page: Cart
   Author: QuyenNNM
 */
+
 const Cart = () => {
   const [cart, setCart] = useState<OrderDetailDTO[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -70,7 +72,7 @@ const Cart = () => {
               )}
             >
               <p
-                className={cx('fs-sm-title')}
+                className={cx('fs-sm-title', 'fw-700')}
                 style={{ fontFamily: 'Arial, sans-serif' }}
               >
                 Ảnh sản phẩm
@@ -81,7 +83,7 @@ const Cart = () => {
               className='d-flex align-items-center justify-content-center'
             >
               <p
-                className={cx('fs-sm-title')}
+                className={cx('fs-sm-title', 'fw-700')}
                 style={{ fontFamily: 'Arial, sans-serif' }}
               >
                 Tên sản phẩm
@@ -92,7 +94,7 @@ const Cart = () => {
               className='d-flex align-items-center justify-content-center'
             >
               <p
-                className={cx('fs-sm-title')}
+                className={cx('fs-sm-title', 'fw-700')}
                 style={{ fontFamily: 'Arial, sans-serif' }}
               >
                 Đơn giá
@@ -103,7 +105,7 @@ const Cart = () => {
               className='d-flex align-items-center justify-content-center'
             >
               <p
-                className={cx('fs-sm-title')}
+                className={cx('fs-sm-title', 'fw-700')}
                 style={{ fontFamily: 'Arial, sans-serif' }}
               >
                 Số lượng
@@ -114,7 +116,7 @@ const Cart = () => {
               className='d-flex align-items-center justify-content-center'
             >
               <p
-                className={cx('fs-sm-title')}
+                className={cx('fs-sm-title', 'fw-700')}
                 style={{ fontFamily: 'Arial, sans-serif' }}
               >
                 Thành tiền
@@ -125,7 +127,7 @@ const Cart = () => {
               className='d-flex align-items-center justify-content-center'
             >
               <p
-                className={cx('fs-sm-title')}
+                className={cx('fs-sm-title', 'fw-700')}
                 style={{ fontFamily: 'Arial, sans-serif' }}
               >
                 Xóa
@@ -142,7 +144,7 @@ const Cart = () => {
                 productId={item.productId}
                 quantity={item.quantity}
                 onCartChange={handleCartChange}
-                // onQuantityChange={handleQuantityChange}
+              // onQuantityChange={handleQuantityChange}
               />
               {/* <br /> */}
             </Fragment>
@@ -177,7 +179,8 @@ const Cart = () => {
                     color: 'var(--dark)',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    fontFamily: ''
+                    fontFamily: 'Arial',
+                    fontWeight: 700
                   }}
                 />
               </a>
@@ -208,12 +211,12 @@ const Cart = () => {
                   color: 'black',
                   fontFamily: 'Arial, sans-serif'
                 }}
-                className={cx('fs-sm-title')}
+                className={cx('fs-sm-title', 'fw-700')}
               >
                 Tổng tiền thanh toán:
               </span>
               <span
-                className={cx('fs-sm-title')}
+                className={cx('fs-sm-title', 'fw-700')}
                 style={{ color: 'var(--main-color)' }}
               >
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -244,13 +247,14 @@ const Cart = () => {
               <a style={{ width: '100%', display: 'block' }}>
                 <ButtonBase
                   type='button'
-                  title='Order'
+                  title='Mua hàng'
                   variant='main-color'
                   size='md'
                   styles={{
                     width: '100%',
                     borderRadius: '10px',
-                    backgroundColor: ' var(--btn-color)'
+                    backgroundColor: ' var(--btn-color)',
+                    fontWeight: 700
                   }}
                 />
               </a>

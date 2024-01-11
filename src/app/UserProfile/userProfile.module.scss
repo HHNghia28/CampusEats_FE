@@ -1,5 +1,4 @@
 .user-Info {
-  background-color: var(--background-color);
   border-radius: 10px;
   padding: 20px;
   margin: 20px auto;
@@ -7,10 +6,11 @@
   h2 {
     text-align: center;
     font-weight: bold;
-    color: var(--title-color);
+    color: var(--text-title-color);
   }
+
   p {
-    padding-left: 30%;
+    // padding-left: 30%;
     text-align: left;
 
     strong {
@@ -19,25 +19,34 @@
   }
 }
 
+.user-item {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .order-History {
-  background-color: var(--background-color);
   border-radius: 10px;
-  padding: 20px;
   margin-bottom: 20px;
+
   h2 {
     text-align: center;
     font-weight: bold;
-    color: var(--title-color);
+    color: var(--text-title-color);
   }
 }
 
-.order-frame,
-.info-frame {
+.order-frame {
   border: 1px solid #ddd;
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 16px;
-  background-color: #ffffff;
+}
+
+.info-frame {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  padding: 15px 10px 0px 15px;
 }
 
 .button-group {
@@ -47,26 +56,32 @@
 }
 
 @media (max-width: 768px) {
+
   .user-Info,
   .order-History {
     padding: 15px;
+
     h2 {
       font-size: 1.5rem;
     }
   }
+
   .info-frame p {
     padding-left: 0;
   }
 }
 
 @media (max-width: 375px) {
+
   .user-Info,
   .order-History {
     padding: 10px;
+
     h2 {
       font-size: 1.2rem;
     }
   }
+
   .info-frame p {
     padding-left: 0;
   }

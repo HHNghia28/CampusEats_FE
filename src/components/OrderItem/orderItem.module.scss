@@ -1,11 +1,12 @@
 .orderItemContainer {
   border-radius: 10px;
-  background-color: var(--background-color);
   padding: 20px;
   margin: 20px auto;
+
   p {
     text-align: left;
     padding-left: 30%;
+
     strong {
       color: var(--main-color);
       text-decoration: none;
@@ -16,6 +17,7 @@
 @media (max-width: 768px) {
   .orderItemContainer {
     padding: 15px;
+
     p {
       padding-left: 0;
     }

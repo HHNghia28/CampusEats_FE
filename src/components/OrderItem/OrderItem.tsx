@@ -13,8 +13,6 @@ const OrderItem: React.FC<OrderDTO> = ({ id, address, totalPrice, status }) => {
           <p>
             <strong>Ngày đặt hàng:</strong> {'HI'}
           </p>
-        </Col>
-        <Col md={6}>
           <p>
             <strong>Tổng giá:</strong> {totalPrice}đ
           </p>

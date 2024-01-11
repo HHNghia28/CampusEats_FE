@@ -3,51 +3,66 @@
     // Default styles
     color: gray;
     cursor: pointer;
+
     // Hover styles
     &:hover {
       color: orange; // Change this to your desired hover color
     }
   }
 }
+
 .hoverText {
   font-family: 'Arial, sans-serif';
   color: #333333;
   cursor: pointer;
+
   &:hover {
     color: #fdb217; // Sử dụng mã màu cam mà bạn muốn
   }
 }
+
 .text-main-color {
   color: #f7a100;
 }
+
 .hr-color {
   color: #9fa6b2;
 }
+
 .custom-image-style {
   width: 110px;
   height: 110px;
   object-fit: cover;
 }
 
+.fw-700 {
+  font-weight: 700;
+}
+
+
 @media (max-width: 992px) {
   .fs-sm-title {
     font-size: var(--fs-sm);
   }
+
   .custom-button {
     font-size: var(--fs-sm);
     margin: 0;
     padding: 4px;
   }
+
   .custom-image-style {
     width: 80px;
     height: 80px;
     object-fit: cover;
   }
 }
+
 @media (max-width: 768px) {
   .hideOnMobile {
     display: none;
   }
+
   .row {
     display: flex;
   }
@@ -55,19 +70,23 @@
   .col {
     width: 100%;
   }
+
   .pt-tab {
     padding-top: 20px;
   }
 }
+
 @media (max-width: 576px) {
   .mobile {
     .hideOnMobile {
       display: none;
     }
+
     .w-100-mb {
       width: 100%;
       padding-left: 5px;
     }
+
     display: flex;
     justify-content: center;
     align-content: center;
@@ -82,6 +101,7 @@
     align-content: center;
     padding-top: 10px;
   }
+
   .img-m {
     margin-left: 20px;
   }

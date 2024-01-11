@@ -57,14 +57,15 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
         <div className={cx('h-30')}></div>
         <Fragment>
           <div className={cx('col-md-12', 'card-info', 'border', 'rounded')}>
+            <p className={cx('font-arial', 'f-bold')}>Mã đơn: {order?.code}</p>
             <p className={cx('font-arial', 'f-bold')}>Họ và tên: {order?.receiver}</p>
             <p className={cx('font-arial', 'f-bold')}>Số điện thoại: {order?.contactNumber}</p>
             <p className={cx('font-arial', 'f-bold')}>Địa chỉ: {order?.address}</p>
-            <p className={cx('font-arial', 'f-bold')}>Địa chỉ: {order?.status === "PAID" ? "Đã thanh toán" : "Chưa thanh toán"}</p>
+            <p className={cx('font-arial', 'f-bold')}>Thanh Toán : {order?.status === "PAID" ? "Đã thanh toán" : "Chưa thanh toán"}</p>
           </div>
           <div>
             <h1 className={cx('d-flex', 'align-items-center', 'justify-content-center', 'font-arial', 'mt-4', 'fs-xxl', 'f-bold', 'mb-3', 'text-title-color')}>
-              Paying
+              Lịch sử mua hàng
             </h1>
           </div>
           {order?.details?.map((item, index) => (
@@ -80,7 +81,7 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
             </Fragment>
           ))}
           <Col className={cx('text-start', 'p-t-22')}>
-            <h4 className={cx('font-arial', 'f-bold')}>Note:</h4>
+            <h4 className={cx('font-arial', 'f-bold')}>Ghi chú:</h4>
           </Col>
           <hr />
           <Row className={cx('p-t-22')}>
@@ -89,7 +90,7 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
               md={6}
               className={cx('d-flex', 'justify-content-center')}
             >
-              <h4 className={cx('text-end', 'col-12', 'font-arial', 'f-bold')}>Total: {formatPrice(total)}</h4>
+              <h4 className={cx('text-end', 'col-12', 'font-arial', 'f-bold')}>Tổng thanh toán: {formatPrice(total)}</h4>
             </Col>
           </Row>
           <Row

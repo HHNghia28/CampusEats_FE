@@ -123,7 +123,7 @@ const Paying = () => {
           </div>
           <div>
             <h1 className={cx('d-flex', 'align-items-center', 'justify-content-center', 'font-arial', 'mt-4', 'fs-xxl', 'f-bold', 'mb-3', 'text-title-color')}>
-              Paying
+              Thanh toán
             </h1>
           </div>
           {cart?.map((item, index) => (
@@ -139,7 +139,7 @@ const Paying = () => {
             </Fragment>
           ))}
           <Col className={cx('text-start', 'p-t-22')}>
-            <h4 className={cx('font-arial', 'f-bold')}>Note:</h4>
+            <h4 className={cx('font-arial', 'f-bold')}>Ghi chú:</h4>
           </Col>
           <hr />
           <Row className={cx('p-t-22')}>
@@ -148,7 +148,7 @@ const Paying = () => {
               md={6}
               className={cx('d-flex', 'justify-content-center')}
             >
-              <h4 className={cx('text-end', 'col-12', 'font-arial', 'f-bold')}>Total: {formatPrice(total)}</h4>
+              <h4 className={cx('text-end', 'col-12', 'font-arial', 'f-bold')}>Tổng thanh toán: {formatPrice(total)}</h4>
             </Col>
           </Row>
           <div>
@@ -161,7 +161,7 @@ const Paying = () => {
               />
               Thanh toán online
             </label>
-            {isPay && <p className={cx('font-arial')}>Bạn đã chọn thanh toán online.</p>}
+            {isPay && <p className={cx('font-arial', 'f-bold', 'fs-lg')}>Bạn đã chọn thanh toán online.</p>}
           </div>
           <Row
             className={cx(
@@ -172,19 +172,19 @@ const Paying = () => {
               'p-2'
             )}
           >
-            <Col className={cx('text-start')}>
+            <Col className={cx('text-start', 'f-bold', 'mb-3')}>
               <ButtonBase
                 type='button'
-                title='Back'
+                title='Quay lại'
                 variant='main-color'
                 size='md'
                 onClick={handleBackClick}
               />
             </Col>
-            <Col className={cx('text-end')}>
+            <Col className={cx('text-end', 'f-bold', 'mb-3')}>
               <ButtonBase
                 type='button'
-                title='Paying'
+                title='Đặt hàng'
                 variant='main-color'
                 size='md'
                 onClick={handlePayingClick}

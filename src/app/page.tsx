@@ -153,7 +153,7 @@ export default function Home() {
         </Slider>
       </div>
       <h3 className={cx('mt-5', 'text-center', 'text-title-color', 'f-bold', 'font-arial', 'fs-xxl')}>Hôm nay ăn gì?</h3>
-      <h4 className={cx('mt-2', 'font-arial', 'fw-700')}>Voucher</h4>
+      <h4 className={cx('mt-2', 'font-arial', 'fw-700')}>Mã giảm giá</h4>
       <div className={cx('mt-3')}>
         {/* Sử dụng Slider ở đây */}
         <Slider {...sliderVoucherSettings}>
@@ -219,7 +219,7 @@ export default function Home() {
             ) : null
           )
         ) : (
-          <p>Hôm nay không còn sản phẩm nào</p>
+          <p className={cx('font-arial', 'fw-700', 'd-flex', 'align-items-center', 'justify-content-center', 'mt-3', 'fs-lg')}>Rất tiếc, hôm nay không còn sản phẩm nào!</p>
         )}
       </div>
     </div>
