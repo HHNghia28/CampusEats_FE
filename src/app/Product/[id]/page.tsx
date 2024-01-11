@@ -97,54 +97,62 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
       {isPending ? (
         <Loading />
       ) : (
-        <div className={cx('product-Container')}>
-          <div>
-            <img
-              className={cx('product-Image')}
-              src={product?.images[0]}
-              alt={product?.fullName}
+        <table className={cx('product-Table')}>
+          <tbody>
+            <tr className={cx('product-Title')}>
+              <td>Ảnh sản phẩm</td>
+              <td>Tên sản phẩm</td>
+              <td>Số lượng</td>
+              <td>Đơn giá</td>
+            </tr>
+            <tr className={cx('product-Info')}>
+              <td>
+                <img
+                  className={cx('product-Image')}
+                  src={product?.images[0]}
+                  alt={product?.fullName}
+                />
+              </td>
+
+              <td>
+                <h1 className={cx('product-Name')}>{product?.fullName}</h1>
+                <p className={cx('product-Description')}>{product?.description}</p>
+              </td>
+              <td>
+                <div className={cx('quantity-Container')}>
+                  <ButtonBase
+                    type='button'
+                    title='-'
+                    variant='main'
+                    size='sm'
+                    onClick={handleDecreaseQuantity}
+                  />
+                  <span className={cx('quantity-Value')}>{quantity}</span>
+                  <ButtonBase
+                    type='button'
+                    title='+'
+                    variant='main'
+                    size='sm'
+                    onClick={handleIncreaseQuantity}
+                  />
+                </div>
+              </td>
+
+              <td>
+                <p className={cx('product-Price')}>{product?.price}₫</p>
+              </td>
+            </tr>
+          </tbody>
+          <div className={cx('add-to-cart-button')}>
+            <ButtonBase
+              type='button'
+              title='Thêm vào giỏ hàng'
+              variant='main'
+              size='md'
+              onClick={handleAddToCart}
             />
           </div>
-
-          <div className={cx('product-Details')}>
-            <h1 className={cx('product-Name')}>{product?.fullName}</h1>
-            <p className={cx('product-Information')}>{product?.description}</p>
-<div className={cx('quantity-Container')}>
-              <ButtonBase
-                type='button'
-                title='-'
-                variant='main'
-                size='sm'
-                onClick={handleDecreaseQuantity}
-              />
-              <span className={cx('quantity-Value')}>{quantity}</span>
-              <ButtonBase
-                type='button'
-                title='+'
-                variant='main'
-                size='sm'
-                onClick={handleIncreaseQuantity}
-              />
-            </div>
-            <p className={cx('product-Price')}>{product?.price}</p>
-            <div>
-              <ButtonBase
-                type='button'
-                title='Add to Cart'
-                variant='main'
-                size='md'
-                onClick={handleAddToCart}
-              />
-              {/* <ButtonBase
-                type='button'
-                title='Buy Now'
-                variant='main'
-                size='md'
-                onClick={handleBuyNow}
-              /> */}
-            </div>
-          </div>
-        </div>
+        </table>
       )}
     </div>
   );
