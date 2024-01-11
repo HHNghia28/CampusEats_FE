@@ -1,15 +1,14 @@
 'use client';
-import ButtonBase from '@/components/Buttons/Button';
-import OrderItem from '@/components/OrderItem/OrderItem';
-import classNames from 'classnames/bind';
-import React, { useEffect, useState } from 'react';
-import { Col, Container, Row, Table } from 'react-bootstrap';
-import styles from './userProfile.module.scss';
 import { useQuery } from '@tanstack/react-query';
-import { getOrderByCustomerId } from '@/api/OrderAPI';
-import Loading from '@/components/Loading/loading';
-import Link from 'next/link';
+import classNames from 'classnames/bind';
 import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { Col, Container, Row, Table } from 'react-bootstrap';
+
+import { getOrderByCustomerId } from '@/api/OrderAPI';
+import ButtonBase from '@/components/Buttons/Button';
+import Loading from '@/components/Loading/loading';
+import styles from './userProfile.module.scss';
 const cx = classNames.bind(styles);
 
 const UserProfile = () => {
@@ -22,6 +21,8 @@ const UserProfile = () => {
       const storedCustomer = localStorage.getItem('account');
       if (storedCustomer) {
         setCustomer(JSON.parse(storedCustomer));
+      } else {
+        router.push('/Login');
       }
     }
   }, []);
@@ -32,9 +33,9 @@ const UserProfile = () => {
     data: results,
     error
   } = useQuery({
-    queryKey: ['userProfile', '420292'],
+    queryKey: ['userProfile', customer?.id],
     queryFn: async () => {
-      const data = await getOrderByCustomerId('420292');
+      const data = await getOrderByCustomerId(customer?.id ? customer?.id + '' : '');
       return data;
     }
   });
@@ -62,11 +63,11 @@ const UserProfile = () => {
       style: 'currency',
       currency: 'VND'
     }).format(number);
-  }
+  };
 
   const handleClickRow = (id: string) => {
-    router.push('/OrderHistory/' + id)
-  }
+    router.push('/OrderHistory/' + id);
+  };
 
   // const handleToggleOrders = () => {
   //   setOrders(!orders);
@@ -99,7 +100,12 @@ const UserProfile = () => {
         {isPending ? (
           <Loading />
         ) : orders && orders.length > 0 ? (
-          <Table striped bordered hover size="sm">
+          <Table
+            striped
+            bordered
+            hover
+            size='sm'
+          >
             <thead>
               <tr>
                 <th>Mã đơn</th>
@@ -110,27 +116,25 @@ const UserProfile = () => {
               </tr>
             </thead>
             <tbody>
-              {
-                orders.map(item => (
-                  <tr >
-                    <td>{item.code}</td>
-                    {/* <td>{item.}</td> */}
-                    <td>{item?.status === "PAID" ? "Đã thanh toán" : "Chưa thanh toán"}</td>
-                    <td>{formatPrice(item.totalPrice ? item.totalPrice : 0)}</td>
-                    <td>
-                      <ButtonBase
-                        type='button'
-                        title='Chi tiết'
-                        variant='main-color'
-                        size='md'
-                        onClick={() => {
-                          router.push(item.id ? '/OrderHistory/' + item.id : '');
-                        }}
-                      />
-                    </td>
-                  </tr>
-                ))
-              }
+              {orders.map(item => (
+                <tr>
+                  <td>{item.code}</td>
+                  {/* <td>{item.}</td> */}
+                  <td>{item?.status === 'PAID' ? 'Đã thanh toán' : 'Chưa thanh toán'}</td>
+                  <td>{formatPrice(item.totalPrice ? item.totalPrice : 0)}</td>
+                  <td>
+                    <ButtonBase
+                      type='button'
+                      title='Chi tiết'
+                      variant='main-color'
+                      size='md'
+                      onClick={() => {
+                        router.push(item.id ? '/OrderHistory/' + item.id : '');
+                      }}
+                    />
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </Table>
         ) : (

@@ -1,14 +1,15 @@
 'use client';
 // import React from 'react';
-import ButtonBase from '@/components/Buttons/Button';
-import CartItem from '@/components/CartItem/CartItem';
+import classNames from 'classnames/bind';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import classNames from 'classnames/bind';
+
+import ButtonBase from '@/components/Buttons/Button';
+import CartItem from '@/components/CartItem/CartItem';
 import '../../styles/global.scss';
 import styles from './Cart.module.scss';
-import { Metadata } from 'next';
 
 const cx = classNames.bind(styles);
 /*
@@ -19,6 +20,16 @@ const cx = classNames.bind(styles);
 const Cart = () => {
   const [cart, setCart] = useState<OrderDetailDTO[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedCustomer = localStorage.getItem('account');
+      if (!storedCustomer) {
+        router.push('/Login');
+      }
+    }
+  }, []);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -144,7 +155,7 @@ const Cart = () => {
                 productId={item.productId}
                 quantity={item.quantity}
                 onCartChange={handleCartChange}
-              // onQuantityChange={handleQuantityChange}
+                // onQuantityChange={handleQuantityChange}
               />
               {/* <br /> */}
             </Fragment>

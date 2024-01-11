@@ -1,12 +1,13 @@
 'use client';
+import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
+import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import styles from './Paying.module.scss';
 
 import { getOrderByOrderId } from '@/api/OrderAPI';
 import PayingItem from '@/components/PayingItem/PayingItem';
-import { useQuery } from '@tanstack/react-query';
+import styles from './Paying.module.scss';
 
 const divStyle = {
   backgroundColor: '#DCDCDC',
@@ -18,6 +19,16 @@ const cx = classNames.bind(styles);
 const OrderHistory = ({ params }: { params: { id: string } }) => {
   const [total, setTotal] = useState(0);
   const [order, setOrder] = useState<OrderDTO>();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedCustomer = localStorage.getItem('account');
+      if (!storedCustomer) {
+        router.push('/Login');
+      }
+    }
+  }, []);
 
   const {
     isPending,
@@ -50,7 +61,7 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
       style: 'currency',
       currency: 'VND'
     }).format(number);
-  }
+  };
   return (
     <div className={cx('background-color')}>
       <div className={cx('container')}>
@@ -59,12 +70,29 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
           <div className={cx('col-md-12', 'card-info', 'border', 'rounded')}>
             <p className={cx('font-arial', 'f-bold')}>Mã đơn: {order?.code}</p>
             <p className={cx('font-arial', 'f-bold')}>Họ và tên: {order?.receiver}</p>
-            <p className={cx('font-arial', 'f-bold')}>Số điện thoại: {order?.contactNumber}</p>
+            <p className={cx('font-arial', 'f-bold')}>
+              Số điện thoại: {order?.contactNumber}
+            </p>
             <p className={cx('font-arial', 'f-bold')}>Địa chỉ: {order?.address}</p>
-            <p className={cx('font-arial', 'f-bold')}>Thanh Toán : {order?.status === "PAID" ? "Đã thanh toán" : "Chưa thanh toán"}</p>
+            <p className={cx('font-arial', 'f-bold')}>
+              Thanh Toán :{' '}
+              {order?.status === 'PAID' ? 'Đã thanh toán' : 'Chưa thanh toán'}
+            </p>
           </div>
           <div>
-            <h1 className={cx('d-flex', 'align-items-center', 'justify-content-center', 'font-arial', 'mt-4', 'fs-xxl', 'f-bold', 'mb-3', 'text-title-color')}>
+            <h1
+              className={cx(
+                'd-flex',
+                'align-items-center',
+                'justify-content-center',
+                'font-arial',
+                'mt-4',
+                'fs-xxl',
+                'f-bold',
+                'mb-3',
+                'text-title-color'
+              )}
+            >
               Lịch sử mua hàng
             </h1>
           </div>
@@ -90,7 +118,9 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
               md={6}
               className={cx('d-flex', 'justify-content-center')}
             >
-              <h4 className={cx('text-end', 'col-12', 'font-arial', 'f-bold')}>Tổng thanh toán: {formatPrice(total)}</h4>
+              <h4 className={cx('text-end', 'col-12', 'font-arial', 'f-bold')}>
+                Tổng thanh toán: {formatPrice(total)}
+              </h4>
             </Col>
           </Row>
           <Row
@@ -101,10 +131,10 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
               'p-t-22',
               'p-2'
             )}
-          >
-          </Row>
-        </Fragment></div>
-    </div >
+          ></Row>
+        </Fragment>
+      </div>
+    </div>
   );
 };
 

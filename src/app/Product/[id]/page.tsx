@@ -1,11 +1,13 @@
 'use client';
+import { useQuery } from '@tanstack/react-query';
+import classNames from 'classnames/bind';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+
 import { getProduct } from '@/api/ProductAPI';
 import ButtonBase from '@/components/Buttons/Button';
 import Loading from '@/components/Loading/loading';
-import { useQuery } from '@tanstack/react-query';
-import classNames from 'classnames/bind';
-import React, { useState } from 'react';
-import { toast } from 'react-toastify';
 import styles from './product.module.scss';
 const cx = classNames.bind(styles);
 
@@ -16,6 +18,16 @@ const cx = classNames.bind(styles);
 
 const ProductDetail = ({ params }: { params: { id: number } }) => {
   const [product, setProduct] = useState<ProductDTO>();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedCustomer = localStorage.getItem('account');
+      if (!storedCustomer) {
+        router.push('/Login');
+      }
+    }
+  }, []);
 
   const {
     isPending,
@@ -97,7 +109,7 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
       style: 'currency',
       currency: 'VND'
     }).format(number);
-  }
+  };
   return (
     <div className={cx('container', 'body')}>
       <div className={cx('col-12')}>
@@ -123,12 +135,35 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
 
             <div className={cx('col-5', 'd-flex', 'flex-wrap', 'pl-20', 'product-image')}>
               <div className={cx('product-Details', 'col-12', 'product-item')}>
-                <h1 className={cx('product-Name', 'col-12', 'product-title')}>{product?.fullName}</h1>
-                <p className={cx('product-Price', 'col-12', 'product-title')}>{formatPrice(product?.price ? product.price : 0)}</p>
-                <p className={cx('product-Information', 'col-12', 'product-title', 'px-10')}>{product?.description}</p>
+                <h1 className={cx('product-Name', 'col-12', 'product-title')}>
+                  {product?.fullName}
+                </h1>
+                <p className={cx('product-Price', 'col-12', 'product-title')}>
+                  {formatPrice(product?.price ? product.price : 0)}
+                </p>
+                <p
+                  className={cx(
+                    'product-Information',
+                    'col-12',
+                    'product-title',
+                    'px-10'
+                  )}
+                >
+                  {product?.description}
+                </p>
               </div>
-              <div className={cx('quantity-Container', 'col-12', 'body', 'product-title')}>
-                <div className={cx('quantity-Container', 'col-5', 'body', 'product-title', 'mb-3')}>
+              <div
+                className={cx('quantity-Container', 'col-12', 'body', 'product-title')}
+              >
+                <div
+                  className={cx(
+                    'quantity-Container',
+                    'col-5',
+                    'body',
+                    'product-title',
+                    'mb-3'
+                  )}
+                >
                   <div className={cx('me-3')}>
                     <ButtonBase
                       type='button'
@@ -167,14 +202,12 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
               /> */}
                 </div>
               </div>
-
             </div>
             <div className={cx('col-1')}></div>
           </div>
         </div>
-      )
-      }
-    </div >
+      )}
+    </div>
   );
 };
 

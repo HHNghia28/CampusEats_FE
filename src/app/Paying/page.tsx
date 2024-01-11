@@ -1,16 +1,15 @@
 'use client';
+import { useMutation } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
+import { useRouter } from 'next/navigation';
 import { Fragment, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import styles from './Paying.module.scss';
+import { toast } from 'react-toastify';
 
+import { addOrder } from '@/api/OrderAPI';
 import ButtonBase from '@/components/Buttons/Button';
 import PayingItem from '@/components/PayingItem/PayingItem';
-import { loginAPI } from '@/api/AuthAPI';
-import { useMutation, useQuery } from '@tanstack/react-query';
-import { addOrder } from '@/api/OrderAPI';
-import { toast } from 'react-toastify';
-import { useRouter } from 'next/navigation';
+import styles from './Paying.module.scss';
 
 // const divStyle = {
 //   backgroundColor: '#DCDCDC',
@@ -32,6 +31,13 @@ const Paying = () => {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      const storedCustomer = localStorage.getItem('account');
+      if (storedCustomer) {
+        setCustomer(JSON.parse(storedCustomer));
+      } else {
+        router.push('/Login');
+      }
+
       const cart: OrderDetailDTO[] = JSON.parse(localStorage.getItem('cart') || '[]');
 
       let totalPrice = 0;
@@ -44,11 +50,6 @@ const Paying = () => {
 
       setTotal(totalPrice);
       setCart(cart);
-
-      const storedCustomer = localStorage.getItem('account');
-      if (storedCustomer) {
-        setCustomer(JSON.parse(storedCustomer));
-      }
     }
   }, []);
 
@@ -110,7 +111,7 @@ const Paying = () => {
       style: 'currency',
       currency: 'VND'
     }).format(number);
-  }
+  };
   return (
     <div className={cx('background-color')}>
       <div className={cx('container')}>
@@ -118,11 +119,25 @@ const Paying = () => {
         <Fragment>
           <div className={cx('col-md-12', 'card-info', 'border', 'rounded')}>
             <p className={cx('font-arial', 'f-bold')}>Họ và tên: {customer?.name}</p>
-            <p className={cx('font-arial', 'f-bold')}>Số điện thoại: {customer?.contactNumber}</p>
+            <p className={cx('font-arial', 'f-bold')}>
+              Số điện thoại: {customer?.contactNumber}
+            </p>
             <p className={cx('font-arial', 'f-bold')}>Địa chỉ: {customer?.address}</p>
           </div>
           <div>
-            <h1 className={cx('d-flex', 'align-items-center', 'justify-content-center', 'font-arial', 'mt-4', 'fs-xxl', 'f-bold', 'mb-3', 'text-title-color')}>
+            <h1
+              className={cx(
+                'd-flex',
+                'align-items-center',
+                'justify-content-center',
+                'font-arial',
+                'mt-4',
+                'fs-xxl',
+                'f-bold',
+                'mb-3',
+                'text-title-color'
+              )}
+            >
               Thanh toán
             </h1>
           </div>
@@ -148,20 +163,26 @@ const Paying = () => {
               md={6}
               className={cx('d-flex', 'justify-content-center')}
             >
-              <h4 className={cx('text-end', 'col-12', 'font-arial', 'f-bold')}>Tổng thanh toán: {formatPrice(total)}</h4>
+              <h4 className={cx('text-end', 'col-12', 'font-arial', 'f-bold')}>
+                Tổng thanh toán: {formatPrice(total)}
+              </h4>
             </Col>
           </Row>
           <div>
             <label>
               <input
-                type="checkbox"
+                type='checkbox'
                 checked={isPay}
                 onChange={handleCheckboxPayChange}
                 className={cx('mr-10', 'font-arial')}
               />
               Thanh toán online
             </label>
-            {isPay && <p className={cx('font-arial', 'f-bold', 'fs-lg')}>Bạn đã chọn thanh toán online.</p>}
+            {isPay && (
+              <p className={cx('font-arial', 'f-bold', 'fs-lg')}>
+                Bạn đã chọn thanh toán online.
+              </p>
+            )}
           </div>
           <Row
             className={cx(
@@ -191,8 +212,9 @@ const Paying = () => {
               />
             </Col>
           </Row>
-        </Fragment></div>
-    </div >
+        </Fragment>
+      </div>
+    </div>
   );
 };
 

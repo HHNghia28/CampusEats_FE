@@ -1,10 +1,25 @@
 'use client';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 const Navigation = () => {
+  const router = useRouter();
+
+  const logout = () => {
+    if (typeof window !== 'undefined') {
+      const storedCustomer = localStorage.getItem('account');
+
+      if (storedCustomer) {
+        localStorage.removeItem('account');
+
+        router.push('/Login');
+      }
+    }
+  };
+
   return (
     <Navbar
       expand='lg'
@@ -47,8 +62,9 @@ const Navigation = () => {
               Đăng nhập
             </Link>
             <Link
-              href={'/Login'}
+              href={'#'}
               className='nav-link'
+              onClick={logout}
             >
               Đăng xuất
             </Link>
