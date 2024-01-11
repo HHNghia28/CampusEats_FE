@@ -12,6 +12,15 @@ const Login = () => {
   const router = useRouter();
   const [login, setLogin] = useState<LoginDTO>();
 
+  const setLocalStorageWithExpiry = (key: string, value: string, ttl: number) => {
+    const now = new Date();
+    const item = {
+      value: value,
+      expiry: now.getTime() + ttl,
+    };
+    localStorage.setItem(key, JSON.stringify(item));
+  };
+
   const mutationLogin = useMutation({
     mutationFn: (login: LoginDTO) => {
       return loginAPI(login);
@@ -19,11 +28,12 @@ const Login = () => {
     onSuccess: (data, variables, context) => {
 
       localStorage.setItem('account', JSON.stringify(data.data));
+      setLocalStorageWithExpiry('account', '', 20);
 
       if (data.success) {
         localStorage.setItem('account', JSON.stringify(data.data));
         toast.success('Đăng nhập thành công');
-        router.push('/');
+        window.location.href = '/';
       } else {
         toast.error(data.message);
       }
