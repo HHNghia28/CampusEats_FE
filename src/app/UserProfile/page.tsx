@@ -3,17 +3,19 @@ import ButtonBase from '@/components/Buttons/Button';
 import OrderItem from '@/components/OrderItem/OrderItem';
 import classNames from 'classnames/bind';
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Table } from 'react-bootstrap';
 import styles from './userProfile.module.scss';
 import { useQuery } from '@tanstack/react-query';
 import { getOrderByCustomerId } from '@/api/OrderAPI';
 import Loading from '@/components/Loading/loading';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 const cx = classNames.bind(styles);
 
 const UserProfile = () => {
   const [orders, setOrders] = useState<OrderDTO[]>();
   const [customer, setCustomer] = useState<CustomerDTO | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -55,6 +57,17 @@ const UserProfile = () => {
     setOrders(temp);
   }
 
+  const formatPrice = (number: number) => {
+    return new Intl.NumberFormat('vi-VN', {
+      style: 'currency',
+      currency: 'VND'
+    }).format(number);
+  }
+
+  const handleClickRow = (id: string) => {
+    router.push('/OrderHistory/' + id)
+  }
+
   // const handleToggleOrders = () => {
   //   setOrders(!orders);
   // };
@@ -67,40 +80,59 @@ const UserProfile = () => {
         </div>
         <div className={cx('info-frame')}>
           <Row className='d-flex navbar-brand'>
-            <Col md={6}>
+            <Col md={12}>
               <p>
                 <strong>Họ và Tên:</strong> {customer?.name}
+              </p>
+              <p>
+                <strong>Số điện thoại:</strong> {customer?.contactNumber}
               </p>
               <p>
                 <strong>Địa chỉ:</strong> {customer?.address}
               </p>
             </Col>
-            <Col md={6}>
-              <p>
-                <strong>Số điện thoại:</strong> {customer?.contactNumber}
-              </p>
-            </Col>
           </Row>
         </div>
       </div>
-      <div className={cx('order-History')}>
+      <div className={cx('order-History', 'col-12')}>
         <h2 className='title '>Lịch sử mua hàng</h2>
         {isPending ? (
           <Loading />
         ) : orders && orders.length > 0 ? (
-          orders.map(item => (
-            <div
-              key={item.orderId}
-              className={cx('order-frame')}
-            >
-              <Link
-                className='navbar-brand'
-                href={`/OrderHistory/${item.id}`}
-              >
-                <OrderItem {...item} />
-              </Link>
-            </div>
-          ))
+          <Table striped bordered hover size="sm">
+            <thead>
+              <tr>
+                <th>Mã đơn</th>
+                {/* <th>Ngày đặt</th> */}
+                <th>Trạng thái</th>
+                <th>Tổng giá</th>
+                <th>Chi tiết</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                orders.map(item => (
+                  <tr >
+                    <td>{item.code}</td>
+                    {/* <td>{item.}</td> */}
+                    <td>{item?.status === "PAID" ? "Đã thanh toán" : "Chưa thanh toán"}</td>
+                    <td>{formatPrice(item.totalPrice ? item.totalPrice : 0)}</td>
+                    <td>
+                      <ButtonBase
+                        type='button'
+                        title='Chi tiết'
+                        variant='main-color'
+                        size='md'
+                        onClick={() => {
+                          router.push(item.id ? '/OrderHistory/' + item.id : '');
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </Table>
         ) : (
           <p>Bạn không có đơn hàng nào</p>
         )}

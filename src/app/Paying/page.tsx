@@ -172,7 +172,7 @@ const Paying = () => {
               'p-2'
             )}
           >
-            <Col className={cx('text-start', 'f-bold')}>
+            <Col className={cx('text-start', 'f-bold', 'mb-3')}>
               <ButtonBase
                 type='button'
                 title='Quay lại'
@@ -181,7 +181,7 @@ const Paying = () => {
                 onClick={handleBackClick}
               />
             </Col>
-            <Col className={cx('text-end', 'f-bold')}>
+            <Col className={cx('text-end', 'f-bold', 'mb-3')}>
               <ButtonBase
                 type='button'
                 title='Đặt hàng'
