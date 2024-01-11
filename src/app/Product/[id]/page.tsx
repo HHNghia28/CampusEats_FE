@@ -93,8 +93,8 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
     }
   };
   return (
-    <div className={cx('container')}>
-      <div>
+    <div className={cx('container', 'body')}>
+      <div className={cx('col-12')}>
         <p
           className={cx('d-flex', 'text-start', 'pt-4', 'fs-xl-title', 'fw-600')}
           style={{ fontFamily: 'Arial, sans-serif' }}
@@ -105,56 +105,70 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
       {isPending ? (
         <Loading />
       ) : (
-        <div className={cx('product-Container')}>
-          <div>
-            <img
-              className={cx('product-Image')}
-              src={product?.images[0]}
-              alt={product?.fullName}
-            />
-          </div>
-
-          <div className={cx('product-Details')}>
-            <h1 className={cx('product-Name')}>{product?.fullName}</h1>
-            <p className={cx('product-Information')}>{product?.description}</p>
-            <div className={cx('quantity-Container')}>
-              <ButtonBase
-                type='button'
-                title='-'
-                variant='main'
-                size='sm'
-                onClick={handleDecreaseQuantity}
-              />
-              <span className={cx('quantity-Value')}>{quantity}</span>
-              <ButtonBase
-                type='button'
-                title='+'
-                variant='main'
-                size='sm'
-                onClick={handleIncreaseQuantity}
+        <div className={cx('product-image')}>
+          <div className={cx('product-Container', 'col-6')}>
+            <div className={cx('p-3', 'col-6', 'product-image')}>
+              <img
+                className={cx('product-Image')}
+                src={product?.images[0]}
+                alt={product?.fullName}
               />
             </div>
-            <p className={cx('product-Price')}>{product?.price}</p>
-            <div>
-              <ButtonBase
-                type='button'
-                title='Add to Cart'
-                variant='main'
-                size='md'
-                onClick={handleAddToCart}
-              />
-              {/* <ButtonBase
+
+            <div className={cx('col-5', 'd-flex', 'flex-wrap', 'pl-20', 'product-image')}>
+              <div className={cx('product-Details', 'col-12', 'product-item')}>
+                <h1 className={cx('product-Name', 'col-12', 'product-title')}>{product?.fullName}</h1>
+                <p className={cx('product-Price', 'col-12', 'product-title')}>{product?.price}</p>
+                <p className={cx('product-Information', 'col-12', 'product-title', 'px-10')}>Hsacbv sbuvbu bcuedv  vdv fvsv sfvs srfefv sfefv sefvdev zefv  cc heudcfhb ejsb dcvbs</p>
+              </div>
+              <div className={cx('quantity-Container', 'col-12', 'body', 'product-title')}>
+                <div className={cx('quantity-Container', 'col-6', 'body', 'product-title', 'mb-3')}>
+                  <div className={cx('me-3')}>
+                    <ButtonBase
+                      type='button'
+                      title='-'
+                      variant='main'
+                      size='sm'
+                      onClick={handleDecreaseQuantity}
+                    />
+                  </div>
+                  <span className={cx('quantity-Value', 'me-3', 'mt-1')}>{quantity}</span>
+                  <div className={cx()}>
+                    <ButtonBase
+                      type='button'
+                      title='+'
+                      variant='main'
+                      size='sm'
+                      onClick={handleIncreaseQuantity}
+                    />
+                  </div>
+                </div>
+
+                <div className={cx('col-6', 'mb-3')}>
+                  <ButtonBase
+                    type='button'
+                    title='Add to Cart'
+                    variant='main'
+                    size='md'
+                    onClick={handleAddToCart}
+                  />
+                  {/* <ButtonBase
                 type='button'
                 title='Buy Now'
                 variant='main'
                 size='md'
                 onClick={handleBuyNow}
               /> */}
+                </div>
+              </div>
+
             </div>
+            <div className={cx('col-1')}></div>
           </div>
         </div>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 };
 
