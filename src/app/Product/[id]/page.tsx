@@ -149,7 +149,7 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
                     'px-10'
                   )}
                 >
-                  {product?.description}
+                  {product?.orderTemplate}
                 </p>
               </div>
               <div
