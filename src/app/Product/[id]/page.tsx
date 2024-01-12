@@ -59,7 +59,7 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
         price: product.price ? product.price : 0,
         quantity: quantity,
         categogyName: product.categoryName,
-        description: product.description,
+        description: product.orderTemplate,
         fullName: product.fullName,
         images: product.images,
         note: ''
