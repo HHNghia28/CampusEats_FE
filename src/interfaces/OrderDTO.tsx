@@ -12,4 +12,6 @@ interface OrderDTO {
     details?: OrderDetailDTO[];
     totalPrice?: number;
     isPay?: boolean;
+    appointmentDate?: Date; 
+    note?: string;
 }

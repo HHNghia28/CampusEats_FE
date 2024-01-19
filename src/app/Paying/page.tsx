@@ -22,6 +22,12 @@ const Paying = () => {
   const [cart, setCart] = useState<OrderDetailDTO[]>();
   const [customer, setCustomer] = useState<CustomerDTO | null>(null);
   const [isPay, setIsPay] = useState(false);
+  const [appointmentDate, setAppointmentDate] = useState<Date>();
+  const [note, setNote] = useState<string>();
+
+  useEffect(() => {
+    console.log(appointmentDate);
+  }, [appointmentDate]);
 
   const router = useRouter();
 
@@ -78,6 +84,8 @@ const Paying = () => {
         locationName: customer?.locationName
           ? customer.locationName
           : 'An Bình, Ninh Kiều, Cần Thơ',
+          appointmentDate: appointmentDate,
+          note: note,
         details: cart
       };
 
@@ -124,6 +132,14 @@ const Paying = () => {
               Số điện thoại: {customer?.contactNumber}
             </p>
             <p className={cx('font-arial', 'f-bold')}>Địa chỉ: {customer?.address}</p>
+            <p>Giờ hẹn: </p>
+            <input
+              type='datetime-local'
+              name=''
+              id=''
+              value={appointmentDate ? appointmentDate.toISOString().slice(0, -8) : ''}
+              onChange={e => setAppointmentDate(new Date(e.target.value))}
+            />
           </div>
           <div>
             <h1
@@ -156,6 +172,7 @@ const Paying = () => {
           ))}
           <Col className={cx('text-start', 'p-t-22')}>
             <h4 className={cx('font-arial', 'f-bold')}>Ghi chú:</h4>
+            <input type="text" value={note} onChange={e => setNote(e.target.value)} />
           </Col>
           <hr />
           <Row className={cx('p-t-22')}>
