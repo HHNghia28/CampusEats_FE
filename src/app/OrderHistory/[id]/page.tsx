@@ -79,7 +79,7 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
               {order?.status === 'PAID' ? 'Đã thanh toán' : 'Chưa thanh toán'}
             </p>
             <p className={cx('font-arial', 'f-bold')}>
-              Ngày hẹn:{' '}
+              Lịch hẹn:{' '}
               {order?.appointmentDate ? order.appointmentDate.toLocaleString() : ''}
             </p>
             <p className={cx('font-arial', 'f-bold')}>Ghi chú: {order?.note}</p>

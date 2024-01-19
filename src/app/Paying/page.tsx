@@ -132,7 +132,7 @@ const Paying = () => {
               Số điện thoại: {customer?.contactNumber}
             </p>
             <p className={cx('font-arial', 'f-bold')}>Địa chỉ: {customer?.address}</p>
-            <p>Giờ hẹn: </p>
+            <p>Lịch hẹn: </p>
             <input
               type='datetime-local'
               name=''
