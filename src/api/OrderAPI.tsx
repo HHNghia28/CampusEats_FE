@@ -1,6 +1,7 @@
 import instance from './Request';
 
 const addOrder = async (order: OrderDTO): Promise<APIResponse<PaymentLinkDTO>> => {
+  console.dir(order);
   try {
     const response = await instance.post(`/Orders/addOrder`, order, {
       headers: {
