@@ -16,7 +16,7 @@ const Login = () => {
     const now = new Date();
     const item = {
       value: value,
-      expiry: now.getTime() + ttl,
+      expiry: now.getTime() + ttl
     };
     localStorage.setItem(key, JSON.stringify(item));
   };
@@ -26,7 +26,6 @@ const Login = () => {
       return loginAPI(login);
     },
     onSuccess: (data, variables, context) => {
-
       localStorage.setItem('account', JSON.stringify(data.data));
       setLocalStorageWithExpiry('account', '', 20);
 
@@ -40,7 +39,6 @@ const Login = () => {
     },
     onError: () => {
       toast.error('Đăng nhập không thành công');
-
     }
   });
 
@@ -53,7 +51,6 @@ const Login = () => {
     };
 
     console.log(value);
-
 
     setLogin(temp);
   };

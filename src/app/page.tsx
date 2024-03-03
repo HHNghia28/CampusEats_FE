@@ -31,32 +31,38 @@ const vouchers: Voucher[] = [
   {
     code: 'Codeeee',
     description: 'Codeeeeeeeee',
-    imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
+    imageSrc:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
   },
   {
     code: 'Codeeee',
     description: 'Codeeeeeeeee',
-    imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
+    imageSrc:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
   },
   {
     code: 'Codeeee',
     description: 'Codeeeeeeeee',
-    imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
+    imageSrc:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
   },
   {
     code: 'Codeeee',
     description: 'Codeeeeeeeee',
-    imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
+    imageSrc:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
   },
   {
     code: 'Codeeee',
     description: 'Codeeeeeeeee',
-    imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
+    imageSrc:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
   },
   {
     code: 'Codeeee',
     description: 'Codeeeeeeeee',
-    imageSrc: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
+    imageSrc:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKe8GqNZgenp7lDROxS_eOqvySZJqiz5uA7g&usqp=CAU'
   }
 ];
 export default function Home() {
@@ -80,9 +86,17 @@ export default function Home() {
   }
 
   const imageSlides: ImageSlide[] = [
-    { id: 1, imageSrc: 'https://static-images.vnncdn.net/files/publish/2022/11/27/mang-che-do-den-viet-nam-ra-ban-tai-cho-o-chau-phi-nguoi-dan-phan-ung-sao-e54697fdc54145239d9e5852c722ce05.jpeg' },
+    {
+      id: 1,
+      imageSrc:
+        'https://static-images.vnncdn.net/files/publish/2022/11/27/mang-che-do-den-viet-nam-ra-ban-tai-cho-o-chau-phi-nguoi-dan-phan-ung-sao-e54697fdc54145239d9e5852c722ce05.jpeg'
+    },
     { id: 2, imageSrc: 'https://i.ytimg.com/vi/8gpuEE3C86c/maxresdefault.jpg' },
-    { id: 3, imageSrc: 'https://cuoituancuatui.com/wp-content/uploads/mon-sam-bo-luong-qua-hap-dan.jpg' },
+    {
+      id: 3,
+      imageSrc:
+        'https://cuoituancuatui.com/wp-content/uploads/mon-sam-bo-luong-qua-hap-dan.jpg'
+    }
   ];
 
   // Cấu hình slider
@@ -93,7 +107,7 @@ export default function Home() {
     slidesToShow: 1, // Điều chỉnh số item hiển thị trên mỗi dòng
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 3000
   };
 
   // Cấu hình slider
@@ -109,22 +123,22 @@ export default function Home() {
       {
         breakpoint: 1200, // Điều chỉnh số item hiển thị khi màn hình có chiều rộng < 1200px
         settings: {
-          slidesToShow: 3,
-        },
+          slidesToShow: 3
+        }
       },
       {
         breakpoint: 992, // Điều chỉnh số item hiển thị khi màn hình có chiều rộng < 992px
         settings: {
-          slidesToShow: 2,
-        },
+          slidesToShow: 2
+        }
       },
       {
         breakpoint: 576, // Điều chỉnh số item hiển thị khi màn hình có chiều rộng < 576px
         settings: {
-          slidesToShow: 1,
-        },
-      },
-    ],
+          slidesToShow: 1
+        }
+      }
+    ]
   };
 
   return (
@@ -147,12 +161,26 @@ export default function Home() {
         <Slider {...sliderHomeSettings}>
           {imageSlides.map(slide => (
             <div key={slide.id}>
-              <img src={slide.imageSrc} alt={`Slide ${slide.id}`} />
+              <img
+                src={slide.imageSrc}
+                alt={`Slide ${slide.id}`}
+              />
             </div>
           ))}
         </Slider>
       </div>
-      <h3 className={cx('mt-5', 'text-center', 'text-title-color', 'f-bold', 'font-arial', 'fs-xxl')}>Hôm nay ăn gì?</h3>
+      <h3
+        className={cx(
+          'mt-5',
+          'text-center',
+          'text-title-color',
+          'f-bold',
+          'font-arial',
+          'fs-xxl'
+        )}
+      >
+        Hôm nay ăn gì?
+      </h3>
       <h4 className={cx('mt-2', 'font-arial', 'fw-700')}>Mã giảm giá</h4>
       <div className={cx('mt-3')}>
         {/* Sử dụng Slider ở đây */}
@@ -219,7 +247,19 @@ export default function Home() {
             ) : null
           )
         ) : (
-          <p className={cx('font-arial', 'fw-700', 'd-flex', 'align-items-center', 'justify-content-center', 'mt-3', 'fs-lg')}>Rất tiếc, hôm nay không còn sản phẩm nào!</p>
+          <p
+            className={cx(
+              'font-arial',
+              'fw-700',
+              'd-flex',
+              'align-items-center',
+              'justify-content-center',
+              'mt-3',
+              'fs-lg'
+            )}
+          >
+            Rất tiếc, hôm nay không còn sản phẩm nào!
+          </p>
         )}
       </div>
     </div>
