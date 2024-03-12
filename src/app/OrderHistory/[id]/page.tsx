@@ -38,6 +38,7 @@ const OrderHistory = ({ params }: { params: { id: string } }) => {
   } = useQuery({
     queryKey: ['orderHistory', params.id],
     queryFn: async () => {
+      console.log(params.id);
       const data = await getOrderByOrderId(params.id);
       return data;
     }

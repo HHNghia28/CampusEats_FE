@@ -9,6 +9,8 @@ const loginAPI = async (login : LoginDTO): Promise<APIResponse<CustomerDTO>> => 
           'Content-Type': 'application/json'
         }
       });
+      console.log(login);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(`Error login`, error);
