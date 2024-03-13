@@ -150,6 +150,7 @@ const ProductDetail = ({ params }: { params: { id: number } }) => {
                   )}
                 >
                   {product?.orderTemplate}
+                  <div> Sâm bổ lượng là một món có nguồn gốc từ Quảng Đông, Trung Quốc với tên gọi chính xác là "thanh bổ lượng", nghĩa là món ăn thanh nhiệt, bổ dưỡng. Không biết từ bao giờ, sâm bổ lượng đã trở thành một món ăn quen thuộc đối với người Việt Nam, nhất là ở các tỉnh phía Nam.</div>
                 </p>
               </div>
               <div
