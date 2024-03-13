@@ -48,7 +48,7 @@ const Navigation = () => {
             href={'/'}
             className='nav-link'
           >
-            G1-Food
+            Sâm Bổ Lượng
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />

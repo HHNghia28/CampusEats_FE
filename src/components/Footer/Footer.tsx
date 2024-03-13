@@ -1,8 +1,24 @@
 "use client";
 const Footer = () => {
   return (
-    <div className="text-center mt-5 font-bold bg-slate-700">
-      G1-Food @copyright by group-1 FPT university
+    <div className="text-center mt-5 font-bold bg-slate-700 bg-body-tertiary">
+      <div className="p-3 mt-4 font-bold ">
+        <h2>Sâm Bổ Lượng</h2>
+        <div>
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAApgAAAKYB3X3/OAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHBSURBVEiJnZVPK4VBFMZ/o6wUbjclG1mQBeX6k5UtubGxxQIfQFkqX0FsZHNT2CjfwPLuhMhCWSB3IWRxLWTjHot7bo1x3vG+3nrqPec88zzTzJkZJyLEPudcN7AMDAMjmr4AzoGSiDxGBUQkEcAKUAUkAVVgKaoREd+JCIfYyWQAzGYQb2AmlQHQBjwHg2tACZhTlDTnc56A1jQGRWN2CwZvweBNh7wmY99Hg7gsIodGcxwC5SA9FvIsg+EgPjM4SbVCGoNqEHdEDMLaexqDmyAuOuc6Q5Lmin+MNTd5gN8dcgr0eZw+zYWdNpj2HBzxu0NqwK0inIAAx1kOWi/waYgk4RPoz3pVrGcw2PjPXdQMXKUQvwaaMxuoyRjwFRH/AsYz3aZADlgFdjXejBhsKWdXx+QSDYAeYA/48ATmgRbg3hB/0Nq8l/tQjZ4fBkAXUDFEXoE8MGXUprT2atQqQJdvsBZZhn3l7Hu5AyMXYs03KGAfngYmdbYvirzmkvg1oBDuwXbE5A5op36NDOj/XUR82+wi6m/BSYLRFbCosM5HTceO+ppOhX98zrk8MKEY0iVpAODNwyX1h6csIm+h1jeBjdYB5pb8vgAAAABJRU5ErkJggg=="></img>
+          <span className="m-2">Hẻm Thành Đoàn, đầu đường Nguyễn Thần Hiến, Phường An Cư, quận Ninh Kiều, Cần Thơ</span>
+        </div>
+        <div className="mt-2 mb-2">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAsQAAALEBxi1JjQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGoSURBVEiJvdXPi05RHMfx1zRszGNBk5QSIwYbkl/LCRsWkqxtsFLDU7JTEzt28l9MCWH4F9jMirCxoYyNopDJtThncjvP9z7PvcKnTt17zvd83vf7Pfd+L/9Y4w3zZ/AVn4K1zTiLTfiY4zrpOiosYnWwPpPXK/zAExxqa36ptrnCtYa4SRzAHN7hJ+5g1TDzo1guAN+wc8RDrcHNDHncBFmPpcJ8ZdwrYvfgLq5iY23+XIbcjgBlacoxXYvdixfZ7Asu1NZu5fmDJeDUEPMlTAUPNSWVpML5PDeB91gog3tSvUvzt9gRpZw1ns0++12uG9Lbta4MfhAA+kPMV7RdKsuVfH847z1ZBh4JAM9bAOAl5vP1ZN57MQpcCCAnWgD2Y1++HsMxbI0Cdxs8i9dY2wLSWn2DWTzU3Lc6a0x84I/EmWwz+msfUA/PAsgbHK/FTUsdtcL9rqANeBVAqgzvS99Jff671CCjLtwIiTIZNRaxpS2kJ6XfFXK6LYB08JfF7SQac13M69qFp0OMlzH7p+Z1zUhlq2f0QWo3f1UTUlOblX5a/1+/AAeJtHbFvQ2IAAAAAElFTkSuQmCC"></img>
+          <span className="m-2">0939027691</span>
+        </div>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADdcAAA3XAUIom3gAAAEeSURBVEhL3Za9isJAFIXjD2JlYyFioWC3W1jYi1a+wJb7ENZiv2Dna1gt+xo2loK1T2CnET3n3ggzZjaMOBHxgy+5yuQeJpMJiRLGcAWP8BxA9mE/9hVYxNA1+FHZV4KY6BoQylUBB06tDPMiZgjT7mUDl3AHzevr8EdLG3NqPs5hCbroQNc1zj//8w9mESRkALNwhty7JjW411Jow4aWQhP+ammTSs6wAk0W0DXOsohD7vjcLm7Wg5bRCHJfXZnALy2FKuxraZOa3o0t6MsQpnqEvl0fydkidMhncrZ4ykx8Fn4L+comPWgu/BR+ayl04e1jLqQWKsPX3SfvFXJd1LyIGbLWOjfWDJnBk/wMD/uyv+D73eX7CBvfXVF0AT6G2bjHoZrMAAAAAElFTkSuQmCC" />
+        <img className="m-2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAACxMAAAsTAQCanBgAAAHjSURBVEhLtZa9LgVBFMeXEEJ0FL46oURHxQvoNB5AQVBReAah0ngBtxCVF+AJUOp9RaLxkUh8/n9zd+/Ozs7enRt7/8nvzp6zM2d2zpydvZGjeXEs7sW3+G0B+jOO8cTJqVMciB/hC9AqxCEecRvC4ev8X4hrxNKqWoELcec69EMOV4SrV1ETV+ILR4G6xIwgxgAORzUmYbOGjZnqUiwJ7o2JHlGkD3EnRsSZmBW2Hvhxq+hFjIopcR37yqDfpGAc4+17xM844EiwwtAJTsSTIK2I8W6fnGNNjDu+hDdxE7fY7NWQYCJsUrseXzfI1HEsBrp7gG9HDArSSItNkEexLFCv+KxfpvJN4tOuoOZXxWnc7gv8QTEySxMEmLBsUsMTblo+wMb/bvkYx3i7nzddrihPynTRWKkWBP5bYzVRyCSUJU98bqxUFwI/m91UIZP0iw1xKLYEe0KLjb9PlCqTP+HuCVAx24InR7TY+O1+wXvCWUSubeHbE8+C94QWG78txnXXL1P5JuGwY7N5412RGo4PX4roTxFMG8tR0dlFMI4K+14R9Cs8u8pOYVZE9SR74VNSxkzgPYVDviekIXdUWGIPSFHh94Sftn8ZhVHbv/GIKsNR1YqIQzzvy87SKv7fFUV/YX1S5iXyE5MAAAAASUVORK5CYII="></img>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABigAAAYoBM5cwWAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAFwSURBVEiJvda/axRBFAfwzyw5MNhY6IE2qaxzEG0stbCIf0k6C5tEOC3MnyGWtqYS/QvkLhCwsRSUICdC6sT4LHaK9ZzdrD/2HjxmZ9/y/c5835s3myJCm6WUxriNW9jKI8xxmMdZRCxaQSLiN8cIT3CKuMBPMcWoiFUAn+CoB/CyH2HSSYCdnqvu2s1OkSCv/F/AmySTXwiy5n8jS5dco4iwlnO9h82l/H/EO/3sPq405pvYxVMYt0hznj+oStWRd34JLzqkGsN2IfgNn/LzW1wrgG+oz0HgTQvJNnUNLwc+4Cpe5/ln3GmA38NX/FCfl/UWgikclAgyUMLjLNcZHuIRvuMEDxpSlQgO4LiNoLHiu/jSiL/HzaVclAiOexFkkOt4hee4XEh2K0GrRH29S6JK3RWHssNKXWpD2bzCTF0h/9vOMFuLiEVKaV+u2Ww3Ukov/wCsKrx7FhGLwZvdatr1Si6clVyZQ1z6aejflp/wb1IU/w9lMAAAAABJRU5ErkJggg=="></img>
+      </div>
+      <div className="p-2">
+        G1-Food @copyright by group-1 FPT university
+      </div>
     </div>
   );
 };
